@@ -247,6 +247,12 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 .viaje.fallback .travel-fallback { display:flex; }
 .viaje.fallback .vj-canvas,.viaje.fallback .vj-hud,.viaje.fallback .vj-minimap { display:none; }
 
+.how { display:grid; grid-template-columns:1fr auto; gap:5vw; align-items:center; }
+.qr { text-align:center; }
+.qr img { width:min(24vw,300px); height:auto; display:block; border:1px solid var(--line); }
+.qr small { display:block; margin-top:1.4vh; font-size:clamp(12px,1.1vw,16px); color:var(--grey); letter-spacing:.04em; }
+.act-tag { display:inline-block; background:#00924A; color:#fff; font-size:clamp(13px,1.3vw,19px); letter-spacing:.14em; text-transform:uppercase; font-weight:700; padding:.9vh 1.2vw; margin-bottom:3vh; }
+
 @media (max-width:760px) {
   .clips, .practice-flow, .dos, .exercise, .boxes, .split, .surnames { grid-template-columns:1fr; }
   .split .ph { height:36vh; }
@@ -286,9 +292,9 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 <section class="slide" data-chapter="Today" data-title="Today"><div class="inner">
   <div class="kicker">Today · three acts</div>
   <ul class="lista agenda">
-    <li><span class="n">09:30</span>AI changes the work<small>Whose job your project changes, and how</small></li>
-    <li><span class="n">11:30</span>People don't change<small>Who will resist, and why</small></li>
-    <li><span class="n">12:30</span>Who changes the people?<small>Your adoption slide for tomorrow</small></li>
+    <li><span class="n">09:30</span>AI changes the work<small>Activity 1 · Map the tasks of one real person</small></li>
+    <li><span class="n">11:30</span>People don't change<small>Activity 2 · Map who will resist, and why</small></li>
+    <li><span class="n">12:30</span>Who changes the people?<small>Activity 3 · Write your adoption slide for tomorrow</small></li>
   </ul>
 </div></section>
 
@@ -311,6 +317,18 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
     <li class="step"><span class="n">04</span>FARSIGHT<small>Gaps between policies, procedures and regulation</small></li>
     <li class="step"><span class="n">05</span>Contract Intelligence<small>Contracts updated when the law changes</small></li>
   </ul>
+</div></section>
+
+<section class="slide" data-chapter="Your worksheet" data-title="Your worksheet"><div class="inner how">
+  <div>
+    <div class="kicker">Three activities · one worksheet per team</div>
+    <ul class="lista compact">
+      <li><span class="n">01</span>Open the PDF on one laptop per team</li>
+      <li><span class="n">02</span>Type directly in the boxes</li>
+      <li><span class="n">03</span>Save it. You will need it tomorrow</li>
+    </ul>
+  </div>
+  <div class="qr"><img src="img/worksheet-qr.png" alt="QR code to download the worksheet"><small>jfuentesibanez.github.io/cdp-roma-2026/worksheet.pdf</small></div>
 </div></section>
 
 <section class="slide chapter" data-act="1" data-chapter="Act I · AI changes the work"><div class="inner">
@@ -438,9 +456,9 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="step zt" data-zoom="50 80 1" data-cap="&lt;small&gt;One sentence&lt;/small&gt;What changes in this person's job?"></div>
 </section>
 
-<section class="slide steps" data-chapter="Exercise 1 · Task map" data-title="Exercise 1 · Task map"><div class="inner exercise">
+<section class="slide steps" data-chapter="Activity 1 · Task map" data-title="Activity 1 · Task map"><div class="inner exercise">
   <div>
-    <div class="kicker">Exercise 1 · with your team</div>
+    <div class="act-tag">Activity 1 · worksheet, page 1</div>
     <div class="statement">Pick <strong>one real person</strong> who will work with your MVP. Split their work.</div>
     <div class="boxes">
       <div><b>The AI does it</b>Alone, with spot checks</div>
@@ -453,7 +471,7 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 </div></section>
 
 <section class="slide" data-title="Debrief"><div class="inner">
-  <div class="kicker">Share</div>
+  <div class="act-tag">Activity 1 · share</div>
   <div class="statement">Show us the <strong>fourth box.</strong></div>
   <div class="sub">What new task did you find? Who will do it? Has anyone told them?</div>
 </div></section>
@@ -568,16 +586,16 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="statement" style="font-family:'Courier New',monospace;font-size:clamp(17px,1.9vw,25px);line-height:1.5;background:#fff;border:1px solid var(--line);padding:3vh 2.2vw">You are the head of <strong>[department]</strong> at a large Italian state-owned company. Your team has been told to start using <strong>[tool, in one sentence]</strong> next month. You are experienced, busy and sceptical. List the five objections you would raise in the meeting, in order of how hard they are to answer, and for each one say what would actually convince you.</div>
 </div></section>
 
-<section class="slide steps zoomtour sheet" data-chapter="Exercise 2 · Resistance map" data-title="Sheet tour · sections 3–4">
+<section class="slide steps zoomtour sheet" data-title="Sheet tour · sections 3–4">
   <div class="zt-clip"><img class="zt-img" src="img/ficha-2.png" alt="Adoption Plan worksheet, page 2"></div>
   <div class="zt-cap"><small>Your sheet · page 2 of 3</small>Who will resist, and why.</div>
   <div class="step zt" data-zoom="50 28 1" data-cap="&lt;small&gt;Step 3&lt;/small&gt;Who, &lt;b&gt;the real reason&lt;/b&gt;, and your answer."></div>
   <div class="step zt" data-zoom="50 56 1" data-cap="&lt;small&gt;Step 4 · ADKAR&lt;/small&gt;Score 1 to 5. &lt;b&gt;Fix the weakest one.&lt;/b&gt;"></div>
 </section>
 
-<section class="slide" data-title="Exercise 2 · Resistance map"><div class="inner exercise">
+<section class="slide" data-chapter="Activity 2 · Resistance map" data-title="Activity 2 · Resistance map"><div class="inner exercise">
   <div>
-    <div class="kicker">Exercise 2 · with your team</div>
+    <div class="act-tag">Activity 2 · worksheet, page 2</div>
     <div class="statement">Who will resist your project, <strong>and what is the real reason?</strong></div>
     <div class="boxes">
       <div><b>Who</b>A role, not a name</div>
@@ -591,7 +609,7 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 
 <section class="slide exercise-swap" data-title="Sceptic swap"><div class="inner exercise">
   <div>
-    <div class="kicker">Sceptic swap</div>
+    <div class="act-tag">Activity 2 · sceptic swap</div>
     <div class="statement">One of you joins the next team as <strong>the sceptical boss.</strong></div>
     <div class="sub">Your job: knock their plan down. Hosts: write down the best objection.</div>
   </div>
@@ -681,9 +699,9 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="step zt" data-zoom="50 58 1" data-cap="&lt;small&gt;Step 6&lt;/small&gt;Four lines. &lt;b&gt;Copy them into tomorrow's deck.&lt;/b&gt;"></div>
 </section>
 
-<section class="slide" data-title="Exercise 3 · Plan and slide"><div class="inner exercise">
+<section class="slide" data-chapter="Activity 3 · Adoption slide" data-title="Activity 3 · Adoption slide"><div class="inner exercise">
   <div>
-    <div class="kicker">Exercise 3 · with your team</div>
+    <div class="act-tag">Activity 3 · worksheet, page 3</div>
     <div class="statement">Tomorrow the panel asks: <strong>how will this be adopted?</strong> Write the answer.</div>
     <div class="sub">First 90 days · one metric · one owner · four lines.</div>
   </div>
@@ -691,7 +709,7 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 </div></section>
 
 <section class="slide" data-title="Pitch"><div class="inner">
-  <div class="kicker">Pitch · two minutes per team</div>
+  <div class="act-tag">Activity 3 · pitch · two minutes per team</div>
   <ul class="lista">
     <li><span class="n">01</span>Who uses it, and what changes for them</li>
     <li><span class="n">02</span>The resistance we expect, and our answer</li>

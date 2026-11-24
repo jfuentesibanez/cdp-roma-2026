@@ -273,6 +273,9 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 .foto .cap.big { left:0; right:0; bottom:auto; top:9vh; transform:none; max-width:none; text-align:center; font-size:clamp(44px,7.5vw,124px); letter-spacing:-.01em; text-shadow:0 4px 40px rgba(0,0,0,.9),0 0 8px rgba(0,0,0,.6); }
 .slide.foto:has(.cap.big) > img { filter:brightness(.75); }
 
+.slide.foto::after { content:''; position:absolute; left:0; right:0; bottom:0; height:38vh; background:linear-gradient(0deg,rgba(15,20,26,.9),transparent); pointer-events:none; }
+.foto .cap, .foto .credit { z-index:2; }
+
 @media (max-width:760px) {
   .clips, .practice-flow, .dos, .exercise, .boxes, .split, .surnames { grid-template-columns:1fr; }
   .split .ph { height:36vh; }
@@ -660,15 +663,19 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="credit">Photo: VectorVoyager, CC BY-SA 4.0, Wikimedia Commons</div>
 </section>
 
-<section class="slide steps" data-title="The factory with a library"><div class="split"><div class="ph"><img src="img/ivrea-building.jpg" alt="Olivetti building, Ivrea"></div><div>
-  <div class="kicker">Ivrea · the real invention was the factory</div>
-  <div class="statement" style="font-size:clamp(24px,3vw,42px)">Adriano Olivetti built a factory with <strong>glass walls,</strong> a library, a nursery, and housing.</div>
-  <ul class="lista compact" style="margin-top:4vh">
-    <li class="step"><span class="n">01</span>Workers could see out. The town could see in</li>
-    <li class="step"><span class="n">02</span>Writers and poets ran HR and social services</li>
-    <li class="step"><span class="n">03</span>Canteens, transport, housing, health care</li>
-  </ul>
-</div></div><div class="credit">Photo: Laurom, CC BY-SA 3.0, Wikimedia Commons</div></section>
+<section class="slide steps zoomtour" data-title="The factory with a library">
+  <div class="zt-clip"><img class="zt-img" src="img/ivrea-ico.jpg" alt="Olivetti ICO factory, Ivrea"></div>
+  <div class="zt-cap"><small>Ivrea</small>The real invention was <b>the factory.</b></div>
+  <div class="step zt" data-zoom="62 46 1.7" data-cap="&lt;small&gt;Glass walls&lt;/small&gt;Workers could see out. &lt;b&gt;The town could see in.&lt;/b&gt;"></div>
+  <div class="step zt" data-zoom="22 42 1.5" data-cap="&lt;small&gt;Inside&lt;/small&gt;A library. Canteens. Health care. &lt;b&gt;Writers and poets ran HR.&lt;/b&gt;"></div>
+  <div class="step zt" data-zoom="50 50 1" data-cap="&lt;small&gt;Around it&lt;/small&gt;Housing, transport, &lt;b&gt;a nursery.&lt;/b&gt;"></div>
+  <div class="credit">Photo: Davide Mauro, CC BY-SA 4.0, Wikimedia Commons</div>
+</section>
+
+<section class="slide foto" data-title="The factory nursery"><img src="img/ivrea-nursery.jpg" alt="Inside the Olivetti nursery, Ivrea">
+  <div class="cap"><small>Ivrea</small>The factory nursery.</div>
+  <div class="credit">Photo: Davide Mauro, CC BY-SA 4.0, Wikimedia Commons</div>
+</section>
 
 <section class="slide negro" data-title="Olivetti quote"><div class="split"><div class="ph"><img src="img/adriano.jpg" alt="Adriano Olivetti, 1957"></div><div style="text-align:left">
   <div class="quote" style="font-size:clamp(22px,2.6vw,36px)">“The factory cannot look only at the profit index. It must distribute wealth, culture, services, democracy.”

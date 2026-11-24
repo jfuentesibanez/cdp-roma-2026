@@ -133,6 +133,7 @@
     v.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;background:#000';
     v.addEventListener('error', youtube, { once: true });
     frame.innerHTML = ''; frame.append(v);
+    frame.closest('.slide').classList.add('playing');
   }
   function filmButton(frame, label) {
     frame.innerHTML = `<button type="button" class="play">${label}</button>`;
@@ -140,6 +141,7 @@
   }
   document.querySelectorAll('.film .frame').forEach(f => f.querySelector('.play').addEventListener('click', () => playFilm(f)));
   const resetFilms = () => document.querySelectorAll('.film .frame').forEach(f => {
+    f.closest('.slide').classList.remove('playing');
     if (f.querySelector('iframe,video')) filmButton(f, `▶ Play again · ${f.dataset.duration || ''}`);
   });
   const advance = dir => { if (slides[index] === travelSlide && viaje && !travelFailed && viaje.handle(dir)) return; if (!step(dir)) go(index + dir); };

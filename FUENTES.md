@@ -96,3 +96,6 @@ Verificado el 24/11/2026. ✅ confirmado · ⚠️ confirmado con matiz (ya refl
 
 ## Viaje en el tiempo (apertura)
 Motor 3D (`viaje.js`, `three.min.js`) e imágenes de las eras traídos del deck de Ferrovial. La imagen de 2026 es Roma: `img/viaje-rome.jpg`, foto de benoitnewton, CC BY 2.0, Wikimedia Commons (Roma-vista.jpg). Sin WebGL, la slide muestra la foto fija.
+
+## El fin del trabajo de escritorio (acto 1)
+- ✅ **"Canaries in the Coal Mine?"** (Brynjolfsson, Chandar & Chen, Stanford Digital Economy Lab). La slide usa la revisión de agosto de 2026, con datos de nóminas de ADP hasta junio de 2026: el empleo de los jóvenes de 22–25 años en las ocupaciones más expuestas a la IA está un **19 %** por debajo del de sus pares menos expuestos, y los trabajadores con experiencia no muestran esa brecha. Versiones anteriores daban 13 % (agosto de 2025) y 16 % (noviembre de 2025). Los autores lo presentan como indicador temprano, no como efecto causal, y la brecha se atenúa al controlar por nivel educativo. [Stanford](https://digitaleconomy.stanford.edu/news/canariesaug26/)

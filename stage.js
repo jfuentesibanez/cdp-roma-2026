@@ -70,6 +70,10 @@
     if (s.classList.contains('shift-practice')) s.querySelectorAll('.step').forEach(a => a.classList.remove('on'));
     if (s.classList.contains('zoomtour')) { s.querySelectorAll('.step').forEach(a => a.classList.remove('on')); applyZoom(s); }
     document.body.classList.toggle('dark-slide', s.matches('.negro,.cover-dark,.chapter,.foto,.zoomtour'));
+    let act = 0; for (let k = 0; k <= index; k++) if (slides[k].dataset.act) act = Number(slides[k].dataset.act);
+    const rail = document.getElementById('rail');
+    rail.classList.toggle('on', act > 0 && !s.matches('.zoomtour,.foto,.film'));
+    [...rail.children].forEach((el, k) => el.classList.toggle('now', k + 1 === act));
     document.getElementById('barra').style.width = `${(index + 1) / slides.length * 100}%`;
     document.getElementById('pag').textContent = `${String(index + 1).padStart(2, '0')} / ${slides.length}`;
     if (updateHash && location.hash !== `#${index + 1}`) history.replaceState(null, '', `#${index + 1}`);

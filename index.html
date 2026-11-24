@@ -212,6 +212,13 @@ body.is-blackout .blackout { display:block; }
 .film .film-cap { margin-top:2.5vh; color:#AEB8C2; font-size:clamp(13px,1.2vw,16px); letter-spacing:.06em; text-align:center; }
 .film .film-cap b { color:#F6F7F8; }
 
+.rail { position:fixed; top:2.2vh; left:0; right:0; display:none; justify-content:center; gap:2.2vw; z-index:9; font-size:clamp(10px,.9vw,13px); letter-spacing:.14em; text-transform:uppercase; color:var(--grey); pointer-events:none; }
+.rail.on { display:flex; }
+.rail span { opacity:.55; }
+.rail span.now { opacity:1; color:#00924A; font-weight:700; border-bottom:2px solid #00924A; padding-bottom:3px; }
+body.dark-slide .rail span { color:#AEB8C2; }
+body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
+
 @media (max-width:760px) {
   .clips, .practice-flow, .dos, .exercise, .boxes, .split, .surnames { grid-template-columns:1fr; }
   .split .ph { height:36vh; }
@@ -223,6 +230,7 @@ body.is-blackout .blackout { display:block; }
 <div id="barra"></div>
 <div class="foot"><img src="img/cdp.png" alt="CDP"> Rome · 26 November 2026</div>
 <div id="pag"></div>
+<div class="rail" id="rail"><span>Act 1 · AI changes the work</span><span>Act 2 · People don't change</span><span>Act 3 · Who changes the people?</span></div>
 
 <!-- ============================ OPENING ============================ -->
 
@@ -281,7 +289,7 @@ body.is-blackout .blackout { display:block; }
   <div class="sub step">Every question today is about <strong>one of these.</strong></div>
 </div></section>
 
-<section class="slide chapter" data-chapter="Act I · AI changes the work"><div class="inner">
+<section class="slide chapter" data-act="1" data-chapter="Act I · AI changes the work"><div class="inner">
   <div class="kicker">Act one · The genius who got it wrong</div>
   <div class="gigante">AI changes<br><strong><span class="crt-accent" data-text="the work.">the work.</span></strong></div>
   <div class="sub">Tasks, not jobs.</div>
@@ -390,10 +398,10 @@ body.is-blackout .blackout { display:block; }
 
 <section class="slide steps zoomtour sheet" data-chapter="Your sheet" data-title="Sheet tour · page 1">
   <div class="zt-clip"><img class="zt-img" src="img/ficha-1.png" alt="Adoption Plan worksheet, page 1"></div>
-  <div class="zt-cap"><small>Your sheet</small>One per team. It ends with <b>tomorrow's slide.</b></div>
-  <div class="step zt" data-zoom="50 26 1" data-cap="&lt;small&gt;Section 1&lt;/small&gt;One real person, by role. &lt;b&gt;Not “the users”.&lt;/b&gt;"></div>
-  <div class="step zt" data-zoom="50 56 1" data-cap="&lt;small&gt;Section 2 · the task map&lt;/small&gt;Four boxes. &lt;b&gt;The fourth one is never empty.&lt;/b&gt;"></div>
-  <div class="step zt" data-zoom="50 81 1" data-cap="&lt;small&gt;One sentence&lt;/small&gt;What changes in this person's role?"></div>
+  <div class="zt-cap"><small>Your sheet · page 1 of 3</small>One page per act. It ends with <b>tomorrow's slide.</b></div>
+  <div class="step zt" data-zoom="50 27 1" data-cap="&lt;small&gt;Step 1&lt;/small&gt;One real person, by role. &lt;b&gt;Not “the users”.&lt;/b&gt;"></div>
+  <div class="step zt" data-zoom="50 60 1" data-cap="&lt;small&gt;Step 2 · the task map&lt;/small&gt;Four boxes. &lt;b&gt;The fourth one is never empty.&lt;/b&gt;"></div>
+  <div class="step zt" data-zoom="50 80 1" data-cap="&lt;small&gt;One sentence&lt;/small&gt;What changes in this person's job?"></div>
 </section>
 
 <section class="slide steps" data-chapter="Exercise 1 · Task map" data-title="Exercise 1 · Task map"><div class="inner exercise">
@@ -426,7 +434,7 @@ body.is-blackout .blackout { display:block; }
   
 </div></section>
 
-<section class="slide chapter" data-chapter="Act II · People don't change"><div class="inner">
+<section class="slide chapter" data-act="2" data-chapter="Act II · People don't change"><div class="inner">
   <div class="kicker">Act two · The doctor who was right, and lost</div>
   <div class="gigante">People<br><strong><span class="crt-accent" data-text="don't change.">don't change.</span></strong></div>
   <div class="sub">Not because you are right.</div>
@@ -530,9 +538,9 @@ body.is-blackout .blackout { display:block; }
 
 <section class="slide steps zoomtour sheet" data-chapter="Exercise 2 · Resistance map" data-title="Sheet tour · sections 3–4">
   <div class="zt-clip"><img class="zt-img" src="img/ficha-2.png" alt="Adoption Plan worksheet, page 2"></div>
-  <div class="zt-cap"><small>Your sheet</small>Who will resist, and why.</div>
-  <div class="step zt" data-zoom="50 20 1" data-cap="&lt;small&gt;Section 3&lt;/small&gt;Who, &lt;b&gt;the real reason&lt;/b&gt;, and your answer."></div>
-  <div class="step zt" data-zoom="50 46 1" data-cap="&lt;small&gt;Section 4 · ADKAR&lt;/small&gt;Score 1 to 5. &lt;b&gt;Fix the weakest one.&lt;/b&gt;"></div>
+  <div class="zt-cap"><small>Your sheet · page 2 of 3</small>Who will resist, and why.</div>
+  <div class="step zt" data-zoom="50 28 1" data-cap="&lt;small&gt;Step 3&lt;/small&gt;Who, &lt;b&gt;the real reason&lt;/b&gt;, and your answer."></div>
+  <div class="step zt" data-zoom="50 56 1" data-cap="&lt;small&gt;Step 4 · ADKAR&lt;/small&gt;Score 1 to 5. &lt;b&gt;Fix the weakest one.&lt;/b&gt;"></div>
 </section>
 
 <section class="slide" data-title="Exercise 2 · Resistance map"><div class="inner exercise">
@@ -563,7 +571,7 @@ body.is-blackout .blackout { display:block; }
   <div class="statement">People rarely resist the tool.<br><strong>They resist what it says about them.</strong></div>
 </div></section>
 
-<section class="slide chapter" data-chapter="Act III · Who changes the people?"><div class="inner">
+<section class="slide chapter" data-act="3" data-chapter="Act III · Who changes the people?"><div class="inner">
   <div class="kicker">Act three · The Italian who got it right</div>
   <div class="gigante">Who changes the people?<br><strong><span class="crt-accent" data-text="You do.">You do.</span></strong></div>
   <div class="sub">By design.</div>
@@ -636,17 +644,11 @@ body.is-blackout .blackout { display:block; }
   <div class="statement">The team that <strong>got it right.</strong></div>
 </div></section>
 
-<section class="slide steps zoomtour sheet" data-title="Sheet tour · section 5">
-  <div class="zt-clip"><img class="zt-img" src="img/ficha-2.png" alt="Adoption Plan worksheet, page 2"></div>
-  <div class="zt-cap"><small>Your sheet</small>The first 90 days.</div>
-  <div class="step zt" data-zoom="50 71 1" data-cap="&lt;small&gt;Section 5&lt;/small&gt;Three phases, one metric, &lt;b&gt;one owner with a name.&lt;/b&gt;"></div>
-</section>
-
 <section class="slide steps zoomtour sheet" data-title="Sheet tour · page 3">
-  <div class="zt-clip"><img class="zt-img" src="img/ficha-3.png" alt="Adoption Plan worksheet, page 3"></div>
-  <div class="zt-cap"><small>Your sheet</small>The part that goes into your presentation.</div>
-  <div class="step zt" data-zoom="50 30 1" data-cap="&lt;small&gt;Section 6&lt;/small&gt;Four lines. &lt;b&gt;Copy them into tomorrow's deck.&lt;/b&gt;"></div>
-  <div class="step zt" data-zoom="50 66 1" data-cap="&lt;small&gt;Sceptic swap&lt;/small&gt;The sceptic prompt, if you need it."></div>
+  <div class="zt-clip"><img class="zt-img" src="img/ficha-3.png" alt="Worksheet, page 3"></div>
+  <div class="zt-cap"><small>Your sheet · page 3 of 3</small>The plan, and the slide.</div>
+  <div class="step zt" data-zoom="50 27 1" data-cap="&lt;small&gt;Step 5&lt;/small&gt;Three phases, one metric, &lt;b&gt;one owner with a name.&lt;/b&gt;"></div>
+  <div class="step zt" data-zoom="50 58 1" data-cap="&lt;small&gt;Step 6&lt;/small&gt;Four lines. &lt;b&gt;Copy them into tomorrow's deck.&lt;/b&gt;"></div>
 </section>
 
 <section class="slide" data-title="Exercise 3 · Plan and slide"><div class="inner exercise">

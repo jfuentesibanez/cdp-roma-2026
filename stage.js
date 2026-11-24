@@ -85,6 +85,9 @@
       const txt = el.dataset.type; let k = 0;
       el._t = setInterval(() => { el.textContent = txt.slice(0, ++k); if (k >= txt.length) { clearInterval(el._t); el.classList.add('done'); } }, 55);
     });
+    if (s.dataset.audio) {  // narration starts with the slide; V pauses or resumes it
+      s._a = s._a || new Audio(s.dataset.audio); s._a.currentTime = 0; s._a.play().catch(() => {});
+    }
     document.body.classList.toggle('dark-slide', s.matches('.negro,.cover-dark,.chapter,.foto,.zoomtour,.film,.viaje'));
     let act = 0; for (let k = 0; k <= index; k++) if (slides[k].dataset.act) act = Number(slides[k].dataset.act);
     const rail = document.getElementById('rail');

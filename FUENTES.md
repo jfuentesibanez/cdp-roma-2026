@@ -93,3 +93,6 @@ Verificado el 24/11/2026. ✅ confirmado · ⚠️ confirmado con matiz (ya refl
 
 ## Vídeos
 - `video/hinton-radiology.mp4`: "Geoff Hinton: On Radiology", canal oficial de Creative Destruction Lab (YouTube 2HMPRXstSvQ). Dura 1:24, en 720p H.264 (11 MB). Se reproduce dentro del deck sin conexión; si falta el archivo, el deck tira de YouTube.
+
+## Viaje en el tiempo (apertura)
+Motor 3D (`viaje.js`, `three.min.js`) e imágenes de las eras traídos del deck de Ferrovial. La imagen de 2026 es Roma: `img/viaje-rome.jpg`, foto de benoitnewton, CC BY 2.0, Wikimedia Commons (Roma-vista.jpg). Sin WebGL, la slide muestra la foto fija.

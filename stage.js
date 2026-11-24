@@ -59,9 +59,18 @@
     paint(); timers.set(el.closest('.slide'), t);
   });
 
+  /* Time journey: 3D when WebGL is available, a still image otherwise. */
+  const travelSlide = slides.find(x => x.classList.contains('viaje'));
+  let viaje = null, travelFailed = false;
+  function enterTravel() {
+    if (travelFailed || !window.THREE || !window.initViaje) { travelSlide.classList.add('fallback'); return; }
+    try { if (!viaje) viaje = window.initViaje(travelSlide); travelSlide.classList.remove('fallback'); viaje.enter(); }
+    catch (err) { travelFailed = true; travelSlide.classList.add('fallback'); console.warn('Time journey unavailable', err); }
+  }
   function go(n, updateHash = true) {
     n = Math.max(0, Math.min(slides.length - 1, Math.floor(n)));
     if (!Number.isFinite(n) || n === index) return;
+    if (viaje && slides[index] === travelSlide) viaje.leave();
     index = n;
     resetFilms?.();
     slides.forEach((s, k) => { s.classList.toggle('on', k === index); s.inert = k !== index; });
@@ -69,7 +78,8 @@
     // Discussions always start with the question, including when revisiting.
     if (s.classList.contains('shift-practice')) s.querySelectorAll('.step').forEach(a => a.classList.remove('on'));
     if (s.classList.contains('zoomtour')) { s.querySelectorAll('.step').forEach(a => a.classList.remove('on')); applyZoom(s); }
-    document.body.classList.toggle('dark-slide', s.matches('.negro,.cover-dark,.chapter,.foto,.zoomtour'));
+    if (s === travelSlide) enterTravel();
+    document.body.classList.toggle('dark-slide', s.matches('.negro,.cover-dark,.chapter,.foto,.zoomtour,.film,.viaje'));
     let act = 0; for (let k = 0; k <= index; k++) if (slides[k].dataset.act) act = Number(slides[k].dataset.act);
     const rail = document.getElementById('rail');
     rail.classList.toggle('on', act > 0 && !s.matches('.zoomtour,.foto,.film'));
@@ -132,7 +142,7 @@
   const resetFilms = () => document.querySelectorAll('.film .frame').forEach(f => {
     if (f.querySelector('iframe,video')) filmButton(f, `▶ Play again · ${f.dataset.duration || ''}`);
   });
-  const advance = dir => { if (!step(dir)) go(index + dir); };
+  const advance = dir => { if (slides[index] === travelSlide && viaje && !travelFailed && viaje.handle(dir)) return; if (!step(dir)) go(index + dir); };
   function showControls() {
     document.body.classList.add('controls-visible'); clearTimeout(controlsTimer);
     controlsTimer = setTimeout(() => document.body.classList.remove('controls-visible'), 2200);

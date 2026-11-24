@@ -276,6 +276,14 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 .slide.foto::after { content:''; position:absolute; left:0; right:0; bottom:0; height:38vh; background:linear-gradient(0deg,rgba(15,20,26,.9),transparent); pointer-events:none; }
 .foto .cap, .foto .credit { z-index:2; }
 
+.bars { margin-top:3.5vh; display:grid; gap:1.5vh; }
+.bars .row { display:grid; grid-template-columns:19em 1fr; gap:1.4vw; align-items:center; font-size:clamp(17px,1.9vw,27px); }
+.bars .row span:first-child { text-align:right; }
+.bars .bar { height:3.6vh; background:#6E7B87; position:relative; width:calc(var(--v) * 1%); min-width:4px; }
+.bars .bar b { position:absolute; left:calc(100% + .5em); top:50%; transform:translateY(-50%); font-weight:700; }
+.bars .row.hot .bar { background:#D0202E; } .bars .row.hot span:first-child { color:#D0202E; font-weight:700; }
+.bars .row.cool .bar { background:#00924A; } .bars .row.cool span:first-child { color:#00924A; font-weight:700; }
+
 @media (max-width:760px) {
   .clips, .practice-flow, .dos, .exercise, .boxes, .split, .surnames { grid-template-columns:1fr; }
   .split .ph { height:36vh; }
@@ -397,6 +405,16 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
     <div class="step"><div class="big-l" style="font-size:clamp(18px,2vw,26px);margin-top:1vh">For the first time, change reaches <strong>the people who lead it.</strong> Including this room.</div></div>
   </div>
   <div class="src">Source: Stanford Digital Economy Lab, August 2026</div>
+</div></section>
+
+<section class="slide steps" data-title="Not firing, not hiring"><div class="inner">
+  <div class="kicker">Published three days ago · 58 companies using AI</div>
+  <div class="dos">
+    <div class="step"><div class="big-n">2</div><div class="big-l">companies where AI eliminated someone's job</div></div>
+    <div class="step"><div class="big-n rust">2 in 3</div><div class="big-l">companies hiring less because of AI</div></div>
+  </div>
+  <div class="quote step" style="margin-top:5vh;font-size:clamp(24px,3vw,44px)">“We may not be firing, but we're not hiring.”</div>
+  <div class="src">Source: Anthropic, “Working with AI”, 23 November 2026</div>
 </div></section>
 
 <section class="slide steps" data-title="Who gains most"><div class="inner">
@@ -558,6 +576,19 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   </div>
   <div class="sub step"><strong>People feel good. The organisation does not improve.</strong></div>
   <div class="src">Source: UK Department for Business and Trade, 2025</div>
+</div></section>
+
+<section class="slide steps" data-title="What blocks AI inside companies"><div class="inner">
+  <div class="kicker">Published three days ago · what blocks AI inside companies</div>
+  <div class="bars">
+    <div class="row"><span>Too much output for people to check</span><div class="bar" style="--v:70"><b>49</b></div></div>
+    <div class="row hot step"><span>Staff resist using AI</span><div class="bar" style="--v:61"><b>43</b></div></div>
+    <div class="row"><span>Expert review needed</span><div class="bar" style="--v:60"><b>42</b></div></div>
+    <div class="row"><span>Staff lack AI skills</span><div class="bar" style="--v:37"><b>26</b></div></div>
+    <div class="row"><span>Customers wary of AI</span><div class="bar" style="--v:19"><b>13</b></div></div>
+    <div class="row cool step"><span>Regulation</span><div class="bar" style="--v:6"><b>4</b></div></div>
+  </div>
+  <div class="src">Mentions across 66 interviews in 58 companies · Source: Anthropic, “Working with AI”, 23 November 2026</div>
 </div></section>
 
 <section class="slide steps" data-title="Resistance map"><div class="inner">

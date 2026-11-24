@@ -71,6 +71,7 @@
     n = Math.max(0, Math.min(slides.length - 1, Math.floor(n)));
     if (!Number.isFinite(n) || n === index) return;
     if (viaje && slides[index] === travelSlide) viaje.leave();
+    if (slides[index]?._a) { slides[index]._a.pause(); slides[index]._a.currentTime = 0; }
     index = n;
     resetFilms?.();
     slides.forEach((s, k) => { s.classList.toggle('on', k === index); s.inert = k !== index; });
@@ -179,6 +180,11 @@
     else if (k === 'f') fullscreen();
     else if (k === 'g') chapters.showModal();
     else if (k === 't') timers.get(slides[index])?.toggle();
+    else if (k === 'v' && slides[index].dataset.audio) {
+      // Optional narration: drop the file in audio/ and press V to play or pause it.
+      const sl = slides[index]; sl._a = sl._a || new Audio(sl.dataset.audio);
+      sl._a.paused ? sl._a.play().catch(() => {}) : sl._a.pause();
+    }
     else if (k === 'v') { const f = slides[index].querySelector('.film .frame'); if (f) { const v = f.querySelector('video'); if (v) { v.paused ? v.play() : v.pause(); } else playFilm(f); } }
     else if (k === 'r') timers.get(slides[index])?.reset();
     else if (['b', '.'].includes(k)) document.body.classList.add('is-blackout');

@@ -6,8 +6,8 @@
 <title>AI Changes the Work · CDP · Rome</title>
 <style>
 :root {
-  --paper:#F7F4EE; --ink:#1B1B1B; --brass:#B8860B; --rust:#A4441F;
-  --grey:#8A8378; --line:#DED6C7; --paper-2:#EFEAE0; --ink-2:#2A2724;
+  --paper:#F6F7F8; --ink:#2E3B48; --brass:#00924A; --rust:#D0202E;
+  --grey:#6E7B87; --line:#D9DFE5; --paper-2:#ECEFF2; --ink-2:#3A4856;
   --sans:"Optima","Gill Sans","Gill Sans MT","Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -34,7 +34,7 @@ body.dark-slide { background:var(--ink); }
 
 /* dark slides */
 .negro, .chapter, .cover-dark { color:var(--paper); }
-.negro .sub, .chapter .sub { color:#B9B2A6; }
+.negro .sub, .chapter .sub { color:#AEB8C2; }
 .negro .sub strong, .chapter .sub strong { color:var(--paper); }
 .negro .gigante, .negro .statement { text-align:center; }
 .negro .inner { text-align:center; }
@@ -48,7 +48,7 @@ body.dark-slide { background:var(--ink); }
 .lista .n { color:var(--brass); font-size:.6em; letter-spacing:.12em; font-weight:700; }
 .lista.compact li { font-size:clamp(16px,2vw,25px); padding:1.1vh 0; }
 .lista li small { display:block; grid-column:2; font-size:.62em; color:var(--grey); margin-top:-.6em; }
-.negro .lista li { border-color:#3A3631; }
+.negro .lista li { border-color:#4A5866; }
 
 .step { opacity:0; transform:translateY(14px); transition:opacity .35s ease, transform .35s ease; }
 .step.on { opacity:1; transform:none; }
@@ -73,7 +73,7 @@ body.dark-slide { background:var(--ink); }
 .quote { font-size:clamp(24px,3.1vw,42px); line-height:1.3; font-style:italic; }
 .quote .it-orig { display:block; font-size:.6em; color:var(--grey); margin-top:2.5vh; font-style:normal; }
 .quote .who { display:block; font-style:normal; font-size:.45em; color:var(--grey); margin-top:2.5vh; letter-spacing:.06em; }
-.negro .quote .who, .negro .quote .it-orig { color:#B9B2A6; }
+.negro .quote .who, .negro .quote .it-orig { color:#AEB8C2; }
 
 /* hands-up discussions */
 .practice-top .kicker { color:var(--rust); }
@@ -82,7 +82,7 @@ body.dark-slide { background:var(--ink); }
 .practice-flow { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2vw; margin-top:3.5vh; counter-reset:opt; }
 .practice-flow span { border:1.5px solid var(--line); background:#fff; padding:2.2vh 1.3vw; font-size:clamp(15px,1.55vw,20px); line-height:1.35; counter-increment:opt; transition:all .35s; }
 .practice-flow span::before { content:counter(opt, upper-alpha); display:block; color:var(--brass); font-weight:700; font-size:.75em; letter-spacing:.14em; margin-bottom:.8vh; }
-.shift-practice:has(.practice-reveal.on) .practice-flow span[data-answer] { border-color:var(--brass); background:#FBF3DD; }
+.shift-practice:has(.practice-reveal.on) .practice-flow span[data-answer] { border-color:var(--brass); background:#E5F4EC; }
 .shift-practice:has(.practice-reveal.on) .practice-flow span:not([data-answer]) { opacity:.4; }
 .practice-reveal { margin-top:3vh; border-left:3px solid var(--brass); padding-left:1.4vw; }
 .practice-reveal b { font-size:clamp(12px,1vw,14px); letter-spacing:.14em; text-transform:uppercase; color:var(--brass); }
@@ -146,13 +146,13 @@ body.is-blackout .blackout { display:block; }
 
 
 /* CRT flicker (Ferrovial engine), recoloured in CDP brass */
-.crt-accent { --crt-color:#B8860B; --crt-stripe:#8C6508;
+.crt-accent { --crt-color:#00924A; --crt-stripe:#006B36;
   position:relative; display:inline-block; white-space:nowrap; padding-inline-end:.12em; margin-inline-end:-.12em;
   color:var(--crt-color); -webkit-text-fill-color:transparent;
   background:repeating-linear-gradient(0deg,var(--crt-color) 0px,var(--crt-color) 2px,var(--crt-stripe) 2px,var(--crt-stripe) 3px);
-  -webkit-background-clip:text; background-clip:text; filter:drop-shadow(0 0 5px #B8860B30); }
-.negro .crt-accent, .chapter .crt-accent { --crt-color:#D9A520; --crt-stripe:#A57A10; }
-.crt-accent.crt-rust { --crt-color:#A4441F; --crt-stripe:#7A2F14; }
+  -webkit-background-clip:text; background-clip:text; filter:drop-shadow(0 0 5px #00924A25); }
+.negro .crt-accent, .chapter .crt-accent { --crt-color:#3CC07E; --crt-stripe:#2A9A62; }
+.crt-accent.crt-rust { --crt-color:#D0202E; --crt-stripe:#9E1822; }
 .crt-accent::before,.crt-accent::after { content:attr(data-text); position:absolute; inset:0; pointer-events:none; opacity:0; background:none; -webkit-text-fill-color:currentColor; }
 .crt-accent::before { color:#1FB8B2; text-shadow:2px 0 #1FB8B270; }
 .crt-accent::after { color:#D4307F; text-shadow:-2px 0 #D4307F70; }
@@ -166,13 +166,13 @@ body.is-blackout .blackout { display:block; }
 @media (prefers-reduced-motion:reduce) { .crt-accent { background:none; -webkit-text-fill-color:currentColor; filter:none; animation:none !important; } }
 
 /* Full-bleed photos with a slow Ken Burns zoom */
-.slide.foto { padding:0; background:#0d0c0b; }
+.slide.foto { padding:0; background:#1F2933; }
 .slide.foto > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
 .slide.foto.contain > img { object-fit:contain; padding:5vh 5vw 9vh; }
 .slide.foto.on > img { animation:kenburns 14s cubic-bezier(.2,.7,.2,1) both; }
 @keyframes kenburns { from { transform:scale(1.14); filter:brightness(.6); } 25% { filter:brightness(1); } to { transform:scale(1); } }
-.foto .cap { position:absolute; left:6vw; bottom:9vh; max-width:70vw; color:#F7F4EE; font-size:clamp(22px,3vw,42px); line-height:1.2; font-weight:600; text-shadow:0 3px 18px rgba(0,0,0,.85); }
-.foto .cap small { display:block; font-size:.45em; letter-spacing:.16em; text-transform:uppercase; color:#D9A520; margin-bottom:1.2vh; font-weight:700; }
+.foto .cap { position:absolute; left:6vw; bottom:9vh; max-width:70vw; color:#F6F7F8; font-size:clamp(22px,3vw,42px); line-height:1.2; font-weight:600; text-shadow:0 3px 18px rgba(0,0,0,.85); }
+.foto .cap small { display:block; font-size:.45em; letter-spacing:.16em; text-transform:uppercase; color:#3CC07E; margin-bottom:1.2vh; font-weight:700; }
 .credit { position:absolute; right:2vw; bottom:5vh; font-size:10px; color:rgba(247,244,238,.6); letter-spacing:.04em; z-index:3; }
 .split .credit, .slide:not(.foto):not(.zoomtour) .credit { color:var(--grey); }
 
@@ -183,14 +183,14 @@ body.is-blackout .blackout { display:block; }
 .slide.on .split .ph img { animation:kenburns 16s cubic-bezier(.2,.7,.2,1) both; }
 
 /* Zoom tour: each click flies the camera to a detail */
-.slide.zoomtour { background:#0d0c0b; padding:5vh 4vw 11vh; flex-direction:column; }
+.slide.zoomtour { background:#1F2933; padding:5vh 4vw 11vh; flex-direction:column; }
 .zt-clip { display:inline-block; overflow:hidden; line-height:0; box-shadow:0 20px 60px rgba(0,0,0,.5); }
 .zt-img { display:block; max-height:72vh; max-width:88vw; width:auto; height:auto; transform-origin:50% 50%; transition:transform 1.6s cubic-bezier(.65,0,.25,1); }
-.zt-cap { margin-top:3vh; color:#F7F4EE; font-size:clamp(18px,2.2vw,30px); line-height:1.3; text-align:center; max-width:1000px; min-height:2.6em; }
-.zt-cap b { color:#D9A520; font-weight:600; }
-.zt-cap small { display:block; font-size:.5em; letter-spacing:.16em; text-transform:uppercase; color:#B9B2A6; margin-bottom:.8vh; }
+.zt-cap { margin-top:3vh; color:#F6F7F8; font-size:clamp(18px,2.2vw,30px); line-height:1.3; text-align:center; max-width:1000px; min-height:2.6em; }
+.zt-cap b { color:#3CC07E; font-weight:600; }
+.zt-cap small { display:block; font-size:.5em; letter-spacing:.16em; text-transform:uppercase; color:#AEB8C2; margin-bottom:.8vh; }
 .zoomtour .step.zt { display:none; }
-.zoomtour.sheet .zt-clip { display:flex; align-items:center; justify-content:center; width:min(72vw,1150px); height:70vh; background:#F7F4EE; }
+.zoomtour.sheet .zt-clip { display:flex; align-items:center; justify-content:center; width:min(72vw,1150px); height:70vh; background:#F6F7F8; }
 .zoomtour.sheet .zt-img { width:100%; max-width:none; max-height:none; flex:none; }
 .surnames { display:grid; grid-template-columns:repeat(4,1fr); gap:1.4vw; margin-top:4vh; }
 .surnames div { background:#fff; border:1px solid var(--line); padding:2.2vh 1.2vw; }
@@ -202,15 +202,15 @@ body.is-blackout .blackout { display:block; }
 .obj-out { display:inline-block; margin-top:3.5vh; font-size:clamp(13px,1.2vw,16px); letter-spacing:.14em; text-transform:uppercase; color:var(--brass); font-weight:700; border:1.5px solid var(--brass); padding:1vh 1.2vw; }
 .bundle { display:grid; grid-template-columns:repeat(5,1fr); gap:1vw; margin-top:4vh; }
 .bundle div { border:1.5px solid var(--line); background:#fff; padding:2.4vh 1vw; text-align:center; font-size:clamp(14px,1.5vw,20px); line-height:1.3; transition:all .4s; }
-.bundle div.ai { border-color:var(--brass); background:#FBF3DD; }
+.bundle div.ai { border-color:var(--brass); background:#E5F4EC; }
 
-.film { background:#0d0c0b; flex-direction:column; }
+.film { background:#1F2933; flex-direction:column; }
 .film .frame { position:relative; width:min(78vw,calc(68vh*16/9)); aspect-ratio:16/9; background:#000 center/cover no-repeat; box-shadow:0 20px 60px rgba(0,0,0,.5); }
 .film .frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
-.film .play { position:absolute; inset:0; margin:auto; width:fit-content; height:fit-content; font:inherit; font-size:clamp(16px,1.6vw,22px); letter-spacing:.08em; background:rgba(27,27,27,.85); color:#F7F4EE; border:1.5px solid #D9A520; padding:1.6vh 2vw; cursor:pointer; }
-.film .play:hover { background:#B8860B; }
-.film .film-cap { margin-top:2.5vh; color:#B9B2A6; font-size:clamp(13px,1.2vw,16px); letter-spacing:.06em; text-align:center; }
-.film .film-cap b { color:#F7F4EE; }
+.film .play { position:absolute; inset:0; margin:auto; width:fit-content; height:fit-content; font:inherit; font-size:clamp(16px,1.6vw,22px); letter-spacing:.08em; background:rgba(27,27,27,.85); color:#F6F7F8; border:1.5px solid #3CC07E; padding:1.6vh 2vw; cursor:pointer; }
+.film .play:hover { background:#00924A; }
+.film .film-cap { margin-top:2.5vh; color:#AEB8C2; font-size:clamp(13px,1.2vw,16px); letter-spacing:.06em; text-align:center; }
+.film .film-cap b { color:#F6F7F8; }
 
 @media (max-width:760px) {
   .clips, .practice-flow, .dos, .exercise, .boxes, .split, .surnames { grid-template-columns:1fr; }
@@ -338,7 +338,7 @@ body.is-blackout .blackout { display:block; }
 <section class="slide negro" data-chapter="Dave · a short film" data-title="Dave"><div class="inner">
   <div class="kicker">A short film</div>
   <div class="gigante">Dave.</div>
-  <div class="sub">A veteran programmer argues with a voice. By the end, you realise it is the AI.<br><a href="https://x.com/ashen_one/status/2123230920626884849" target="_blank" style="color:#D9A520">▶ Watch the film</a></div>
+  <div class="sub">A veteran programmer argues with a voice. By the end, you realise it is the AI.<br><a href="https://x.com/ashen_one/status/2123230920626884849" target="_blank" style="color:#3CC07E">▶ Watch the film</a></div>
 </div></section>
 
 <section class="slide steps" data-title="Questions after Dave"><div class="inner">
@@ -635,12 +635,12 @@ body.is-blackout .blackout { display:block; }
   <div class="kicker">The J-curve</div>
   <div class="statement">After a new technology arrives, measured productivity <strong>first goes down.</strong></div>
   <svg viewBox="0 0 800 220" style="width:100%;max-width:900px;margin-top:3vh" aria-label="J-curve">
-    <line x1="40" y1="110" x2="780" y2="110" stroke="#DED6C7" stroke-width="2"/>
-    <path d="M40 110 C 160 110, 200 190, 300 185 S 520 120, 600 60 S 720 10, 780 5" fill="none" stroke="#B8860B" stroke-width="5"/>
-    <circle cx="300" cy="185" r="8" fill="#A4441F"/>
-    <text x="250" y="215" fill="#A4441F" font-size="18" font-family="Optima, sans-serif">where pilots get cancelled</text>
-    <text x="40" y="100" fill="#8A8378" font-size="16" font-family="Optima, sans-serif">today</text>
-    <text x="560" y="105" fill="#8A8378" font-size="16" font-family="Optima, sans-serif">the payoff</text>
+    <line x1="40" y1="110" x2="780" y2="110" stroke="#D9DFE5" stroke-width="2"/>
+    <path d="M40 110 C 160 110, 200 190, 300 185 S 520 120, 600 60 S 720 10, 780 5" fill="none" stroke="#00924A" stroke-width="5"/>
+    <circle cx="300" cy="185" r="8" fill="#D0202E"/>
+    <text x="250" y="215" fill="#D0202E" font-size="18" font-family="Optima, sans-serif">where pilots get cancelled</text>
+    <text x="40" y="100" fill="#6E7B87" font-size="16" font-family="Optima, sans-serif">today</text>
+    <text x="560" y="105" fill="#6E7B87" font-size="16" font-family="Optima, sans-serif">the payoff</text>
   </svg>
   <div class="sub step">Learning and redesign take time. <strong>Warn your sponsor before the dip.</strong></div>
   <div class="src">Source: Brynjolfsson, Rock &amp; Syverson, 2021</div>

@@ -284,6 +284,11 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 .bars .row.hot .bar { background:#D0202E; } .bars .row.hot span:first-child { color:#D0202E; font-weight:700; }
 .bars .row.cool .bar { background:#00924A; } .bars .row.cool span:first-child { color:#00924A; font-weight:700; }
 
+.typed { min-height:2.4em; }
+.typed::after { content:'▍'; color:#3CC07E; animation:blink 1s steps(1) infinite; margin-left:.05em; }
+.typed.done::after { opacity:0; animation:none; }
+@keyframes blink { 50% { opacity:0; } }
+
 @media (max-width:760px) {
   .clips, .practice-flow, .dos, .exercise, .boxes, .split, .surnames { grid-template-columns:1fr; }
   .split .ph { height:36vh; }
@@ -786,6 +791,24 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="kicker">Ivrea, today</div>
   <div class="statement">Olivetti built one of the first personal computers.<br>And a factory with a library.</div>
   <div class="sub step">Today Ivrea is a UNESCO World Heritage Site.<br><strong>Not for the computer. For how it treated people.</strong></div>
+</div></section>
+
+<section class="slide negro steps" data-chapter="Five years" data-title="Five years"><div class="inner">
+  <div class="quote typed" data-type="“These next five years might be the last few years that I work.”"></div>
+  <div class="sub step">Avital Balwit, 25. She works at a frontier AI lab. <strong>May 2024.</strong></div>
+</div></section>
+
+<section class="slide negro steps" data-title="Thirty months"><div class="inner">
+  <div class="statement">That was thirty months ago.<br><span class="step"><strong>Her clock has thirty months left.</strong></span></div>
+</div></section>
+
+<section class="slide negro steps" data-title="Her question"><div class="inner">
+  <div class="kicker">Her question</div>
+  <div class="statement">Should we meet it with<br>sadness, <span class="step">fear, </span><span class="step">joy, </span><span class="step"><strong>or hope?</strong></span></div>
+</div></section>
+
+<section class="slide negro steps" data-title="Your answer"><div class="inner">
+  <div class="statement">What the machine can do is not yours to decide.<br><span class="step"><strong>What happens to the people around it <span class="crt-accent" data-text="is.">is.</span></strong></span></div>
 </div></section>
 
 <section class="slide negro" data-title="Closing quote"><div class="inner">

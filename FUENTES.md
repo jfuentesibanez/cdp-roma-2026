@@ -108,3 +108,6 @@ Estudio cualitativo: 66 entrevistas en 58 empresas clientes de Anthropic en EE. 
 - **Slide "What blocks AI inside companies" (acto 2):** número de menciones de cada cuello de botella en las entrevistas (figura 4 del estudio). He redibujado seis de las barras con los colores del deck; la gráfica original tiene 22 categorías. Las tres primeras: demasiado output para revisar (49), el personal se resiste a usar la IA (43), hace falta revisión experta (42). Regulación: 4.
 - Las gráficas originales no están copiadas en el repo: los datos están redibujados y citados.
 - Otras ideas del estudio sin usar: la gráfica de reasignación de tareas (68 tareas son "trabajo nuevo que antes no hacía nadie"), la de valor (55 % más producción, 19 % recorte de costes) y la historia de los tres bufetes de abogados (uno automatiza, otro se atasca, otro reorganiza).
+
+## Cierre: "My Last Five Years of Work"
+Avital Balwit, Palladium, 17 de mayo de 2024. https://www.palladiummag.com/2024/05/17/my-last-five-years-of-work/ Tenía 25 años y trabajaba en una empresa de IA de frontera. En pantalla solo hay una cita corta y atribuida; el resto del cierre son palabras de Javier. "Thirty months ago" cuenta de mayo de 2024 a noviembre de 2026. La pregunta de la slide ("sadness, fear, joy, or hope") parafrasea la que ella plantea en el artículo.

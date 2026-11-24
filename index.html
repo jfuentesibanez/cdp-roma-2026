@@ -264,6 +264,12 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 .film.playing .film-cap { display:none; }
 .film video { object-fit:contain; }
 
+/* Photo zoom tours are full-bleed; the caption sits on the image */
+.zoomtour:not(.sheet) { padding:0; }
+.zoomtour:not(.sheet) .zt-clip { position:absolute; inset:0; display:block; box-shadow:none; }
+.zoomtour:not(.sheet) .zt-img { width:100%; height:100%; max-width:none; max-height:none; object-fit:cover; }
+.zoomtour:not(.sheet) .zt-cap { position:absolute; left:0; right:0; bottom:0; margin:0; max-width:none; padding:16vh 8vw 9vh; background:linear-gradient(0deg,rgba(15,20,26,.92),rgba(15,20,26,.55) 55%,transparent); font-size:clamp(24px,3.2vw,48px); z-index:2; }
+
 @media (max-width:760px) {
   .clips, .practice-flow, .dos, .exercise, .boxes, .split, .surnames { grid-template-columns:1fr; }
   .split .ph { height:36vh; }
@@ -639,9 +645,9 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 <section class="slide steps zoomtour" data-chapter="Ivrea, 1965" data-title="Programma 101 · zoom tour">
   <div class="zt-clip"><img class="zt-img" src="img/p101.jpg" alt="Olivetti Programma 101 at the Triennale, Milan"></div>
   <div class="zt-cap"><small>New York, 1965</small>People queue for a machine that fits on a desk. <b>Made in Italy.</b></div>
-  <div class="step zt" data-zoom="42 70 2.4" data-cap="&lt;small&gt;The keyboard&lt;/small&gt;Anyone could program it. &lt;b&gt;No specialist needed.&lt;/b&gt;"></div>
-  <div class="step zt" data-zoom="72 48 3.2" data-cap="&lt;small&gt;The magnetic card&lt;/small&gt;&lt;b&gt;Software you could carry in your pocket.&lt;/b&gt;"></div>
-  <div class="step zt" data-zoom="38 36 2.6" data-cap="&lt;small&gt;The printer&lt;/small&gt;Designed in Ivrea by Pier Giorgio Perotto's team."></div>
+  <div class="step zt" data-zoom="42 66 2.2" data-cap="&lt;small&gt;The keyboard&lt;/small&gt;Anyone could program it. &lt;b&gt;No specialist needed.&lt;/b&gt;"></div>
+  <div class="step zt" data-zoom="72 44 3" data-cap="&lt;small&gt;The magnetic card&lt;/small&gt;&lt;b&gt;Software you could carry in your pocket.&lt;/b&gt;"></div>
+  <div class="step zt" data-zoom="38 30 2.4" data-cap="&lt;small&gt;The printer&lt;/small&gt;Designed in Ivrea by Pier Giorgio Perotto's team."></div>
   <div class="step zt" data-zoom="50 50 1" data-cap="&lt;small&gt;1965&lt;/small&gt;44,000 sold. &lt;b&gt;NASA used it to plan Apollo 11.&lt;/b&gt;"></div>
   <div class="credit">Photo: VectorVoyager, CC BY-SA 4.0, Wikimedia Commons</div>
 </section>

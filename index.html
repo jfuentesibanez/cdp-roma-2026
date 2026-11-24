@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Changes the Work · CDP · Rome</title>
+<style>
+:root {
+  --paper:#F7F4EE; --ink:#1B1B1B; --brass:#B8860B; --rust:#A4441F;
+  --grey:#8A8378; --line:#DED6C7; --paper-2:#EFEAE0; --ink-2:#2A2724;
+  --sans:"Optima","Gill Sans","Gill Sans MT","Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; }
+body { font-family:var(--sans); background:var(--paper); color:var(--ink); overflow:hidden; cursor:pointer; user-select:none; transition:background .25s; }
+body.dark-slide { background:var(--ink); }
+.slide { position:absolute; inset:0; display:none; align-items:center; justify-content:center; padding:7vh 7vw; }
+.slide.on { display:flex; animation:entra .35s ease; }
+@keyframes entra { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }
+.inner { max-width:1180px; width:100%; }
+
+/* type */
+.kicker { font-size:clamp(12px,1.1vw,15px); letter-spacing:.18em; text-transform:uppercase; color:var(--brass); margin-bottom:3vh; font-weight:700; }
+.gigante { font-size:clamp(40px,7vw,100px); line-height:1.06; letter-spacing:-.015em; font-weight:600; }
+.statement { font-size:clamp(26px,3.6vw,50px); line-height:1.24; letter-spacing:-.008em; font-weight:500; }
+.gigante strong, .statement strong { color:var(--brass); font-weight:inherit; }
+.gigante em, .statement em { font-style:italic; }
+.sub { font-size:clamp(15px,1.7vw,21px); color:var(--grey); margin-top:4vh; line-height:1.55; max-width:900px; }
+.sub strong { color:var(--ink); font-weight:600; }
+.src { font-size:clamp(11px,.95vw,13px); color:var(--grey); margin-top:3.5vh; letter-spacing:.02em; }
+.num { color:var(--brass); font-size:clamp(14px,1.3vw,17px); letter-spacing:.14em; margin-bottom:2vh; font-weight:700; }
+.it { font-style:italic; color:var(--grey); }
+.rust { color:var(--rust) !important; }
+
+/* dark slides */
+.negro, .chapter, .cover-dark { color:var(--paper); }
+.negro .sub, .chapter .sub { color:#B9B2A6; }
+.negro .sub strong, .chapter .sub strong { color:var(--paper); }
+.negro .gigante, .negro .statement { text-align:center; }
+.negro .inner { text-align:center; }
+.negro .sub { margin-left:auto; margin-right:auto; }
+.chapter .kicker { color:var(--brass); }
+
+/* lists */
+.lista { list-style:none; margin-top:2vh; }
+.lista li { font-size:clamp(19px,2.4vw,31px); line-height:1.3; padding:1.5vh 0; border-top:1px solid var(--line); display:grid; grid-template-columns:3em 1fr; gap:1em; align-items:baseline; }
+.lista li:last-child { border-bottom:1px solid var(--line); }
+.lista .n { color:var(--brass); font-size:.6em; letter-spacing:.12em; font-weight:700; }
+.lista.compact li { font-size:clamp(16px,2vw,25px); padding:1.1vh 0; }
+.lista li small { display:block; grid-column:2; font-size:.62em; color:var(--grey); margin-top:-.6em; }
+.negro .lista li { border-color:#3A3631; }
+
+.step { opacity:0; transform:translateY(14px); transition:opacity .35s ease, transform .35s ease; }
+.step.on { opacity:1; transform:none; }
+
+/* clippings: text "newspaper" cards */
+.clips { display:grid; grid-template-columns:repeat(3,1fr); gap:2.2vw; margin-top:3vh; }
+.clips.two { grid-template-columns:repeat(2,1fr); }
+.clip { background:#fff; border:1px solid var(--line); padding:2.4vh 1.6vw 2vh; box-shadow:5px 7px 0 rgba(27,27,27,.10); }
+.clip:nth-child(1) { transform:rotate(-1.2deg); } .clip:nth-child(2) { transform:rotate(.9deg); } .clip:nth-child(3) { transform:rotate(-.6deg); }
+.clip .where { font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--rust); font-weight:700; }
+.clip .hed { font-family:Georgia,"Times New Roman",serif; font-size:clamp(18px,1.9vw,26px); line-height:1.2; margin:1.2vh 0; font-weight:700; }
+.clip .dek { font-size:clamp(13px,1.15vw,16px); color:#555; line-height:1.45; }
+.clip .from { font-size:11px; color:var(--grey); margin-top:1.4vh; letter-spacing:.06em; }
+
+/* two columns, compare */
+.dos { display:grid; grid-template-columns:1fr 1fr; gap:5vw; align-items:start; margin-top:3vh; }
+.big-n { font-size:clamp(54px,8vw,120px); font-weight:600; letter-spacing:-.02em; line-height:1; color:var(--brass); }
+.big-n.rust { color:var(--rust); }
+.big-l { font-size:clamp(16px,1.6vw,21px); color:var(--ink); margin-top:1.4vh; line-height:1.4; }
+
+/* quote */
+.quote { font-size:clamp(24px,3.1vw,42px); line-height:1.3; font-style:italic; }
+.quote .it-orig { display:block; font-size:.6em; color:var(--grey); margin-top:2.5vh; font-style:normal; }
+.quote .who { display:block; font-style:normal; font-size:.45em; color:var(--grey); margin-top:2.5vh; letter-spacing:.06em; }
+.negro .quote .who, .negro .quote .it-orig { color:#B9B2A6; }
+
+/* hands-up discussions */
+.practice-top .kicker { color:var(--rust); }
+.practice-scenario { font-size:clamp(15px,1.6vw,20px); color:var(--grey); margin-top:3vh; line-height:1.5; max-width:950px; }
+.practice-scenario b { color:var(--ink); text-transform:uppercase; letter-spacing:.12em; font-size:.75em; margin-right:.8em; }
+.practice-flow { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2vw; margin-top:3.5vh; counter-reset:opt; }
+.practice-flow span { border:1.5px solid var(--line); background:#fff; padding:2.2vh 1.3vw; font-size:clamp(15px,1.55vw,20px); line-height:1.35; counter-increment:opt; transition:all .35s; }
+.practice-flow span::before { content:counter(opt, upper-alpha); display:block; color:var(--brass); font-weight:700; font-size:.75em; letter-spacing:.14em; margin-bottom:.8vh; }
+.shift-practice:has(.practice-reveal.on) .practice-flow span[data-answer] { border-color:var(--brass); background:#FBF3DD; }
+.shift-practice:has(.practice-reveal.on) .practice-flow span:not([data-answer]) { opacity:.4; }
+.practice-reveal { margin-top:3vh; border-left:3px solid var(--brass); padding-left:1.4vw; }
+.practice-reveal b { font-size:clamp(12px,1vw,14px); letter-spacing:.14em; text-transform:uppercase; color:var(--brass); }
+.practice-reveal p { font-size:clamp(16px,1.7vw,22px); line-height:1.45; margin-top:.6vh; }
+.practice-reveal .practice-debate { color:var(--rust); font-style:italic; }
+
+/* exercises */
+.exercise { display:grid; grid-template-columns:1.35fr 1fr; gap:4vw; align-items:center; }
+.timer { border:2px solid var(--ink); padding:3vh 2vw; text-align:center; background:#fff; }
+.timer .t-clock { display:block; font-size:clamp(64px,9vw,140px); font-weight:600; letter-spacing:-.02em; font-variant-numeric:tabular-nums; line-height:1; }
+.timer .t-btn { margin-top:2vh; font:inherit; font-size:14px; letter-spacing:.14em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:0; padding:1vh 1.6vw; cursor:pointer; }
+.timer.low .t-clock { color:var(--rust); }
+.timer.done { border-color:var(--rust); }
+.timer.done .t-clock { color:var(--rust); }
+.boxes { display:grid; grid-template-columns:1fr 1fr; gap:1vw; margin-top:3vh; }
+.boxes div { border:1px solid var(--line); background:#fff; padding:1.8vh 1.2vw; font-size:clamp(14px,1.4vw,19px); line-height:1.35; }
+.boxes div b { display:block; color:var(--brass); font-size:.7em; letter-spacing:.14em; text-transform:uppercase; margin-bottom:.6vh; }
+.boxes div.new { border-color:var(--rust); }
+.boxes div.new b { color:var(--rust); }
+
+/* timeline (story) */
+.tl { margin-top:4vh; display:grid; gap:2.2vh; }
+.tl div { display:grid; grid-template-columns:7em 1fr; gap:2vw; font-size:clamp(17px,2vw,26px); line-height:1.3; align-items:baseline; }
+.tl div span:first-child { color:var(--brass); font-weight:700; letter-spacing:.04em; }
+
+/* question slides */
+.question .statement { max-width:1000px; }
+.qmark { position:absolute; right:6vw; bottom:4vh; font-size:min(34vw,420px); line-height:.8; color:var(--paper-2); font-weight:600; z-index:-1; }
+
+/* cover */
+.cover .gigante { font-size:clamp(44px,7.4vw,108px); }
+.cover-logos { position:absolute; left:7vw; bottom:7vh; display:flex; align-items:center; gap:2.2vw; }
+.cover-logos img { height:clamp(34px,5vh,58px); width:auto; display:block; }
+.cover-logos .hair { width:1px; height:clamp(34px,5vh,58px); background:var(--line); }
+.presenter { color:var(--ink); font-size:clamp(17px,1.8vw,23px); margin-top:4vh; }
+.presenter span { color:var(--grey); margin-left:1em; }
+
+/* agenda */
+.agenda li, .lista.labels li { grid-template-columns:8em 1fr; }
+.agenda li .n { font-size:.55em; }
+
+/* chrome */
+#barra { position:fixed; left:0; top:0; height:3px; background:var(--brass); width:0; transition:width .3s; z-index:10; }
+#pag { position:fixed; right:2vw; bottom:2vh; font-size:12px; color:var(--grey); letter-spacing:.1em; z-index:10; }
+.foot { position:fixed; left:2vw; bottom:2vh; font-size:11px; color:var(--grey); letter-spacing:.14em; text-transform:uppercase; z-index:10; display:flex; align-items:center; gap:10px; }
+.foot img { height:16px; width:auto; opacity:.8; }
+body.dark-slide .foot img { filter:invert(1) brightness(1.6); opacity:.6; }
+.deck-controls { position:fixed; right:2vw; top:2vh; display:flex; gap:6px; opacity:0; transition:opacity .3s; z-index:20; }
+body.controls-visible .deck-controls { opacity:1; }
+.deck-controls button { font:inherit; font-size:12px; background:rgba(27,27,27,.75); color:var(--paper); border:0; padding:6px 10px; cursor:pointer; }
+.blackout { position:fixed; inset:0; background:#000; display:none; z-index:50; }
+body.is-blackout .blackout { display:block; }
+.deck-dialog { margin:auto; border:0; padding:3vh 2.5vw; max-width:640px; width:90vw; max-height:80vh; background:var(--paper); color:var(--ink); font-family:var(--sans); }
+.deck-dialog::backdrop { background:rgba(0,0,0,.5); }
+.dialog-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:2vh; }
+.dialog-head button, .chapter-links button { font:inherit; background:none; border:0; cursor:pointer; }
+.chapter-links { display:grid; gap:4px; }
+.chapter-links button { text-align:left; padding:6px 0; border-bottom:1px solid var(--line); font-size:15px; }
+.shortcuts { display:grid; grid-template-columns:9em 1fr; gap:8px; font-size:14px; }
+.shortcuts dt { font-weight:700; }
+
+
+/* CRT flicker (Ferrovial engine), recoloured in CDP brass */
+.crt-accent { --crt-color:#B8860B; --crt-stripe:#8C6508;
+  position:relative; display:inline-block; white-space:nowrap; padding-inline-end:.12em; margin-inline-end:-.12em;
+  color:var(--crt-color); -webkit-text-fill-color:transparent;
+  background:repeating-linear-gradient(0deg,var(--crt-color) 0px,var(--crt-color) 2px,var(--crt-stripe) 2px,var(--crt-stripe) 3px);
+  -webkit-background-clip:text; background-clip:text; filter:drop-shadow(0 0 5px #B8860B30); }
+.negro .crt-accent, .chapter .crt-accent { --crt-color:#D9A520; --crt-stripe:#A57A10; }
+.crt-accent.crt-rust { --crt-color:#A4441F; --crt-stripe:#7A2F14; }
+.crt-accent::before,.crt-accent::after { content:attr(data-text); position:absolute; inset:0; pointer-events:none; opacity:0; background:none; -webkit-text-fill-color:currentColor; }
+.crt-accent::before { color:#1FB8B2; text-shadow:2px 0 #1FB8B270; }
+.crt-accent::after { color:#D4307F; text-shadow:-2px 0 #D4307F70; }
+.slide.on .crt-accent { animation:crt-signal 8.6s steps(1,end) .8s infinite, crt-scan 6.7s linear infinite; }
+.slide.on .crt-accent::before { animation:crt-tear-cyan 5.9s steps(1,end) .9s infinite; }
+.slide.on .crt-accent::after { animation:crt-tear-magenta 7.7s steps(1,end) 1.05s infinite; }
+@keyframes crt-scan { to { background-position:0 12px; } }
+@keyframes crt-signal { 0%,5.5%,19%,100% { transform:none; } 1% { transform:translateX(.012em) skewX(-2deg); filter:brightness(1.25); } 2.4% { transform:translateX(-.01em) skewX(1deg); filter:brightness(.8); } 3.5% { transform:none; filter:brightness(1.15); } 17.5% { transform:skewX(-1deg); filter:brightness(1.2); } }
+@keyframes crt-tear-cyan { 0%,7%,100% { opacity:0; transform:none; clip-path:inset(0); } 1% { opacity:.85; transform:translateX(-.045em); clip-path:inset(15% 0 62% 0); } 3% { opacity:.7; transform:translateX(.035em); clip-path:inset(63% 0 17% 0); } 5% { opacity:.5; transform:translateX(-.02em); clip-path:inset(38% 0 49% 0); } }
+@keyframes crt-tear-magenta { 0%,6%,100% { opacity:0; transform:none; clip-path:inset(0); } 1% { opacity:.8; transform:translateX(.045em); clip-path:inset(58% 0 18% 0); } 2.8% { opacity:.65; transform:translateX(-.03em); clip-path:inset(23% 0 62% 0); } 4.5% { opacity:.4; transform:translateX(.02em); clip-path:inset(76% 0 10% 0); } }
+@media (prefers-reduced-motion:reduce) { .crt-accent { background:none; -webkit-text-fill-color:currentColor; filter:none; animation:none !important; } }
+
+/* Full-bleed photos with a slow Ken Burns zoom */
+.slide.foto { padding:0; background:#0d0c0b; }
+.slide.foto > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.slide.foto.contain > img { object-fit:contain; padding:5vh 5vw 9vh; }
+.slide.foto.on > img { animation:kenburns 14s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes kenburns { from { transform:scale(1.14); filter:brightness(.6); } 25% { filter:brightness(1); } to { transform:scale(1); } }
+.foto .cap { position:absolute; left:6vw; bottom:9vh; max-width:70vw; color:#F7F4EE; font-size:clamp(22px,3vw,42px); line-height:1.2; font-weight:600; text-shadow:0 3px 18px rgba(0,0,0,.85); }
+.foto .cap small { display:block; font-size:.45em; letter-spacing:.16em; text-transform:uppercase; color:#D9A520; margin-bottom:1.2vh; font-weight:700; }
+.credit { position:absolute; right:2vw; bottom:5vh; font-size:10px; color:rgba(247,244,238,.6); letter-spacing:.04em; z-index:3; }
+.split .credit, .slide:not(.foto):not(.zoomtour) .credit { color:var(--grey); }
+
+/* Split: photo with slow zoom on the left, text on the right */
+.split { display:grid; grid-template-columns:40% 1fr; gap:5vw; align-items:center; width:100%; max-width:1280px; }
+.split .ph { height:72vh; overflow:hidden; background:#000; box-shadow:8px 10px 0 rgba(27,27,27,.12); }
+.split .ph img { width:100%; height:100%; object-fit:cover; display:block; }
+.slide.on .split .ph img { animation:kenburns 16s cubic-bezier(.2,.7,.2,1) both; }
+
+/* Zoom tour: each click flies the camera to a detail */
+.slide.zoomtour { background:#0d0c0b; padding:5vh 4vw 11vh; flex-direction:column; }
+.zt-clip { display:inline-block; overflow:hidden; line-height:0; box-shadow:0 20px 60px rgba(0,0,0,.5); }
+.zt-img { display:block; max-height:72vh; max-width:88vw; width:auto; height:auto; transform-origin:50% 50%; transition:transform 1.6s cubic-bezier(.65,0,.25,1); }
+.zt-cap { margin-top:3vh; color:#F7F4EE; font-size:clamp(18px,2.2vw,30px); line-height:1.3; text-align:center; max-width:1000px; min-height:2.6em; }
+.zt-cap b { color:#D9A520; font-weight:600; }
+.zt-cap small { display:block; font-size:.5em; letter-spacing:.16em; text-transform:uppercase; color:#B9B2A6; margin-bottom:.8vh; }
+.zoomtour .step.zt { display:none; }
+.zoomtour.sheet .zt-clip { display:flex; align-items:center; justify-content:center; width:min(72vw,1150px); height:70vh; background:#F7F4EE; }
+.zoomtour.sheet .zt-img { width:100%; max-width:none; max-height:none; flex:none; }
+.surnames { display:grid; grid-template-columns:repeat(4,1fr); gap:1.4vw; margin-top:4vh; }
+.surnames div { background:#fff; border:1px solid var(--line); padding:2.2vh 1.2vw; }
+.surnames b { display:block; font-size:clamp(20px,2.3vw,32px); font-weight:600; }
+.surnames span { font-size:clamp(13px,1.2vw,16px); color:var(--grey); }
+
+.objective { border-left:4px solid var(--brass); padding-left:2vw; }
+.objective .statement { font-size:clamp(24px,3.2vw,44px); }
+.obj-out { display:inline-block; margin-top:3.5vh; font-size:clamp(13px,1.2vw,16px); letter-spacing:.14em; text-transform:uppercase; color:var(--brass); font-weight:700; border:1.5px solid var(--brass); padding:1vh 1.2vw; }
+.bundle { display:grid; grid-template-columns:repeat(5,1fr); gap:1vw; margin-top:4vh; }
+.bundle div { border:1.5px solid var(--line); background:#fff; padding:2.4vh 1vw; text-align:center; font-size:clamp(14px,1.5vw,20px); line-height:1.3; transition:all .4s; }
+.bundle div.ai { border-color:var(--brass); background:#FBF3DD; }
+
+.film { background:#0d0c0b; flex-direction:column; }
+.film .frame { position:relative; width:min(78vw,calc(68vh*16/9)); aspect-ratio:16/9; background:#000 center/cover no-repeat; box-shadow:0 20px 60px rgba(0,0,0,.5); }
+.film .frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+.film .play { position:absolute; inset:0; margin:auto; width:fit-content; height:fit-content; font:inherit; font-size:clamp(16px,1.6vw,22px); letter-spacing:.08em; background:rgba(27,27,27,.85); color:#F7F4EE; border:1.5px solid #D9A520; padding:1.6vh 2vw; cursor:pointer; }
+.film .play:hover { background:#B8860B; }
+.film .film-cap { margin-top:2.5vh; color:#B9B2A6; font-size:clamp(13px,1.2vw,16px); letter-spacing:.06em; text-align:center; }
+.film .film-cap b { color:#F7F4EE; }
+
+@media (max-width:760px) {
+  .clips, .practice-flow, .dos, .exercise, .boxes, .split, .surnames { grid-template-columns:1fr; }
+  .split .ph { height:36vh; }
+  .slide { overflow-y:auto; align-items:flex-start; }
+}
+</style>
+</head>
+<body>
+<div id="barra"></div>
+<div class="foot"><img src="img/cdp.png" alt="CDP"> Rome · 26 November 2026</div>
+<div id="pag"></div>
+
+<!-- ============================ OPENING ============================ -->
+
+<section class="slide cover" data-chapter="Cover"><div class="inner">
+  <div class="kicker">AI &amp; Business Technology Programme · Rome</div>
+  <div class="gigante">AI changes the work.<br><strong><span class="crt-accent" data-text="Who changes the people?">Who changes the people?</span></strong></div>
+  <div class="presenter">Javier Fuentes Ibáñez</div>
+</div>
+<div class="cover-logos"><img src="img/cdp.png" alt="Cassa Depositi e Prestiti"><span class="hair"></span><img src="img/headspring.png" alt="Headspring Executive Development"></div>
+</section>
+
+<section class="slide negro" data-chapter="Opening story · Ivrea"><div class="inner">
+  <div class="gigante">New York, 1965.</div>
+  <div class="sub">People queue in front of a stand.<br>Not for a car. For a <strong>machine that fits on a desk.</strong></div>
+</div></section>
+
+<section class="slide steps zoomtour" data-title="Programma 101 · zoom tour">
+  <div class="zt-clip"><img class="zt-img" src="img/p101.jpg" alt="Olivetti Programma 101 at the Triennale, Milan"></div>
+  <div class="zt-cap"><small>Olivetti · Programma 101</small>A machine that fits on a desk, for <b>one person.</b></div>
+  <div class="step zt" data-zoom="42 70 2.4" data-cap="&lt;small&gt;The keyboard&lt;/small&gt;Anyone could program it. &lt;b&gt;No specialist needed.&lt;/b&gt;"></div>
+  <div class="step zt" data-zoom="72 48 3.2" data-cap="&lt;small&gt;The magnetic card&lt;/small&gt;&lt;b&gt;Software you could carry in your pocket.&lt;/b&gt;"></div>
+  <div class="step zt" data-zoom="38 36 2.6" data-cap="&lt;small&gt;The printer&lt;/small&gt;Designed in Ivrea by Pier Giorgio Perotto's team."></div>
+  <div class="step zt" data-zoom="50 50 1" data-cap="&lt;small&gt;1965&lt;/small&gt;44,000 sold. &lt;b&gt;NASA used it to plan Apollo 11.&lt;/b&gt;"></div>
+  <div class="credit">Photo: VectorVoyager, CC BY-SA 4.0, Wikimedia Commons</div>
+</section>
+
+<section class="slide steps" data-title="It survived because it was called a calculator"><div class="inner">
+  <div class="statement">In 1964 Olivetti sold its electronics division to General Electric.<br>Perotto's small team <strong>stayed behind.</strong></div>
+  <div class="sub step">Legend says someone filed it as a “calculator”, so it was left out of the deal.</div>
+  <div class="sub step"><strong>Projects survive because someone fights for them.</strong></div>
+</div></section>
+
+<section class="slide steps" data-title="The factory with a library"><div class="split"><div class="ph"><img src="img/ivrea-building.jpg" alt="Olivetti building, Ivrea"></div><div>
+  <div class="kicker">The real invention was the factory</div>
+  <div class="statement" style="font-size:clamp(24px,3vw,42px)">Adriano Olivetti built a factory with <strong>glass walls,</strong> a library, a nursery, and housing.</div>
+  <ul class="lista compact" style="margin-top:4vh">
+    <li class="step"><span class="n">01</span>Workers could see out. The town could see in</li>
+    <li class="step"><span class="n">02</span>Writers and poets ran HR and social services</li>
+    <li class="step"><span class="n">03</span>Canteens, transport, housing, health care</li>
+  </ul>
+</div></div><div class="credit">Photo: Laurom, CC BY-SA 3.0, Wikimedia Commons</div></section>
+
+<section class="slide negro" data-title="Olivetti quote"><div class="split"><div class="ph"><img src="img/adriano.jpg" alt="Adriano Olivetti, 1957"></div><div style="text-align:left">
+  <div class="quote" style="font-size:clamp(22px,2.6vw,36px)">“The factory cannot look only at the profit index. It must distribute wealth, culture, services, democracy.”
+    <span class="it-orig">«La fabbrica non può guardare solo all'indice dei profitti. Deve distribuire ricchezza, cultura, servizi, democrazia.»</span>
+    <span class="who">ADRIANO OLIVETTI</span></div>
+</div></div><div class="credit">Photo: Mondadori, 1957, public domain</div></section>
+
+<section class="slide foto" data-title="Ivrea assembly line, 1970"><img src="img/ivrea-line.jpg" alt="Olivetti Nuova ICO assembly line, Ivrea, 1970">
+  <div class="cap"><small>Ivrea · Nuova ICO · 1970</small>The people around the machine.</div>
+  <div class="credit">Photo: Hnjmk, CC0, Wikimedia Commons</div>
+</section>
+
+<section class="slide negro" data-title="Sixty years later"><div class="inner">
+  <div class="statement">Sixty years later, the question is the same.<br><br>Not <em>what the machine can do.</em><br><strong>What happens to the people around it.</strong></div>
+</div></section>
+
+<section class="slide" data-chapter="Today" data-title="Today"><div class="inner">
+  <div class="kicker">Today · 26 November</div>
+  <ul class="lista agenda">
+    <li><span class="n">09:30</span>The augmented workforce<small>Whose job your project changes, and how</small></li>
+    <li><span class="n">11:30</span>Leading the change<small>Who will resist, and why</small></li>
+    <li><span class="n">12:30</span>Case sprint<small>Your adoption slide for tomorrow</small></li>
+    <li><span class="n">FRI</span>The panel<small>You arrive with the answer ready</small></li>
+  </ul>
+</div></section>
+
+<section class="slide steps" data-title="The fourth question"><div class="inner">
+  <div class="kicker">Yesterday, with Berni</div>
+  <ul class="lista">
+    <li><span class="n">01</span>Who are you buying from?</li>
+    <li><span class="n">02</span>Does it work?</li>
+    <li><span class="n">03</span>Would they let you switch it on?</li>
+    <li class="step rust"><span class="n">04</span>Will the people actually use it?</li>
+  </ul>
+  <div class="sub step">Tomorrow the panel will ask the fourth. <strong>Today is about that question.</strong></div>
+</div></section>
+
+<section class="slide steps" data-title="CDP 1850"><div class="inner">
+  <div class="kicker">Turin, 1850</div>
+  <div class="statement">CDP turned <strong>176</strong> eight days ago.</div>
+  <div class="sub step">It has lived through the telegraph, electricity, computers and the internet.<br><strong>Each time, machines changed faster than habits.</strong></div>
+  <div class="sub step it">This time, the machine talks back.</div>
+</div></section>
+
+<section class="slide chapter" data-chapter="Part I · The augmented workforce"><div class="inner">
+  <div class="kicker">Part one</div>
+  <div class="gigante">Tasks,<br><strong><span class="crt-accent" data-text="not jobs.">not jobs.</span></strong></div>
+  <div class="sub">AI does not take jobs. It changes how the work is split.</div>
+</div></section>
+
+<section class="slide" data-title="Objective · block 1"><div class="inner objective">
+  <div class="kicker">Part one · goal</div>
+  <div class="statement">Your AI project will change someone's job.<br>Let's find out <strong>whose, and how.</strong></div>
+  <div class="obj-out">You leave with · a map of who does what</div>
+</div></section>
+
+<section class="slide steps" data-title="Look at your surname"><div class="inner">
+  <div class="kicker">Look at your surname</div>
+  <div class="surnames">
+    <div class="step"><b>Ferrari</b><span>the blacksmith</span></div>
+    <div class="step"><b>Sartori</b><span>the tailor</span></div>
+    <div class="step"><b>Molinari</b><span>the miller</span></div>
+    <div class="step"><b>Barbieri</b><span>the barber</span></div>
+    <div class="step"><b>Pastore</b><span>the shepherd</span></div>
+    <div class="step"><b>Bottai</b><span>the barrel-maker</span></div>
+    <div class="step"><b>Fornari</b><span>the baker</span></div>
+    <div class="step"><b>Notari</b><span>the notary</span></div>
+  </div>
+  <div class="sub step">Your ancestors were experts. The craft defined them so much <strong>it became their name.</strong><br>The craft disappeared. The name stayed.</div>
+</div></section>
+
+<section class="slide negro" data-chapter="Dave · a short film" data-title="Dave"><div class="inner">
+  <div class="kicker">A short film</div>
+  <div class="gigante">Dave.</div>
+  <div class="sub">A veteran programmer argues with a voice. By the end, you realise it is the AI.<br><a href="https://x.com/ashen_one/status/2123230920626884849" target="_blank" style="color:#D9A520">▶ Watch the film</a></div>
+</div></section>
+
+<section class="slide steps" data-title="Questions after Dave"><div class="inner">
+  <div class="kicker">Talk to your neighbour</div>
+  <ul class="lista">
+    <li class="step"><span class="n">01</span>Do you respect the <em>time</em> an expert invested, or what that time <em>produced</em>?</li>
+    <li class="step"><span class="n">02</span>What must you still understand, even if AI does it for you?</li>
+    <li class="step"><span class="n">03</span>What would your job be if nobody needed you to do it?</li>
+  </ul>
+</div></section>
+
+<section class="slide negro" data-title="What ends"><div class="inner">
+  <div class="statement">What ends is not the craft.<br><strong><span class="crt-accent" data-text="It is that someone needs you to do it.">It is that someone needs you to do it.</span></strong></div>
+</div></section>
+
+<section class="slide steps" data-title="The elevator"><div class="split"><div class="ph"><img src="img/elevator-1918.jpg" alt="Elevator operator, Seattle, 1918"></div><div>
+  <div class="kicker">A story about trust</div>
+  <div class="statement" style="font-size:clamp(24px,3vw,42px)">By 1900, elevators could already run <strong>without an operator.</strong></div>
+  <div class="tl">
+    <div class="step"><span>c. 1900</span><span>Automatic elevators exist. People do not trust them</span></div>
+    <div class="step"><span>1945</span><span>Elevator operators strike in New York. The towers of Manhattan stop</span></div>
+    <div class="step"><span>1950s–70s</span><span>Buildings finally switch. More than fifty years after the invention</span></div>
+  </div>
+</div></div><div class="credit">Elevator operator, Seattle, 1918 · Webster &amp; Stevens, MOHAI, public domain</div></section>
+
+<section class="slide steps" data-title="How they designed trust"><div class="inner">
+  <div class="kicker">What changed was not the machine</div>
+  <div class="statement">The industry spent years making people <strong>feel safe alone</strong> in a box.</div>
+  <ul class="lista compact" style="margin-top:4vh">
+    <li class="step"><span class="n">01</span>A big red emergency button</li>
+    <li class="step"><span class="n">02</span>A telephone, in case</li>
+    <li class="step"><span class="n">03</span>A calm, recorded voice telling you what to do</li>
+  </ul>
+  <div class="src">Source: NPR, 2015</div>
+</div></section>
+
+<section class="slide negro" data-title="Trust is designed"><div class="inner">
+  <div class="gigante">Trust is not a feature<br>of the machine.</div>
+  <div class="sub">It is designed around the people who use it. <strong>Where is the red button in your MVP?</strong></div>
+</div></section>
+
+<section class="slide steps" data-title="Klarna"><div class="inner">
+  <div class="kicker">Klarna</div>
+  <div class="dos">
+    <div class="step"><div class="big-n">700</div><div class="big-l">2024: its AI does the work of 700 customer-service agents.</div></div>
+    <div class="step"><div class="big-n rust">↩</div><div class="big-l">2025: quality drops. Klarna hires people again.</div></div>
+  </div>
+  <div class="sub step">AI took <strong>tasks.</strong> The <strong>job</strong> was still there.</div>
+  <div class="src">Source: Klarna, 2024 · Bloomberg, 2025</div>
+</div></section>
+
+<section class="slide film" data-chapter="Hinton and the radiologists" data-title="Video · Hinton on radiology">
+  <div class="frame" data-yt="2HMPRXstSvQ" data-local="video/hinton-radiology.mp4" data-duration="1:24" style="background-image:url('img/hinton-poster.jpg')"><button type="button" class="play">▶ Play · Geoff Hinton on radiology · 1:24</button></div>
+  <div class="film-cap"><b>Toronto, 2016.</b> Video: Creative Destruction Lab</div>
+</section>
+
+<section class="slide negro steps" data-title="Hinton 2016"><div class="inner">
+  <div class="kicker">Geoffrey Hinton · 2016</div>
+  <div class="quote">“People should stop training radiologists now.”</div>
+  <div class="sub step">Ten years later, Hinton: <strong>“We actually have a huge shortage of radiologists.”</strong></div>
+  <div class="sub step">Today a US radiologist earns <strong>$571,000</strong> a year.</div>
+</div></section>
+
+<section class="slide steps" data-title="The radiologist is a bundle"><div class="inner">
+  <div class="kicker">Why he got it wrong · Luis Garicano</div>
+  <div class="statement">A job is not a task. It is a <strong>bundle</strong> of tasks.</div>
+  <div class="bundle">
+    <div class="step ai">Read the image</div>
+    <div class="step">Triage the cases</div>
+    <div class="step">Advise other doctors</div>
+    <div class="step">Train the residents</div>
+    <div class="step">Sign the diagnosis</div>
+  </div>
+  <div class="sub step">AI got very good at the first box. <strong>The other four hold the job together.</strong></div>
+  <div class="src">Source: Garicano, Li &amp; Wu, 2026</div>
+</div></section>
+
+<section class="slide steps" data-title="Weak and strong bundles"><div class="inner">
+  <div class="kicker">Weak bundle, strong bundle</div>
+  <div class="dos">
+    <div class="step"><div class="num">WEAK BUNDLE</div><div class="statement" style="font-size:clamp(20px,2.3vw,30px)">Tasks are together only because it was cheaper. <strong>AI takes some, and the job shrinks.</strong></div></div>
+    <div class="step"><div class="num">STRONG BUNDLE</div><div class="statement" style="font-size:clamp(20px,2.3vw,30px)">Tasks need each other: judgement, trust, a signature. <strong>AI makes the person better, and the person stays.</strong></div></div>
+  </div>
+  <div class="sub step">The people your project touches: <strong>weak or strong?</strong></div>
+</div></section>
+
+<section class="slide steps shift-practice" data-title="Hands up · the consultants"><div class="inner">
+  <div class="practice-top"><div class="kicker">Hands up</div></div>
+  <div class="statement">758 consultants get AI.<br><strong>What happens to the quality of their work?</strong></div>
+  <div class="practice-flow"><span>It goes up</span><span>It goes down</span><span data-answer>Both. Depends on the task</span></div>
+  <div class="practice-reveal step"><b>Harvard · BCG</b><p>On tasks AI is good at: <strong>+40% quality.</strong> On the others: <strong>19 points more mistakes.</strong></p><p class="practice-debate">The danger is not using AI. It is not knowing where it stops.</p></div>
+</div></section>
+
+<section class="slide" data-title="The jagged frontier"><div class="inner">
+  <div class="kicker">The jagged frontier</div>
+  <div class="statement">AI is brilliant at some tasks and wrong at the one next to it. <strong>The border is invisible from inside.</strong></div>
+  <div class="sub">Good: split the work clearly, or weave AI into every step.<br><strong>Bad: falling asleep at the wheel.</strong></div>
+  <div class="src">Source: Harvard Business School · BCG, 2023</div>
+</div></section>
+
+<section class="slide steps" data-title="Who gains most"><div class="inner">
+  <div class="kicker">Who gains most?</div>
+  <div class="dos">
+    <div class="step"><div class="big-n">+34%</div><div class="big-l">Productivity of <strong>new</strong> support agents using AI</div></div>
+    <div class="step"><div class="big-n" style="color:var(--grey)">≈0</div><div class="big-l">Gain for the <strong>most experienced</strong></div></div>
+  </div>
+  <div class="sub step">AI compresses experience. Good for juniors. <strong>Uncomfortable for experts.</strong></div>
+  <div class="src">Source: Brynjolfsson, Li &amp; Raymond, 2023 · 5,179 agents</div>
+</div></section>
+
+<section class="slide steps" data-title="The broken ladder"><div class="inner">
+  <div class="kicker">The broken ladder</div>
+  <div class="statement">Judgement is not taught.<br>It is <strong>manufactured</strong> by doing the groundwork.</div>
+  <div class="sub step">Partners learned on spreadsheets at 2 a.m. Surgeons were residents first.<br><strong>If AI does the junior work, where will your next senior come from?</strong></div>
+  <div class="statement step" style="margin-top:4vh;font-size:clamp(22px,2.8vw,38px)">A profession can be profitable and <span class="crt-accent crt-rust" data-text="not reproducible">not reproducible</span> at the same time.</div>
+</div></section>
+
+<section class="slide steps" data-title="When nobody owns the human part"><div class="inner">
+  <div class="kicker">When nobody is watching</div>
+  <div class="clips">
+    <div class="clip step"><div class="where">California · Dec 2023</div><div class="hed">Dealer's chatbot agrees to sell a Chevy Tahoe for $1</div><div class="dek">A user told it to agree with everything. It replied: “That's a deal, and that's a legally binding offer – no takesies backsies.”</div><div class="from">Chevrolet of Watsonville · no car was sold</div></div>
+    <div class="clip step"><div class="where">UK · Jan 2024</div><div class="hed">Delivery bot swears at a customer and calls its own company “the worst delivery firm in the world”</div><div class="dek">Then it wrote a poem calling DPD “a customer's worst nightmare”.</div><div class="from">DPD · ITV, BBC</div></div>
+    <div class="clip step"><div class="where">Canada · Feb 2024</div><div class="hed">Airline must honour the refund its chatbot promised</div><div class="dek">The airline argued the bot was a separate entity, “responsible for its own actions”. The tribunal disagreed.</div><div class="from">Moffatt v. Air Canada, 2024 BCCRT 149</div></div>
+  </div>
+</div></section>
+
+<section class="slide steps" data-title="The lawyer who asked"><div class="inner">
+  <div class="kicker">New York · 2023</div>
+  <div class="statement">A lawyer files a brief citing six cases. None of them exist.</div>
+  <div class="sub step">He checked. He asked ChatGPT: <em>“Is Varghese a real case?”</em></div>
+  <div class="gigante step" style="margin-top:3vh"><strong>“Yes.”</strong></div>
+  <div class="sub step">Fine: $5,000. <strong>We trust a confident answer more than our own doubts.</strong></div>
+  <div class="src">Source: Mata v. Avianca, New York, 2023</div>
+</div></section>
+
+<section class="slide steps shift-practice" data-title="Hands up · DOC-AI"><div class="inner">
+  <div class="practice-top"><div class="kicker">Hands up · DOC-AI</div></div>
+  <div class="statement">The tool flags <strong>four missing sections.</strong><br>The document is due today. What happens?</div>
+  <div class="practice-flow"><span>They fix all four</span><span>They send it anyway, and stop using the tool</span><span data-answer>The tool shows the one that really matters</span></div>
+  <div class="practice-reveal step"><b>Design for people in a hurry</b><p>If a tool only adds work, people avoid it.</p><p class="practice-debate">In your MVP, who saves time: the writer or the reviewer?</p></div>
+</div></section>
+
+<section class="slide steps shift-practice" data-title="Hands up · Investment Copilot"><div class="inner">
+  <div class="practice-top"><div class="kicker">Hands up · Investment Copilot</div></div>
+  <div class="statement">The copilot finds a mistake a <strong>senior analyst</strong> missed.<br>How do you tell them?</div>
+  <div class="practice-flow"><span>Report it to their manager</span><span>Fix it quietly</span><span data-answer>Make “the copilot caught it” a team win</span></div>
+  <div class="practice-reveal step"><b>A safety net, never a scoreboard</b><p>Embarrass an expert once, and they stop using the tool.</p><p class="practice-debate">Who loses status if your MVP works?</p></div>
+</div></section>
+
+<section class="slide steps shift-practice" data-title="Hands up · Contract Intelligence"><div class="inner">
+  <div class="practice-top"><div class="kicker">Hands up · Contract Intelligence</div></div>
+  <div class="statement">The agent is right <strong>95% of the time.</strong><br>What do the lawyers do now?</div>
+  <div class="practice-flow"><span>Trust it and sign faster</span><span>Keep reviewing every word</span><span data-answer>Sample, and plant known errors</span></div>
+  <div class="practice-reveal step"><b>Keep the reviewer awake</b><p>Airport scanners show fake threats in a few bags to keep staff alert. Do the same: hide a few known errors, and count how many are caught.</p><p class="practice-debate">How would you know your reviewers have stopped reviewing?</p></div>
+</div></section>
+
+<section class="slide steps" data-title="New roles"><div class="inner">
+  <div class="kicker">The work AI creates</div>
+  <div class="statement">Every MVP in this room creates <strong>jobs nobody has been given.</strong></div>
+  <ul class="lista compact labels" style="margin-top:3.5vh">
+    <li class="step"><span class="n">OWNER</span>Answers for the tool. Decides when it is good enough</li>
+    <li class="step"><span class="n">REVIEWER</span>Checks the output, and has time to do it</li>
+    <li class="step"><span class="n">CURATOR</span>Keeps the tool's documents and examples up to date</li>
+    <li class="step"><span class="n">ESCALATION</span>The person the tool calls when it is unsure</li>
+  </ul>
+</div></section>
+
+<section class="slide steps" data-title="Shadow AI"><div class="inner">
+  <div class="kicker">Meanwhile</div>
+  <div class="dos">
+    <div class="step"><div class="big-n">75%</div><div class="big-l">of knowledge workers already use generative AI at work</div></div>
+    <div class="step"><div class="big-n rust">78%</div><div class="big-l">of them bring their own tools</div></div>
+  </div>
+  <div class="sub step">Adoption is already happening. <strong>With you, or around you.</strong></div>
+  <div class="src">Source: Microsoft &amp; LinkedIn, 2024 · 31,000 people</div>
+</div></section>
+
+<section class="slide steps zoomtour sheet" data-chapter="Your sheet" data-title="Sheet tour · page 1">
+  <div class="zt-clip"><img class="zt-img" src="img/ficha-1.png" alt="Adoption Plan worksheet, page 1"></div>
+  <div class="zt-cap"><small>Your sheet</small>One per team. It ends with <b>tomorrow's slide.</b></div>
+  <div class="step zt" data-zoom="50 26 1" data-cap="&lt;small&gt;Section 1&lt;/small&gt;One real person, by role. &lt;b&gt;Not “the users”.&lt;/b&gt;"></div>
+  <div class="step zt" data-zoom="50 56 1" data-cap="&lt;small&gt;Section 2 · the task map&lt;/small&gt;Four boxes. &lt;b&gt;The fourth one is never empty.&lt;/b&gt;"></div>
+  <div class="step zt" data-zoom="50 81 1" data-cap="&lt;small&gt;One sentence&lt;/small&gt;What changes in this person's role?"></div>
+</section>
+
+<section class="slide steps" data-chapter="Exercise 1 · Task map" data-title="Exercise 1 · Task map"><div class="inner exercise">
+  <div>
+    <div class="kicker">Exercise 1 · with your team</div>
+    <div class="statement">Pick <strong>one real person</strong> who will work with your MVP. Split their work.</div>
+    <div class="boxes">
+      <div><b>The AI does it</b>Alone, with spot checks</div>
+      <div><b>AI proposes · person decides</b>Draft, ranking, flag</div>
+      <div><b>Stays human</b>Judgement, relationships, signature</div>
+      <div class="new"><b>New tasks</b>Reviewing, fixing, escalating</div>
+    </div>
+  </div>
+  <div class="timer" data-minutes="20"></div>
+</div></section>
+
+<section class="slide" data-title="Debrief"><div class="inner">
+  <div class="kicker">Share</div>
+  <div class="statement">Show us the <strong>fourth box.</strong></div>
+  <div class="sub">What new task did you find? Who will do it? Has anyone told them?</div>
+</div></section>
+
+<section class="slide negro" data-title="End of Part I"><div class="inner">
+  <div class="gigante">AI does not remove work.<br><strong><span class="crt-accent" data-text="It moves it.">It moves it.</span></strong></div>
+  <div class="sub">Usually to the person who reviews. Plan for them.</div>
+</div></section>
+
+<section class="slide negro" data-title="Break"><div class="inner">
+  <div class="gigante">Coffee.</div>
+  
+</div></section>
+
+<section class="slide chapter" data-chapter="Part II · Leading the change"><div class="inner">
+  <div class="kicker">Part two</div>
+  <div class="gigante">The tool is<br><strong><span class="crt-accent" data-text="never the change.">never the change.</span></strong></div>
+</div></section>
+
+<section class="slide" data-title="Objective · block 2"><div class="inner objective">
+  <div class="kicker">Part two · goal</div>
+  <div class="statement">Every change meets resistance.<br>Who will resist your project, <strong>and why?</strong></div>
+  <div class="obj-out">You leave with · who will resist, why, and your answer</div>
+</div></section>
+
+<section class="slide steps" data-title="The dynamo"><div class="inner">
+  <div class="kicker">The dynamo</div>
+  <div class="tl">
+    <div class="step"><span>1882</span><span>Edison opens the first power station in New York</span></div>
+    <div class="step"><span>1899</span><span>Electric motors: under 5% of the mechanical drive in US factories</span></div>
+    <div class="step"><span>c. 1920</span><span>About half. Only then does productivity jump</span></div>
+  </div>
+  <div class="sub step"><strong>Forty years.</strong> Why so long?</div>
+  <div class="src">Source: Paul David, 1990</div>
+</div></section>
+
+<section class="slide steps zoomtour" data-title="Line shaft · zoom tour">
+  <div class="zt-clip"><img class="zt-img" src="img/line-shaft.jpg" alt="Machine shop with line shaft and belts, c. 1920"></div>
+  <div class="zt-cap"><small>A machine shop · around 1920</small>Look up.</div>
+  <div class="step zt" data-zoom="40 14 2.4" data-cap="&lt;small&gt;The ceiling&lt;/small&gt;One engine. One shaft along the roof. &lt;b&gt;A belt down to every machine.&lt;/b&gt;"></div>
+  <div class="step zt" data-zoom="30 58 2" data-cap="&lt;small&gt;The floor&lt;/small&gt;Move a machine and you move the belts. &lt;b&gt;The layout is chained to the power.&lt;/b&gt;"></div>
+  <div class="credit">Historic American Engineering Record, Library of Congress, public domain</div>
+</section>
+
+<section class="slide steps" data-title="Why it took forty years"><div class="inner">
+  <div class="kicker">Why it took forty years</div>
+  <div class="dos">
+    <div class="step"><div class="num">FIRST</div><div class="statement" style="font-size:clamp(20px,2.4vw,32px)">Factories replaced the steam engine with <strong>one big electric motor.</strong> Same shafts, same belts, same building.</div></div>
+    <div class="step"><div class="num">THEN</div><div class="statement" style="font-size:clamp(20px,2.4vw,32px)">A new generation redesigned the floor: <strong>one motor per machine</strong>, single storey, work flowing in a line.</div></div>
+  </div>
+  <div class="sub step">The gain did not come from the motor. <strong>It came from redesigning the work around it.</strong></div>
+</div></section>
+
+<section class="slide negro" data-title="Steam factory"><div class="inner">
+  <div class="statement">Most AI projects today are a dynamo<br>installed in a <strong><span class="crt-accent" data-text="steam factory.">steam factory.</span></strong></div>
+</div></section>
+
+<section class="slide steps" data-title="UK government Copilot trial"><div class="inner">
+  <div class="kicker">UK government · 2024</div>
+  <div class="statement">The UK government gives Copilot to <strong>1,000 civil servants.</strong></div>
+  <div class="dos">
+    <div class="step"><div class="big-n">72%</div><div class="big-l">are happy with it</div></div>
+    <div class="step"><div class="big-n rust">0</div><div class="big-l">measurable productivity gain</div></div>
+  </div>
+  <div class="sub step"><strong>People feel good. The organisation does not improve.</strong></div>
+  <div class="src">Source: UK Department for Business and Trade, 2025</div>
+</div></section>
+
+<section class="slide steps zoomtour" data-title="Red flag · zoom tour">
+  <div class="zt-clip"><img class="zt-img" src="img/red-flag.jpg" alt="Steam roller preceded by a red flag at a heritage rally"></div>
+  <div class="zt-cap"><small>England · today</small>A steam roller, out for a walk.</div>
+  <div class="step zt" data-zoom="12 64 2.8" data-cap="&lt;small&gt;Look who walks in front&lt;/small&gt;&lt;b&gt;By law, from 1865.&lt;/b&gt;"></div>
+  <div class="credit">Photo: Martinvl, CC BY-SA 4.0, Wikimedia Commons</div>
+</section>
+
+<section class="slide steps" data-title="The Red Flag Act"><div class="inner">
+  <div class="kicker">United Kingdom · 1865</div>
+  <div class="statement">Every mechanical vehicle on the road must be preceded by a man <strong>on foot, carrying a red flag.</strong></div>
+  <ul class="lista compact labels" style="margin-top:3.5vh">
+    <li class="step"><span class="n">SPEED</span>4 miles per hour in the country. 2 in town</li>
+    <li class="step"><span class="n">DISTANCE</span>The man with the flag: at least 60 yards ahead</li>
+    <li class="step"><span class="n">1878</span>The flag is dropped. The man on foot stays</li>
+    <li class="step"><span class="n">1896</span>Repealed. Thirty-one years of machines walking</li>
+  </ul>
+</div></section>
+
+<section class="slide negro steps" data-title="Your red flag"><div class="inner">
+  <div class="statement">When we fear a new machine, we make it<br><strong>behave like the old one.</strong></div>
+  <div class="sub step">“Every output reviewed by two people.” “Only for internal drafts.” “Pilot for one more year.”<br><strong>What is the red flag in your project?</strong></div>
+</div></section>
+
+<section class="slide steps" data-title="The J-curve"><div class="inner">
+  <div class="kicker">The J-curve</div>
+  <div class="statement">After a new technology arrives, measured productivity <strong>first goes down.</strong></div>
+  <svg viewBox="0 0 800 220" style="width:100%;max-width:900px;margin-top:3vh" aria-label="J-curve">
+    <line x1="40" y1="110" x2="780" y2="110" stroke="#DED6C7" stroke-width="2"/>
+    <path d="M40 110 C 160 110, 200 190, 300 185 S 520 120, 600 60 S 720 10, 780 5" fill="none" stroke="#B8860B" stroke-width="5"/>
+    <circle cx="300" cy="185" r="8" fill="#A4441F"/>
+    <text x="250" y="215" fill="#A4441F" font-size="18" font-family="Optima, sans-serif">where pilots get cancelled</text>
+    <text x="40" y="100" fill="#8A8378" font-size="16" font-family="Optima, sans-serif">today</text>
+    <text x="560" y="105" fill="#8A8378" font-size="16" font-family="Optima, sans-serif">the payoff</text>
+  </svg>
+  <div class="sub step">Learning and redesign take time. <strong>Warn your sponsor before the dip.</strong></div>
+  <div class="src">Source: Brynjolfsson, Rock &amp; Syverson, 2021</div>
+</div></section>
+
+<section class="slide steps" data-title="Semmelweis"><div class="split" style="grid-template-columns:30% 1fr"><div class="ph"><img src="img/semmelweis.jpg" alt="Ignaz Semmelweis, 1860"></div><div>
+  <div class="kicker">Vienna, 1847</div>
+  <div class="statement">A young doctor asks colleagues to <strong>wash their hands</strong> before delivering babies.</div>
+  <div class="dos">
+    <div class="step"><div class="big-n rust">18%</div><div class="big-l">mothers dying in his ward</div></div>
+    <div class="step"><div class="big-n">2%</div><div class="big-l">after hand-washing began</div></div>
+  </div>
+  <div class="sub step">The evidence was clear. His colleagues rejected it for decades. <strong>Why?</strong></div>
+</div></div><div class="credit">Ignaz Semmelweis, 1860 · public domain</div></section>
+
+<section class="slide negro steps" data-title="Resistance is identity"><div class="inner">
+  <div class="statement">Accepting it meant accepting that<br><strong>their own hands had killed patients.</strong></div>
+  <div class="sub step">People rarely resist the change.<br><strong>They resist what the change says about them.</strong></div>
+</div></section>
+
+<section class="slide steps" data-title="This time it is the desk"><div class="inner">
+  <div class="kicker">This time is different</div>
+  <div class="statement">Every automation wave hit the factory floor first.<br>This one starts <strong>at the desk.</strong></div>
+  <div class="dos">
+    <div class="step"><div class="big-n rust">−13%</div><div class="big-l">jobs for 22–25 year-olds in the occupations most exposed to AI</div></div>
+    <div class="step"><div class="big-l" style="font-size:clamp(18px,2vw,26px);margin-top:1vh">For the first time, change reaches <strong>the people who lead it.</strong> Including this room.</div></div>
+  </div>
+  <div class="src">Source: Stanford Digital Economy Lab, 2025</div>
+</div></section>
+
+<section class="slide steps" data-title="Resistance map"><div class="inner">
+  <div class="kicker">Six reasons people resist AI</div>
+  <ul class="lista compact">
+    <li class="step"><span class="n">01</span>“It will replace me”<small>The loudest. Not always the strongest</small></li>
+    <li class="step"><span class="n">02</span>“My expertise is worth less now”<small>The quiet one. Often senior people</small></li>
+    <li class="step"><span class="n">03</span>“I will look incompetent”<small>Learning in public, in front of your team</small></li>
+    <li class="step"><span class="n">04</span>“It is my signature on the output”<small>Legal, finance, compliance</small></li>
+    <li class="step"><span class="n">05</span>“This is more work, not less”<small>Often true. Take it seriously</small></li>
+    <li class="step"><span class="n">06</span>“I don't trust it”<small>Sometimes the most rational person in the room</small></li>
+  </ul>
+</div></section>
+
+<section class="slide steps" data-title="ADKAR"><div class="inner">
+  <div class="kicker">ADKAR · a simple checklist</div>
+  <ul class="lista compact">
+    <li class="step"><span class="n">A</span>Awareness<small>Do they know why this is changing?</small></li>
+    <li class="step"><span class="n">D</span>Desire<small>What is in it for them?</small></li>
+    <li class="step"><span class="n">K</span>Knowledge<small>Do they know how to use it, and when <em>not</em> to?</small></li>
+    <li class="step"><span class="n">A</span>Ability<small>Do they have the time to do it?</small></li>
+    <li class="step"><span class="n">R</span>Reinforcement<small>What stops them going back to the old way?</small></li>
+  </ul>
+  <div class="src">Source: Prosci</div>
+</div></section>
+
+<section class="slide steps shift-practice" data-title="Hands up · FARSIGHT"><div class="inner">
+  <div class="practice-top"><div class="kicker">Hands up · FARSIGHT</div></div>
+  <div class="statement">The tool finds <strong>37 inconsistencies</strong> between policies and procedures.<br>Who sees the report first?</div>
+  <div class="practice-flow"><span>The board</span><span>Everyone, on the intranet</span><span data-answer>The process owners, a week before anyone else</span></div>
+  <div class="practice-reveal step"><b>Finding is not blaming</b><p>If the board sees it first, every owner becomes a suspect. Let owners fix things first.</p><p class="practice-debate">Who wants to own a system that finds their colleagues' mistakes?</p></div>
+</div></section>
+
+<section class="slide steps shift-practice" data-title="Hands up · Road investment"><div class="inner">
+  <div class="practice-top"><div class="kicker">Hands up · Road Investment Optimizer</div></div>
+  <div class="statement">The ranking puts the committee's <strong>favourite project</strong> in 14th place.<br>What now?</div>
+  <div class="practice-flow"><span>Adjust the weights until it moves up</span><span>Do not show it</span><span data-answer>Show it, explain it, let them overrule on record</span></div>
+  <div class="practice-reveal step"><b>The tool advises. People decide.</b><p>Trust grows by seeing when the model was right, not by agreeing with it.</p></div>
+</div></section>
+
+<section class="slide negro steps" data-chapter="Live · the sceptic" data-title="Live · the sceptic in the room"><div class="inner">
+  <div class="kicker">Live</div>
+  <div class="gigante">One project.<br>One sceptic.<br><strong>Sixty seconds.</strong></div>
+  <div class="sub step">Give me your project in one sentence. The AI plays the boss who has to live with it.</div>
+</div></section>
+
+<section class="slide" data-title="The sceptic prompt"><div class="inner">
+  <div class="kicker">The prompt · also on your sheet</div>
+  <div class="statement" style="font-family:'Courier New',monospace;font-size:clamp(17px,1.9vw,25px);line-height:1.5;background:#fff;border:1px solid var(--line);padding:3vh 2.2vw">You are the head of <strong>[department]</strong> at a large Italian state-owned company. Your team has been told to start using <strong>[tool, in one sentence]</strong> next month. You are experienced, busy and sceptical. List the five objections you would raise in the meeting, in order of how hard they are to answer, and for each one say what would actually convince you.</div>
+</div></section>
+
+<section class="slide steps zoomtour sheet" data-chapter="Exercise 2 · Resistance map" data-title="Sheet tour · sections 3–4">
+  <div class="zt-clip"><img class="zt-img" src="img/ficha-2.png" alt="Adoption Plan worksheet, page 2"></div>
+  <div class="zt-cap"><small>Your sheet</small>Who will resist, and why.</div>
+  <div class="step zt" data-zoom="50 20 1" data-cap="&lt;small&gt;Section 3&lt;/small&gt;Who, &lt;b&gt;the real reason&lt;/b&gt;, and your answer."></div>
+  <div class="step zt" data-zoom="50 46 1" data-cap="&lt;small&gt;Section 4 · ADKAR&lt;/small&gt;Score 1 to 5. &lt;b&gt;Fix the weakest one.&lt;/b&gt;"></div>
+</section>
+
+<section class="slide" data-title="Exercise 2 · Resistance map"><div class="inner exercise">
+  <div>
+    <div class="kicker">Exercise 2 · with your team</div>
+    <div class="statement">Who will resist your project, <strong>and what is the real reason?</strong></div>
+    <div class="boxes">
+      <div><b>Who</b>A role, not a name</div>
+      <div><b>The real reason</b>Job, status, pride, liability, workload, trust</div>
+      <div><b>Your answer</b>What would actually change their mind</div>
+      <div class="new"><b>ADKAR</b>Score 1–5. Fix the weakest step</div>
+    </div>
+    <div class="sub">Then: the sceptic swap.</div>
+  </div>
+  <div class="timer" data-minutes="15"></div>
+</div></section>
+
+<section class="slide exercise-swap" data-title="Sceptic swap"><div class="inner exercise">
+  <div>
+    <div class="kicker">Sceptic swap</div>
+    <div class="statement">One of you joins the next team as <strong>the sceptical boss.</strong></div>
+    <div class="sub">Your job: knock their plan down. Hosts: write down the best objection.</div>
+  </div>
+  <div class="timer" data-minutes="10"></div>
+</div></section>
+
+<section class="slide negro" data-title="End of Block 2"><div class="inner">
+  <div class="statement">People rarely resist the tool.<br><strong>They resist what it says about them.</strong></div>
+</div></section>
+
+<section class="slide chapter" data-chapter="Part III · Case sprint"><div class="inner">
+  <div class="kicker">Case sprint</div>
+  <div class="gigante">Your MVP.<br><strong><span class="crt-accent" data-text="Your people.">Your people.</span></strong></div>
+  <div class="sub">One plan. One slide for tomorrow.</div>
+</div></section>
+
+<section class="slide" data-title="Objective · block 3"><div class="inner objective">
+  <div class="kicker">Part three · goal</div>
+  <div class="statement">Tomorrow the panel will ask: <em>how will this be adopted?</em><br>Today you write <strong>the answer.</strong></div>
+  <div class="obj-out">You leave with · your adoption slide, ready for tomorrow</div>
+</div></section>
+
+<section class="slide" data-title="Block 3 plan"><div class="inner">
+  <div class="kicker">The next hour</div>
+  <ul class="lista">
+    <li><span class="n">01</span>Write your plan and your slide</li>
+    <li><span class="n">02</span>Pitch it: two minutes per team</li>
+    <li><span class="n">03</span>Close</li>
+  </ul>
+  <div class="sub">Plan for what you <strong>have built</strong>, not what you imagine.</div>
+</div></section>
+
+<section class="slide steps" data-title="Adoption metrics"><div class="inner">
+  <div class="kicker">Measure adoption, not only accuracy</div>
+  <div class="statement">A tool with <strong>99% accuracy</strong> and <strong>zero users</strong> has a return of exactly zero.</div>
+  <ul class="lista compact labels" style="margin-top:3.5vh">
+    <li class="step"><span class="n">USE</span>How many people use it every week</li>
+    <li class="step"><span class="n">TRUST</span>How often people overrule it</li>
+    <li class="step"><span class="n">VALUE</span>Time saved per person, measured</li>
+    <li class="step"><span class="n">LIMITS</span>How often it hands over to a person</li>
+  </ul>
+</div></section>
+
+<section class="slide steps zoomtour sheet" data-title="Sheet tour · section 5">
+  <div class="zt-clip"><img class="zt-img" src="img/ficha-2.png" alt="Adoption Plan worksheet, page 2"></div>
+  <div class="zt-cap"><small>Your sheet</small>The first 90 days.</div>
+  <div class="step zt" data-zoom="50 71 1" data-cap="&lt;small&gt;Section 5&lt;/small&gt;Three phases, one metric, &lt;b&gt;one owner with a name.&lt;/b&gt;"></div>
+</section>
+
+<section class="slide steps zoomtour sheet" data-title="Sheet tour · page 3">
+  <div class="zt-clip"><img class="zt-img" src="img/ficha-3.png" alt="Adoption Plan worksheet, page 3"></div>
+  <div class="zt-cap"><small>Your sheet</small>The part that goes into your presentation.</div>
+  <div class="step zt" data-zoom="50 30 1" data-cap="&lt;small&gt;Section 6&lt;/small&gt;Four lines. &lt;b&gt;Copy them into tomorrow's deck.&lt;/b&gt;"></div>
+  <div class="step zt" data-zoom="50 66 1" data-cap="&lt;small&gt;Sceptic swap&lt;/small&gt;The sceptic prompt, if you need it."></div>
+</section>
+
+<section class="slide" data-title="Exercise 3 · Plan and slide"><div class="inner exercise">
+  <div>
+    <div class="kicker">Exercise 3 · with your team</div>
+    <div class="statement">Tomorrow the panel asks: <strong>how will this be adopted?</strong> Write the answer.</div>
+    <div class="sub">First 90 days · one metric · one owner · four lines.</div>
+  </div>
+  <div class="timer" data-minutes="25"></div>
+</div></section>
+
+<section class="slide" data-title="Pitch"><div class="inner">
+  <div class="kicker">Pitch · two minutes per team</div>
+  <ul class="lista">
+    <li><span class="n">01</span>Who uses it, and what changes for them</li>
+    <li><span class="n">02</span>The resistance we expect, and our answer</li>
+    <li><span class="n">03</span>The first 90 days</li>
+    <li><span class="n">04</span>How we will know it is being used</li>
+  </ul>
+  <div class="sub">If you cannot fill one line, <strong>that is your next step.</strong></div>
+</div></section>
+
+<section class="slide negro" data-chapter="Uncomfortable conclusions"><div class="inner">
+  <div class="kicker">Uncomfortable conclusion 1</div>
+  <div class="statement">Your MVP works.<br><strong>Nobody has asked yet whether anyone wants it.</strong></div>
+</div></section>
+
+<section class="slide negro"><div class="inner">
+  <div class="kicker">Uncomfortable conclusion 2</div>
+  <div class="statement">AI does not remove work.<br><strong>It moves it to whoever reviews.</strong></div>
+</div></section>
+
+<section class="slide negro"><div class="inner">
+  <div class="kicker">Uncomfortable conclusion 3</div>
+  <div class="statement">The resistance you will meet is not fear of the machine.<br><strong>It is fear of looking <span class="crt-accent" data-text="incompetent.">incompetent.</span></strong></div>
+</div></section>
+
+<section class="slide" data-title="This afternoon"><div class="inner">
+  <div class="kicker">This afternoon</div>
+  <div class="statement">Put this slide in your deck.<br><strong>It is the “next steps” the panel wants to see.</strong></div>
+  <div class="sub">Demo. Evidence. Limits. <strong>Adoption.</strong></div>
+</div></section>
+
+<section class="slide steps" data-chapter="Back to Ivrea" data-title="Back to Ivrea"><div class="inner">
+  <div class="kicker">Back to Ivrea</div>
+  <div class="statement">Olivetti built one of the first personal computers.<br>And a factory with a library.</div>
+  <div class="sub step">Today Ivrea is a UNESCO World Heritage Site.<br><strong>Not for the computer. For how it treated people.</strong></div>
+</div></section>
+
+<section class="slide negro" data-title="Closing quote"><div class="inner">
+  <div class="quote">“Calling something a utopia is the most convenient way to dismiss what we lack the will, the ability or the courage to do.”
+    <span class="it-orig">«Il termine utopia è la maniera più comoda per liquidare quello che non si ha voglia, capacità o coraggio di fare.»</span>
+    <span class="who">ADRIANO OLIVETTI</span></div>
+</div></section>
+
+<section class="slide cover" data-chapter="Thank you"><div class="inner">
+  <div class="gigante">Grazie.</div>
+  <div class="presenter">Javier Fuentes Ibáñez <span>javier@ncompany.es · NCompany</span></div>
+  <div class="sub">Every week, what moved in AI: <strong>theindependentsentinel.substack.com</strong></div>
+</div>
+<div class="cover-logos"><img src="img/cdp.png" alt="Cassa Depositi e Prestiti"><span class="hair"></span><img src="img/headspring.png" alt="Headspring Executive Development"></div>
+</section>
+
+<script src="stage.js"></script>
+</body>
+</html>

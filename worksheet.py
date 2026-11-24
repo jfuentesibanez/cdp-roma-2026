@@ -158,16 +158,16 @@ for r in range(3):
 y -= 14
 
 y = step(y, 4, "ADKAR check",
-         "For the person from step 1: give each question a score. 1 = not at all, 5 = yes, fully. "
+         "For the person from step 1: score each sentence. 1 = not true today, 5 = fully true. "
          "Then write what you will do about the lowest scores.")
 c.setFillColor(INK); c.setFont("Helvetica-Bold", 8.5)
 c.drawCentredString(M + 205, y, "Score 1-5"); c.drawString(M + 240, y, "What we will do about it")
 y -= 8
-adkar = [("Awareness", "Do they know why this is changing?"),
-         ("Desire", "What is in it for them?"),
-         ("Knowledge", "Do they know how to use it, and when not to?"),
-         ("Ability", "Do they have the time to do it?"),
-         ("Reinforcement", "What stops them going back to the old way?")]
+adkar = [("Awareness", "They know why this is changing"),
+         ("Desire", "They want it: they gain something"),
+         ("Knowledge", "They know how to use it, and when not to"),
+         ("Ability", "They have the time and the skills"),
+         ("Reinforcement", "Something keeps them from going back")]
 for t, q in adkar:
     c.setFillColor(INK); c.setFont("Helvetica-Bold", 9); c.drawString(M, y - 13, t)
     c.setFillColor(GREY); c.setFont("Helvetica", 7.5); c.drawString(M, y - 23, q)

@@ -158,7 +158,11 @@ for r in range(3):
 y -= 14
 
 y = step(y, 4, "ADKAR check",
-         "Score each line for your person (1 = missing, 5 = solid). Write one action for the weakest.")
+         "For the person from step 1: give each question a score. 1 = not at all, 5 = yes, fully. "
+         "Then write what you will do about the lowest scores.")
+c.setFillColor(INK); c.setFont("Helvetica-Bold", 8.5)
+c.drawCentredString(M + 205, y, "Score 1-5"); c.drawString(M + 240, y, "What we will do about it")
+y -= 8
 adkar = [("Awareness", "Do they know why this is changing?"),
          ("Desire", "What is in it for them?"),
          ("Knowledge", "Do they know how to use it, and when not to?"),
@@ -167,8 +171,8 @@ adkar = [("Awareness", "Do they know why this is changing?"),
 for t, q in adkar:
     c.setFillColor(INK); c.setFont("Helvetica-Bold", 9); c.drawString(M, y - 13, t)
     c.setFillColor(GREY); c.setFont("Helvetica", 7.5); c.drawString(M, y - 23, q)
-    field(M + 190, y, 30, 30, f"adkar_{t}_score", f"{t} score 1-5", False)
-    field(M + 228, y, FULL - 228, 30, f"adkar_{t}_action", f"{t} action")
+    field(M + 185, y, 40, 30, f"adkar_{t}_score", f"{t} score 1-5", False)
+    field(M + 240, y, FULL - 240, 30, f"adkar_{t}_action", f"{t} action")
     y -= 36
 y -= 14
 

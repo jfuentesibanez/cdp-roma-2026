@@ -111,3 +111,4 @@ Estudio cualitativo: 66 entrevistas en 58 empresas clientes de Anthropic en EE. 
 
 ## Cierre: "My Last Five Years of Work"
 Avital Balwit, Palladium, 17 de mayo de 2024. https://www.palladiummag.com/2024/05/17/my-last-five-years-of-work/ Tenía 25 años y trabajaba en una empresa de IA de frontera. En pantalla solo hay una cita corta y atribuida; el resto del cierre son palabras de Javier. "Thirty months ago" cuenta de mayo de 2024 a noviembre de 2026. La pregunta de la slide ("sadness, fear, joy, or hope") parafrasea la que ella plantea en el artículo.
+- `img/closing-beach.jpg`: foto de Zack Minor en Unsplash ("One foot in front of the other"), la misma que encabeza el artículo de Palladium. Licencia Unsplash: uso libre. https://unsplash.com/photos/6_pFPo2YM9c

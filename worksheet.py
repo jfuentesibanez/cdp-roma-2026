@@ -194,12 +194,26 @@ c.showPage()
 
 # ---------------- PAGE 3 · ACT 3 · Exercise 3 ----------------
 y = header(3)
+y = step(y, 0, "Score your MVP",
+         "Score each from 0 to 5 and multiply. A zero anywhere makes the total zero. Your lowest score is where the plan starts.")
+dims = [("Accuracy", "Is it right?"), ("Use", "Will people open it every week?"),
+        ("Trust", "Will they act on what it says?"), ("Value", "Does it save time or money?"), ("Score", "out of 625")]
+gap = 22
+dw = (FULL - 4 * gap) / 5
+for i, (t, q) in enumerate(dims):
+    x = M + i * (dw + gap)
+    c.setFillColor(GREEN if i == 4 else INK); c.setFont("Helvetica-Bold", 9); c.drawString(x, y, t)
+    c.setFillColor(GREY); c.setFont("Helvetica", 7); c.drawString(x, y - 10, q)
+    field(x, y - 16, dw, 24, f"score_{t.lower()}", f"{t}: 0 to 5" if i < 4 else "Multiply the four scores", False)
+    if i < 4:
+        c.setFillColor(GREY); c.setFont("Helvetica-Bold", 13); c.drawCentredString(x + dw + gap / 2, y - 33, "×" if i < 3 else "=")
+y -= 66
 y = step(y, 5, "First 90 days", "Small and concrete. Plan for the MVP you have built, not the one you imagine.")
 pw = (FULL - 16) / 3
 for i, p in enumerate(["Days 1-30", "Days 31-60", "Days 61-90"]):
     c.setFillColor(INK); c.setFont("Helvetica-Bold", 9); c.drawString(M + i * (pw + 8), y, p)
-    field(M + i * (pw + 8), y - 5, pw, 96, f"plan_{i+1}", p)
-y -= 120
+    field(M + i * (pw + 8), y - 5, pw, 74, f"plan_{i+1}", p)
+y -= 98
 for i, (t, n) in enumerate([("How we will know it is being used", "metric"), ("Target at day 90", "target"),
                             ("Owner (a name)", "owner")]):
     c.setFillColor(INK); c.setFont("Helvetica-Bold", 9); c.drawString(M + i * (pw + 8), y, t)

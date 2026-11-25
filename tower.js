@@ -86,9 +86,9 @@
     ctx.beginPath(); for (let y = 1; y < 10 && y <= top; y++) floor(y); stroke(INK, .10 * clamp(1 - cy / 40));
     for (let y = 10; y <= 200 && y <= top; y += 10) {
       const a = clamp((top - y) / 4); ctx.beginPath(); floor(y); stroke(INK, .22 * a);
-      text(`${y} h`, [X0, y, Z1], f * .95, DIM, a * .9, 'right', -f * .5);
+      text(`${y} h`, [X1, y, Z1], f * .95, DIM, a * .9, 'left', f * .6);
     }
-    for (const y of [2, 4]) text(`${y} h`, [X0, y, Z1], f * .95, DIM, .9 * clamp(1 - cy / 30) * clamp((top - y) / 2), 'right', -f * .5);
+    for (const y of [2, 4]) text(`${y} h`, [X1, y, Z1], f * .95, DIM, .9 * clamp(1 - cy / 30) * clamp((top - y) / 2), 'left', f * .6);
     for (let y = 2023; y <= 2027; y++) text(y, [wx(y + .5), 0, Z1 + .4], f, DIM, clamp(1 - cy / 14), 'center', 0, f);
     // the line itself: solid for measurements, dashed for the trend
     const path = (a, b, n) => { ctx.beginPath(); let pen = false; for (let i = 0; i <= n; i++) { const x = lerp(a, b, i / n), v = view([wx(x), hAt(x), 0]); if (v[2] < NEAR) { pen = false; continue; } const q = scr(v); pen ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]); pen = true; } };
@@ -110,7 +110,7 @@
       if (v[2] > NEAR) { const q = scr(v); ctx.strokeStyle = RED; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(q[0], q[1], f * .55, 0, 7); ctx.stroke(); }
       text('200 h', w, f * 1.7, RED, 1, 'right', -f, -f * .5, '600');
       text('July 2027 · trend', w, f, DIM, 1, 'right', -f, f * 1.1);
-      if (stage === 3) text('2023 – 2025', [wx(2024.5), 0, 0], f * 1.1, INK, .9, 'left', f * 1.2, 0);
+      if (stage === 3) text('2023 – 2025', [wx(2023.2), 0, 0], f * 1.1, INK, .9, 'right', -f * 1.2, 0);
     }
   }
 

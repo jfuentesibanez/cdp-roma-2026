@@ -218,11 +218,16 @@ body.is-blackout .blackout { display:block; }
 /* the real chart: full-bleed canvas, caption top left */
 .slide.tower { padding:0; }
 .tw-canvas { position:absolute; inset:0; width:100%; height:100%; }
-.tw-cap { position:absolute; left:9vw; top:11vh; right:9vw; color:#F6F7F8; font-size:clamp(24px,3.3vw,50px); line-height:1.2; }
+.tw-cap { position:absolute; left:6vw; top:11vh; width:46vw; color:#F6F7F8; font-size:clamp(24px,3.3vw,50px); line-height:1.2; }
 .tw-cap small { display:block; font-size:.42em; letter-spacing:.16em; text-transform:uppercase; color:#AEB8C2; margin-bottom:1vh; }
 .tw-cap b { color:#3CC07E; font-weight:600; } .tw-cap b.r { color:#E5484D; }
 .tower .step.tw { display:none; }
-.tower .src { position:absolute; left:9vw; bottom:4.5vh; margin:0; color:#8794A1; }
+.mult { display:grid; grid-template-columns:1fr auto 1fr auto 1fr auto 1fr; gap:1.4vw; align-items:start; margin-top:4.5vh; }
+.mult div { border-top:3px solid var(--brass); padding-top:1.4vh; }
+.mult b { display:block; font-size:clamp(19px,2.1vw,30px); letter-spacing:.08em; text-transform:uppercase; color:var(--brass); font-weight:700; }
+.mult span { display:block; font-size:clamp(15px,1.5vw,22px); color:var(--ink); margin-top:.8vh; line-height:1.3; }
+.mult i { font-style:normal; font-size:clamp(26px,3.2vw,48px); color:var(--grey); line-height:1.4; }
+.tower .src { position:absolute; left:6vw; bottom:4.5vh; margin:0; color:#8794A1; max-width:46vw; }
 .slide.has-art .inner > * { max-width:min(100%,50vw); }
 .objective .statement { font-size:clamp(28px,4vw,60px); }
 .obj-out { display:inline-block; margin-top:3.5vh; font-size:clamp(14px,1.4vw,20px); letter-spacing:.14em; text-transform:uppercase; color:var(--brass); font-weight:700; border:1.5px solid var(--brass); padding:1vh 1.2vw; }
@@ -800,29 +805,31 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="src">Source: Microsoft &amp; LinkedIn, 2024 · 31,000 people</div>
 </div></section>
 
-<section class="slide steps" data-title="Adoption metrics"><div class="inner">
-  <div class="kicker">Measure adoption, not only accuracy</div>
+<section class="slide steps" data-title="Score your MVP"><div class="inner">
+  <div class="kicker">Score your MVP</div>
   <div class="statement">A tool with <strong>99% accuracy</strong> and <strong>zero users</strong> has a return of exactly zero.</div>
-  <ul class="lista compact labels" style="margin-top:3.5vh">
-    <li class="step"><span class="n">USE</span>How many people use it every week</li>
-    <li class="step"><span class="n">TRUST</span>How often people overrule it</li>
-    <li class="step"><span class="n">VALUE</span>Time saved per person, measured</li>
-    <li class="step"><span class="n">LIMITS</span>How often it hands over to a person</li>
-  </ul>
+  <div class="mult">
+    <div><b>Accuracy</b><span>Is it right?</span></div><i>×</i>
+    <div><b>Use</b><span>Will people open it every week?</span></div><i>×</i>
+    <div><b>Trust</b><span>Will they act on what it says?</span></div><i>×</i>
+    <div><b>Value</b><span>Does it save time or money?</span></div>
+  </div>
+  <div class="sub step">Score each from 0 to 5. Multiply. <strong>5 × 5 × 5 × 0 = <span class="crt-accent crt-rust" data-text="0">0</span></strong></div>
 </div></section>
 
 <section class="slide steps zoomtour sheet" data-title="Sheet tour · page 3">
   <div class="zt-clip"><img class="zt-img" src="img/ficha-3.png" alt="Worksheet, page 3"></div>
-  <div class="zt-cap"><small>Your sheet · Activity 3</small>The plan, and four lines to take away.</div>
-  <div class="step zt" data-zoom="50 27 1" data-cap="&lt;small&gt;The first 90 days&lt;/small&gt;Three phases, one metric, &lt;b&gt;one owner with a name.&lt;/b&gt;"></div>
-  <div class="step zt" data-zoom="50 58 1" data-cap="&lt;small&gt;To take away&lt;/small&gt;Four lines &lt;b&gt;you can use tomorrow.&lt;/b&gt;"></div>
+  <div class="zt-cap"><small>Your sheet · Activity 3</small>The score, the plan, and four lines to take away.</div>
+  <div class="step zt" data-zoom="50 20 1" data-cap="&lt;small&gt;Score your MVP&lt;/small&gt;Four scores, multiplied. &lt;b&gt;Your lowest score is where the plan starts.&lt;/b&gt;"></div>
+  <div class="step zt" data-zoom="50 36 1" data-cap="&lt;small&gt;The first 90 days&lt;/small&gt;Three phases, one metric, &lt;b&gt;one owner with a name.&lt;/b&gt;"></div>
+  <div class="step zt" data-zoom="50 70 1" data-cap="&lt;small&gt;To take away&lt;/small&gt;Four lines &lt;b&gt;you can use tomorrow.&lt;/b&gt;"></div>
 </section>
 
 <section class="slide" data-chapter="Activity 3 · Adoption plan" data-title="Activity 3 · Adoption plan"><div class="inner exercise">
   <div>
     <div class="act-tag">Activity 3</div>
     <div class="statement">Your MVP works. <strong>How does it get used?</strong> Write the answer.</div>
-    <div class="sub">First 90 days · one metric · one owner · four lines.</div>
+    <div class="sub">Score it · first 90 days · one metric · one owner · four lines.</div>
   </div>
   <div class="timer" data-minutes="20"></div>
 </div></section>
@@ -834,6 +841,7 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
     <li><span class="n">02</span>The resistance we expect, and our answer</li>
     <li><span class="n">03</span>The first 90 days</li>
     <li><span class="n">04</span>How we will know it is being used</li>
+    <li><span class="n">05</span>Our lowest score</li>
   </ul>
   <div class="sub">If you cannot fill one line, <strong>that is your next step.</strong></div>
 </div></section>

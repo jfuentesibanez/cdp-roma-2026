@@ -291,6 +291,9 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 .zoomtour:not(.sheet) .zt-clip { position:absolute; inset:0; display:block; box-shadow:none; }
 .zoomtour:not(.sheet) .zt-img { width:100%; height:100%; max-width:none; max-height:none; object-fit:cover; }
 .zoomtour:not(.sheet) .zt-cap { position:absolute; left:0; right:0; bottom:0; margin:0; max-width:none; padding:16vh 8vw 9vh; background:linear-gradient(0deg,rgba(15,20,26,.92),rgba(15,20,26,.55) 55%,transparent); font-size:clamp(24px,3.2vw,48px); z-index:2; }
+.zoomtour.radiology .zt-clip { width:min(100vw, 177.68vh); aspect-ratio:1672/941; height:auto; margin:auto; }
+@media (prefers-reduced-motion:reduce) { .radiology .zt-img { transition:none; } }
+
 
 .foto .cap.big { left:0; right:0; bottom:auto; top:9vh; transform:none; max-width:none; text-align:center; font-size:clamp(44px,7.5vw,124px); letter-spacing:-.01em; text-shadow:0 4px 40px rgba(0,0,0,.9),0 0 8px rgba(0,0,0,.6); }
 .slide.foto:has(.cap.big) > img { filter:brightness(.75); }
@@ -418,19 +421,17 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="sub step">Today a US radiologist earns <strong>$571,000</strong> a year.</div>
 </div></section>
 
-<section class="slide steps" data-title="The radiologist is a bundle"><div class="inner">
-  <div class="kicker">Why he got it wrong</div>
-  <div class="statement">A job is not a task. It is a <strong>bundle</strong> of tasks.</div>
-  <div class="bundle">
-    <div class="step ai">Read the image</div>
-    <div class="step">Triage the cases</div>
-    <div class="step">Advise other doctors</div>
-    <div class="step">Train the residents</div>
-    <div class="step">Sign the diagnosis</div>
-  </div>
-  <div class="sub step"><strong>The other four hold the job together.</strong></div>
-  <div class="src">Source: Garicano, Li &amp; Wu, 2026</div>
-</div></section>
+<section class="slide steps zoomtour radiology" data-title="The radiologist is a bundle">
+  <div class="zt-clip"><img class="zt-img" src="img/radiology-room.jpg" alt="A radiologist takes a call beside an X-ray and a worklist. A resident watches. A report and pen lie on the desk."></div>
+  <div class="zt-cap"><small>Why he got it wrong</small>A job is not a task. It is a <b>bundle</b> of tasks.</div>
+  <div class="step zt" data-zoom="22 46 2.3" data-cap="&lt;small&gt;Read the image&lt;/small&gt;Look for the finding on the chest X-ray."></div>
+  <div class="step zt" data-zoom="30 47 2.1" data-cap="&lt;small&gt;Triage the cases&lt;/small&gt;Which scan needs a read first?"></div>
+  <div class="step zt" data-zoom="52 38 1.95" data-cap="&lt;small&gt;Advise other doctors&lt;/small&gt;Talk the referring doctor through the finding."></div>
+  <div class="step zt" data-zoom="77 26 2.2" data-cap="&lt;small&gt;Train the residents&lt;/small&gt;Ask the resident what she sees and why."></div>
+  <div class="step zt" data-zoom="46 76 2.2" data-cap="&lt;small&gt;Sign the diagnosis&lt;/small&gt;Take responsibility for the final report."></div>
+  <div class="step zt" data-zoom="50 50 1" data-cap="&lt;small&gt;Back to the whole job&lt;/small&gt;The other four hold the job together."></div>
+  <div class="credit">Garicano, Li &amp; Wu, 2026 · AI-generated scene</div>
+</section>
 
 <section class="slide negro" data-chapter="The end of desk work?" data-title="Right about the task"><div class="inner">
   <div class="statement">Hinton was wrong about the job.<br><strong>He was right about the <span class="crt-accent" data-text="task." style="font-weight:700">task.</span></strong></div>

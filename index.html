@@ -297,6 +297,11 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 .five-text .sub { color:#E6EAEE; text-shadow:0 2px 14px rgba(0,0,0,.8); }
 .five-text .sub strong { color:#fff; }
 
+.beats { min-height:3.2em; display:flex; align-items:flex-end; }
+.beats p { display:none; font-size:clamp(30px,4.6vw,72px); line-height:1.22; text-shadow:0 3px 26px rgba(0,0,0,.75); max-width:16em; }
+.beats p { font-style:italic; }
+.beats p.now { display:block; animation:entra .5s ease; }
+
 @media (max-width:760px) {
   .clips, .practice-flow, .dos, .exercise, .boxes, .split, .surnames { grid-template-columns:1fr; }
   .split .ph { height:36vh; }
@@ -797,7 +802,14 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 
 <section class="slide foto five" data-audio="audio/closing.mp3" data-chapter="Five years" data-title="Five years"><img src="img/closing-beach.jpg" alt="A woman walking along the shore, leaving footprints">
   <div class="five-text">
-    <div class="quote typed" data-type="“These next five years might be the last few years that I work.”"></div>
+    <div class="beats">
+      <p data-at="0">“I am 25.”</p>
+      <p class="q" data-at="1.7">“These next five years might be the last few years that I work.”</p>
+      <p data-at="6.6">“I am not ill, nor am I becoming a stay-at-home mom,</p>
+      <p data-at="10.4">nor have I been so financially fortunate to be on the brink of voluntary retirement.”</p>
+      <p data-at="15.8">“I stand at the edge of a technological development</p>
+      <p data-at="19.4">that seems likely, should it arrive, to end employment as I know it.”</p>
+    </div>
     <div class="sub">Avital Balwit, age 25 · <em>My Last Five Years of Work</em> · May 2024</div>
   </div>
   <div class="credit">Photo: Zack Minor, Unsplash</div>

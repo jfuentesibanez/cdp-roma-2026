@@ -86,7 +86,17 @@
       el._t = setInterval(() => { el.textContent = txt.slice(0, ++k); if (k >= txt.length) { clearInterval(el._t); el.classList.add('done'); } }, 55);
     });
     if (s.dataset.audio) {  // narration starts with the slide; V pauses or resumes it
-      s._a = s._a || new Audio(s.dataset.audio); s._a.currentTime = 0; s._a.play().catch(() => {});
+      s._a = s._a || new Audio(s.dataset.audio); s._a.currentTime = 0;
+      // On-screen beats follow the narration: each <p data-at="seconds"> shows from that moment.
+      const beats = [...s.querySelectorAll('.beats p')];
+      const show = el => beats.forEach(b => b.classList.toggle('now', b === el));
+      const quote = s.querySelector('.beats p.q');
+      if (beats.length) {
+        show(null);
+        s._a.ontimeupdate = () => show(beats.filter(b => Number(b.dataset.at) <= s._a.currentTime).pop() || null);
+        s._a.onended = () => show(quote);
+      }
+      s._a.play().catch(() => show(quote));
     }
     document.body.classList.toggle('dark-slide', s.matches('.negro,.cover-dark,.chapter,.foto,.zoomtour,.film,.viaje'));
     let act = 0; for (let k = 0; k <= index; k++) if (slides[k].dataset.act) act = Number(slides[k].dataset.act);

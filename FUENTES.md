@@ -113,7 +113,7 @@ Avital Balwit, Palladium, 17 de mayo de 2024. https://www.palladiummag.com/2024/
 `img/art-ladder.png`, `art-chair.png`, `art-stamp.png`, `art-crate.png`: generadas por Javier con IA a partir de `image-prompts.md`. `build/prepare-art.py` las reduce a 1100 px y convierte el fondo gris en transparente.
 
 ## Slide "The real chart" (antes del cierre)
-Horizonte de tarea de METR (duración de la tarea que una IA completa sola el 50 % de las veces), dibujado en escala lineal. Gráfica propia en `tower.js`; la idea de enseñarla en lineal y alejar la cámara viene de un deck ajeno ("The Last Boring Slide"), del que no se ha copiado código.
+Horizonte de tarea de METR (duración de la tarea que una IA completa sola el 50 % de las veces), dibujado en escala lineal. Escena 3D propia en `tower.js` (líneas proyectadas a mano sobre un canvas, sin librerías): una torre con un piso cada diez horas por la que sube la cámara; la idea de enseñarla en lineal y alejar la cámara viene de un deck ajeno ("The Last Boring Slide"), del que no se ha copiado código.
 - ✅ **GPT-6 Astra, unas 40 h** (rango 95 %: 13–2.645 h), **duplicación cada 3,61 meses** (IC 2,08–4,94) y **200 h en julio de 2027** por extrapolación simple: METR, actualización del 20 de noviembre de 2026. https://metr.org/blog/2026-11-20-q4-2026-capability-update/
 - ✅ **Claude 3.7 Sonnet, alrededor de 1 h** (marzo de 2025) y **GPT-5, 2 h 17 min**: METR. https://metr.org/time-horizons/
 - ⚠️ **Claude Mythos Preview, "16 h+"**: METR lo dio como "al menos 16 horas", el techo de lo que podía medir. Fuente secundaria.

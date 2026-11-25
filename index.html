@@ -153,13 +153,13 @@ body.is-blackout .blackout { display:block; }
 
 /* CRT flicker (Ferrovial engine), recoloured in CDP brass */
 .crt-accent { --crt-color:#00924A; --crt-stripe:#006B36;
-  position:relative; display:inline-block; white-space:nowrap; padding-inline-end:.12em; margin-inline-end:-.12em;
+  position:relative; display:inline-block; white-space:nowrap; padding-inline-end:.12em; margin-inline-end:-.12em; padding-block:.14em; margin-block:-.14em;
   color:var(--crt-color); -webkit-text-fill-color:transparent;
   background:repeating-linear-gradient(0deg,var(--crt-color) 0px,var(--crt-color) 2px,var(--crt-stripe) 2px,var(--crt-stripe) 3px);
   -webkit-background-clip:text; background-clip:text; filter:drop-shadow(0 0 5px #00924A25); }
 .negro .crt-accent, .chapter .crt-accent { --crt-color:#3CC07E; --crt-stripe:#2A9A62; }
 .crt-accent.crt-rust { --crt-color:#D0202E; --crt-stripe:#9E1822; }
-.crt-accent::before,.crt-accent::after { content:attr(data-text); position:absolute; inset:0; pointer-events:none; opacity:0; background:none; -webkit-text-fill-color:currentColor; }
+.crt-accent::before,.crt-accent::after { content:attr(data-text); position:absolute; inset:.14em 0; pointer-events:none; opacity:0; background:none; -webkit-text-fill-color:currentColor; }
 .crt-accent::before { color:#1FB8B2; text-shadow:2px 0 #1FB8B270; }
 .crt-accent::after { color:#D4307F; text-shadow:-2px 0 #D4307F70; }
 .slide.on .crt-accent { animation:crt-signal 8.6s steps(1,end) .8s infinite, crt-scan 6.7s linear infinite; }

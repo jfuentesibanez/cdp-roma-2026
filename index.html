@@ -215,6 +215,14 @@ body.is-blackout .blackout { display:block; }
   2% { transform:translate(-3px,-50%); opacity:.85; filter:drop-shadow(-4px 0 0 rgba(31,184,178,.45)) drop-shadow(4px 0 0 rgba(212,48,127,.4)); }
   46% { transform:translate(2px,-50%); opacity:.66; filter:drop-shadow(3px 0 0 rgba(31,184,178,.45)) drop-shadow(-3px 0 0 rgba(212,48,127,.4)); } }
 .slide.has-art .inner { position:relative; z-index:1; }
+/* the real chart: full-bleed canvas, caption top left */
+.slide.tower { padding:0; }
+.tw-canvas { position:absolute; inset:0; width:100%; height:100%; }
+.tw-cap { position:absolute; left:9vw; top:11vh; right:9vw; color:#F6F7F8; font-size:clamp(24px,3.3vw,50px); line-height:1.2; }
+.tw-cap small { display:block; font-size:.42em; letter-spacing:.16em; text-transform:uppercase; color:#AEB8C2; margin-bottom:1vh; }
+.tw-cap b { color:#3CC07E; font-weight:600; } .tw-cap b.r { color:#E5484D; }
+.tower .step.tw { display:none; }
+.tower .src { position:absolute; left:9vw; bottom:4.5vh; margin:0; color:#8794A1; }
 .slide.has-art .inner > * { max-width:min(100%,50vw); }
 .objective .statement { font-size:clamp(28px,4vw,60px); }
 .obj-out { display:inline-block; margin-top:3.5vh; font-size:clamp(14px,1.4vw,20px); letter-spacing:.14em; text-transform:uppercase; color:var(--brass); font-weight:700; border:1.5px solid var(--brass); padding:1vh 1.2vw; }
@@ -814,6 +822,15 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="sub">Demo. Evidence. Limits. <strong>Adoption.</strong></div>
 </div></section>
 
+<section class="slide negro steps tower" data-chapter="The real chart" data-title="The real chart">
+  <canvas class="tw-canvas" aria-label="Chart: the length of task an AI can finish on its own, from five minutes in 2023 to forty hours in November 2026, with the trend reaching 200 hours in July 2027"></canvas>
+  <div class="tw-cap"><small>How long a task can AI finish on its own?</small>2023: five minutes. 2025: <b>almost five hours.</b></div>
+  <div class="step tw" data-cap="&lt;small&gt;One year later&lt;/small&gt;November 2026: &lt;b&gt;forty hours.&lt;/b&gt;"></div>
+  <div class="step tw" data-cap="&lt;small&gt;If the trend holds&lt;/small&gt;July 2027: &lt;b class=&quot;r&quot;&gt;two hundred hours.&lt;/b&gt; Five working weeks."></div>
+  <div class="step tw" data-cap="Precise predictions are useless.&lt;br&gt;&lt;b&gt;The direction is not.&lt;/b&gt;"></div>
+  <div class="src">Source: METR, November 2026 · tasks the AI completes half the time · dashed: trend, not a measurement</div>
+</section>
+
 <section class="slide foto five" data-audio="audio/closing.mp3" data-chapter="Five years" data-title="Five years"><img src="img/closing-beach.jpg" alt="A woman walking along the shore, leaving footprints">
   <div class="five-text">
     <div class="beats">
@@ -845,5 +862,6 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 <script src="three.min.js"></script>
 <script src="viaje.js"></script>
 <script src="stage.js"></script>
+<script src="tower.js"></script>
 </body>
 </html>

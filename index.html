@@ -282,7 +282,7 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 .bars .row { display:grid; grid-template-columns:19em 1fr; gap:1.4vw; align-items:center; font-size:clamp(17px,1.9vw,27px); }
 .bars .row span:first-child { text-align:right; }
 .bars .bar { height:3.6vh; background:#6E7B87; position:relative; width:calc(var(--v) * 1%); min-width:4px; }
-.bars .bar b { position:absolute; left:calc(100% + .5em); top:50%; transform:translateY(-50%); font-weight:700; }
+.bars .bar b { position:absolute; left:calc(100% + .5em); top:50%; transform:translateY(-50%); font-weight:700; white-space:nowrap; }
 .bars .row.hot .bar { background:#D0202E; } .bars .row.hot span:first-child { color:#D0202E; font-weight:700; }
 .bars .row.cool .bar { background:#00924A; } .bars .row.cool span:first-child { color:#00924A; font-weight:700; }
 
@@ -430,13 +430,16 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 </div></section>
 
 <section class="slide steps" data-title="Not firing, not hiring"><div class="inner">
-  <div class="kicker">Published three days ago · 58 companies using AI</div>
-  <div class="dos">
-    <div class="step"><div class="big-n">2</div><div class="big-l">companies where AI eliminated someone's job</div></div>
-    <div class="step"><div class="big-n rust">2 in 3</div><div class="big-l">companies hiring less because of AI</div></div>
+  <div class="kicker">Published three days ago · what AI did to jobs in 58 companies</div>
+  <div class="bars">
+    <div class="row cool"><span>AI eliminated someone's job</span><div class="bar" style="--v:3.4"><b>2</b></div></div>
+    <div class="row"><span>Pushed out people who would not use AI</span><div class="bar" style="--v:8.6"><b>5</b></div></div>
+    <div class="row"><span>Cut contractors</span><div class="bar" style="--v:15.5"><b>9</b></div></div>
+    <div class="row"><span>Hiring more because of AI</span><div class="bar" style="--v:17.2"><b>10</b></div></div>
+    <div class="row hot step"><span>Hiring less because of AI</span><div class="bar" style="--v:66.7"><b>2 in 3</b></div></div>
   </div>
-  <div class="quote step" style="margin-top:5vh;font-size:clamp(24px,3vw,44px)">“We may not be firing, but we're not hiring.”</div>
-  <div class="src">Source: Anthropic, “Working with AI”, 23 November 2026</div>
+  <div class="quote step" style="margin-top:4vh;font-size:clamp(24px,3vw,44px)">“We may not be firing, but we're not hiring.”</div>
+  <div class="src">Number of companies · Source: Anthropic, “Working with AI”, 23 November 2026</div>
 </div></section>
 
 <section class="slide steps" data-title="Who gains most"><div class="inner">

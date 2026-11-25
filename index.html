@@ -66,9 +66,8 @@ body.dark-slide { background:var(--ink); }
 .clip .hed { font-family:Georgia,"Times New Roman",serif; font-size:clamp(20px,2.2vw,32px); line-height:1.2; margin:1.2vh 0; font-weight:700; }
 .clip .dek { font-size:clamp(15px,1.4vw,20px); color:#555; line-height:1.45; }
 .clip .from { font-size:11px; color:var(--grey); margin-top:1.4vh; letter-spacing:.06em; }
-.tweet { background:#fff; border:1px solid var(--line); border-radius:20px; padding:5vh 4vw 5.5vh; max-width:1150px; margin:0 auto; box-shadow:0 14px 44px rgba(46,59,72,.13); font-family:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif; color:#0F1419; }
-.tweet .who { font-size:clamp(18px,1.9vw,28px); margin-bottom:2.4vh; } .tweet .who b { font-weight:700; } .tweet .who span { color:#536471; margin-left:.4em; }
-.tweet p { font-size:clamp(24px,2.9vw,44px); line-height:1.3; margin:0; } .tweet p + p { margin-top:3vh; } .tweet p b { font-weight:700; }
+.tweet { background:#fff; border:1px solid var(--line); border-radius:20px; padding:3vh 2.5vw; width:min(1100px,82vw); margin:0 auto; box-shadow:0 14px 44px rgba(46,59,72,.13); }
+.tweet img { display:block; width:100%; height:auto; }
 
 /* two columns, compare */
 .dos { display:grid; grid-template-columns:1fr 1fr; gap:5vw; align-items:start; margin-top:3vh; }
@@ -418,12 +417,8 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="statement">Hinton was wrong about the job.<br><strong>He was right about the <span class="crt-accent" data-text="task." style="font-weight:700">task.</span></strong></div>
 </div></section>
 
-<section class="slide steps" data-title="Altman, 2021"><div class="inner">
-  <div class="tweet">
-    <div class="who"><b>Sam Altman</b><span>@sama · 13 June 2021</span></div>
-    <p><b>Prediction:</b> AI will cause the price of work that can happen in front of a computer to decrease much faster than the price of work that happens in the physical world.</p>
-    <p class="step">This is the opposite of what most people (including me) expected, and will have strange effects.</p>
-  </div>
+<section class="slide" data-title="Altman, 2021"><div class="inner">
+  <div class="tweet"><img src="img/altman-tweet.png" alt="Sam Altman, 13 June 2021. Prediction: AI will cause the price of work that can happen in front of a computer to decrease much faster than the price of work that happens in the physical world. This is the opposite of what most people (including me) expected, and will have strange effects."></div>
 </div></section>
 
 <section class="slide steps" data-title="This time it is the desk"><div class="inner">

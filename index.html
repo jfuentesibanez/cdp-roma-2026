@@ -332,6 +332,21 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   .split .ph { height:36vh; }
   .slide { overflow-y:auto; align-items:flex-start; }
 }
+
+/* The newer clipping lands over the original report on the presenter's cue. */
+.klarna-press { background:radial-gradient(ellipse at 45% 46%,#38424a,#1c252c 78%); }
+.press-stack { display:grid; place-items:center; width:100%; isolation:isolate; }
+.press-cut { grid-area:1/1; width:min(70vw,940px); box-sizing:border-box; padding:clamp(17px,3.1vw,48px); background:white; color:#17212b; text-align:left; box-shadow:0 2px 1px #0002,0 18px 50px #0005; transform:rotate(-1.6deg); transition:transform .65s ease,filter .65s ease; }
+.press-cut header { display:flex; align-items:baseline; justify-content:space-between; gap:1em; border-bottom:2px solid currentColor; padding-bottom:1.2vh; margin-bottom:2.7vh; }
+.press-cut a { color:inherit; font-weight:700; font-size:clamp(16px,2vw,32px); text-decoration:none; }
+.press-cut time { font-size:clamp(12px,1.35vw,19px); }
+.press-cut img { display:block; width:100%; max-height:36vh; object-fit:contain; object-position:left; }
+.press-cut p { margin:2.4vh 0 0; font:clamp(15px,1.55vw,24px)/1.35 Georgia,serif; }
+.press-cut.step { visibility:hidden; transform:translate(7%,-8%) rotate(4deg) scale(1.04); transition:opacity .45s ease,transform .65s cubic-bezier(.2,.8,.2,1),visibility .45s; }
+.press-cut.step.on { visibility:visible; transform:translate(3%,5%) rotate(.8deg); }
+.press-stack:has(.step.on) .press-cut:first-child { transform:translate(-5%,-8%) rotate(-4deg) scale(.96); filter:brightness(.83); }
+@media (max-width:760px) { .press-cut { width:83vw; } }
+@media (prefers-reduced-motion:reduce) { .press-cut,.press-cut.step { transition:none; } }
 </style>
 </head>
 <body>
@@ -463,13 +478,13 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 </div></section>
 
 <section class="slide steps" data-title="Who gains most"><div class="inner">
-  <div class="kicker">Who gains most?</div>
+  <div class="kicker">5,179 support agents get an AI assistant</div>
   <div class="dos">
-    <div class="step"><div class="big-n">+34%</div><div class="big-l">Productivity of <strong>new</strong> support agents using AI</div></div>
-    <div class="step"><div class="big-n" style="color:var(--grey)">≈0</div><div class="big-l">Gain for the <strong>most experienced</strong></div></div>
+    <div class="step"><div class="big-n">+34%</div><div class="big-l">more cases solved per hour by the <strong>newest</strong> agents</div></div>
+    <div class="step"><div class="big-n" style="color:var(--grey)">≈0</div><div class="big-l">gain for the <strong>most experienced</strong></div></div>
   </div>
-  <div class="sub step">AI compresses experience. Good for juniors. <strong>Uncomfortable for experts.</strong></div>
-  <div class="src">Source: Brynjolfsson, Li &amp; Raymond, 2023 · 5,179 agents</div>
+  <div class="sub step">AI gave the newcomers <strong>what the veterans took years to learn.</strong></div>
+  <div class="src">Source: Brynjolfsson, Li &amp; Raymond, 2023</div>
 </div></section>
 
 <section class="slide steps" data-title="The broken ladder"><img class="art" src="img/art-ladder.png" alt="A ladder with its lowest rungs broken" onload="this.closest('.slide').classList.add('has-art')" onerror="this.remove()"><div class="inner">
@@ -484,14 +499,20 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="statement">Your AI project will change someone's job.<br>Let's find out <strong>whose, and how.</strong></div>
 </div></section>
 
-<section class="slide steps" data-title="Klarna"><div class="inner">
-  <img src="img/klarna.png" alt="Klarna" style="display:block;height:clamp(60px,10vh,110px);margin:0 0 1vh calc(clamp(60px,10vh,110px) * -.26);mix-blend-mode:multiply">
-  <div class="dos">
-    <div class="step"><div class="big-n">700</div><div class="big-l">2024: its AI does the work of 700 customer-service agents.</div></div>
-    <div class="step"><div class="big-n rust">↩</div><div class="big-l">2025: quality drops. Klarna hires people again.</div></div>
+<section class="slide steps negro klarna-press" data-title="Klarna">
+  <div class="press-stack">
+    <article class="press-cut">
+      <header><a href="https://www.euronews.com/2024/02/28/klarnas-ai-bot-is-doing-the-work-of-700-employees-what-will-happen-to-their-jobs" target="_blank" rel="noopener noreferrer">Euronews</a><time datetime="2024-02-28">28 February 2024</time></header>
+      <img src="img/klarna-euronews.png" alt="Klarna’s AI bot is doing the work of 700 employees. What will happen to their jobs?">
+      <p>Klarna’s estimate for the volume of work handled by its AI assistant in customer service.</p>
+    </article>
+    <article class="press-cut step">
+      <header><a href="https://www.entrepreneur.com/business-news/klarna-ceo-reverses-course-by-hiring-more-humans-not-ai/" target="_blank" rel="noopener noreferrer">Entrepreneur</a><time datetime="2025-05-09">9 May 2025</time></header>
+      <img src="img/klarna-entrepreneur.png" alt="Klarna Is Hiring Customer Service Agents After AI Couldn’t Cut It on Calls, According to the Company’s CEO">
+      <p>Klarna began recruiting so customers could reach a person when they needed one.</p>
+    </article>
   </div>
-  <div class="src">Source: Klarna, 2024 · Bloomberg, 2025</div>
-</div></section>
+</section>
 
 <section class="slide steps shift-practice" data-title="Hands up · the consultants"><div class="inner">
   <div class="practice-top"><div class="kicker">Hands up</div></div>

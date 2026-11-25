@@ -77,7 +77,7 @@
     slides.forEach((s, k) => { s.classList.toggle('on', k === index); s.inert = k !== index; });
     const s = slides[index];
     // Discussions always start with the question, including when revisiting.
-    if (s.classList.contains('shift-practice')) s.querySelectorAll('.step').forEach(a => a.classList.remove('on'));
+    if (s.matches('.shift-practice,.klarna-press')) s.querySelectorAll('.step').forEach(a => a.classList.remove('on'));
     if (s.classList.contains('zoomtour')) { s.querySelectorAll('.step').forEach(a => a.classList.remove('on')); applyZoom(s); }
     if (s === travelSlide) enterTravel();
     s.querySelectorAll('.typed').forEach(el => {

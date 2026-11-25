@@ -204,6 +204,10 @@ body.is-blackout .blackout { display:block; }
 .surnames span { font-size:clamp(13px,1.2vw,16px); color:var(--grey); }
 
 .objective { border-left:4px solid var(--brass); padding-left:2vw; }
+/* illustration slot: a square image on the right; the text narrows only once the file has loaded */
+.art { position:absolute; right:5vw; top:50%; transform:translateY(-50%); height:min(68vh,36vw); aspect-ratio:1; object-fit:contain; mix-blend-mode:multiply; opacity:.85; pointer-events:none; z-index:0; }
+.slide.has-art .inner { position:relative; z-index:1; }
+.slide.has-art .inner > * { max-width:min(100%,50vw); }
 .objective .statement { font-size:clamp(28px,4vw,60px); }
 .obj-out { display:inline-block; margin-top:3.5vh; font-size:clamp(14px,1.4vw,20px); letter-spacing:.14em; text-transform:uppercase; color:var(--brass); font-weight:700; border:1.5px solid var(--brass); padding:1vh 1.2vw; }
 .bundle { display:grid; grid-template-columns:repeat(5,1fr); gap:1vw; margin-top:4vh; }
@@ -452,14 +456,14 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="src">Source: Brynjolfsson, Li &amp; Raymond, 2023 · 5,179 agents</div>
 </div></section>
 
-<section class="slide steps" data-title="The broken ladder"><div class="inner">
+<section class="slide steps" data-title="The broken ladder"><img class="art" src="img/art-ladder.png" alt="A ladder with its lowest rungs broken" onload="this.closest('.slide').classList.add('has-art')" onerror="this.remove()"><div class="inner">
   <div class="kicker">The broken ladder</div>
   <div class="statement">Judgement is not taught.<br>It is <strong>manufactured</strong> by doing the groundwork.</div>
   <div class="sub step">Partners learned on spreadsheets at 2 a.m. Surgeons were residents first.<br><strong>If AI does the junior work, where will your next senior come from?</strong></div>
-  <div class="statement step" style="margin-top:4vh;font-size:clamp(22px,2.8vw,38px)">A profession can be profitable and <span class="crt-accent crt-rust" data-text="not reproducible">not reproducible</span> at the same time.</div>
+  <div class="statement step" style="margin-top:4vh;font-size:clamp(22px,2.8vw,38px)">More profit today. <span class="crt-accent crt-rust" data-text="No seniors in ten years.">No seniors in ten years.</span></div>
 </div></section>
 
-<section class="slide" data-title="Objective · block 1"><div class="inner objective">
+<section class="slide" data-title="Objective · block 1"><img class="art" src="img/art-chair.png" alt="An office chair with a jacket on its back" onload="this.closest('.slide').classList.add('has-art')" onerror="this.remove()"><div class="inner objective">
   <div class="kicker">Act one · goal</div>
   <div class="statement">Your AI project will change someone's job.<br>Let's find out <strong>whose, and how.</strong></div>
 </div></section>
@@ -588,7 +592,7 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="sub step">People rarely resist the change.<br><strong>They resist what the change says about them.</strong></div>
 </div></section>
 
-<section class="slide" data-title="Objective · block 2"><div class="inner objective">
+<section class="slide" data-title="Objective · block 2"><img class="art" src="img/art-stamp.png" alt="A hand holding on to a signature stamp" onload="this.closest('.slide').classList.add('has-art')" onerror="this.remove()"><div class="inner objective">
   <div class="kicker">Act two · goal</div>
   <div class="statement">Every change meets resistance.<br>Who will resist your project, <strong>and why?</strong></div>
 </div></section>
@@ -746,7 +750,7 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="statement">Olivetti designed the factory around its people.<br><strong>Design your MVP around yours.</strong></div>
 </div></section>
 
-<section class="slide" data-title="Objective · block 3"><div class="inner objective">
+<section class="slide" data-title="Objective · block 3"><img class="art" src="img/art-crate.png" alt="A new machine still half inside its crate" onload="this.closest('.slide').classList.add('has-art')" onerror="this.remove()"><div class="inner objective">
   <div class="kicker">Act three · goal</div>
   <div class="statement">Your MVP works.<br>Today you plan <strong>how it gets used.</strong></div>
 </div></section>

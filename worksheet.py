@@ -18,7 +18,7 @@ LINE = HexColor("#D0D7DE")
 
 ACTS = [("ACT 1", "Activity 1 · Task map"),
         ("ACT 2", "Activity 2 · Resistance map"),
-        ("ACT 3", "Activity 3 · Adoption slide")]
+        ("ACT 3", "Activity 3 · Adoption plan")]
 
 c = canvas.Canvas(OUT, pagesize=A4)
 c.setTitle("Adoption Plan - team worksheet")
@@ -211,8 +211,8 @@ for i, (t, n) in enumerate([("How we will know it is being used", "metric"), ("T
     field(M + i * (pw + 8), y - 5, pw, 26, f"kpi_{n}", t, False)
 y -= 62
 
-y = step(y, 6, "Your slide for tomorrow: Adoption & next steps",
-         "Four lines, plain words. Copy them into your presentation. If you cannot fill one, that is your next step.")
+y = step(y, 6, "Four lines you can use tomorrow",
+         "Plain words. Use them in your presentation if they help. If you cannot fill one, that is your next step.")
 lines = [("Who uses it, and what changes for them", "from steps 1-2"),
          ("The resistance we expect, and our answer", "from step 3"),
          ("The first 90 days", "from step 5"),

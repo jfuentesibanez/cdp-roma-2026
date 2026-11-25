@@ -61,12 +61,7 @@ Verificado el 24/11/2026. ✅ confirmado · ⚠️ confirmado con matiz (ya refl
 
   Ojo: se aplicaba a "road locomotives" (vapor), porque en 1865 no había coches. **La slide ya dice "mechanical vehicle".** [Wikipedia](https://en.wikipedia.org/wiki/Locomotive_Acts)
 - ✅ **Curva J.** Brynjolfsson, Rock & Syverson, *AEJ: Macroeconomics* 13(1), 2021. Matiz: habla de productividad **medida**, porque la inversión intangible no se ve al principio. **La slide ya lo dice.** [AEA](https://www.aeaweb.org/doi/10.1257/mac.20180386)
-- ⚠️ **Semmelweis.**
-  - 18,3 % de mortalidad en abril de 1847 (57 de 312).
-  - 12,2 % en mayo.
-  - 2,0 % de media entre junio de 1847 y febrero de 1849, tras el lavado con cloro.
-
-  No fue una caída instantánea. **La slide habla de la media de 21 meses.** [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC3807776)
+- **Semmelweis.** Mortalidad materna en la primera clínica de maternidad de Viena: 459 de 4.010 en 1846 (11,4 %) y 45 de 3.556 en 1848 (1,3 %). El lavado de manos con una solución clorada se introdujo en mayo de 1847. [Semmelweis, 1861, traducción de sus datos originales](https://academia.dk/MedHist/Biblioteket/Print/semmelweis_1861.html). La imagen es una recreación generada con IA.
 - ✅ **ADKAR.** Modelo de Prosci, Jeff Hiatt (2006).
 
 ## Añadido el 24/11 (second brain + imágenes)

@@ -291,8 +291,8 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 .zoomtour:not(.sheet) .zt-clip { position:absolute; inset:0; display:block; box-shadow:none; }
 .zoomtour:not(.sheet) .zt-img { width:100%; height:100%; max-width:none; max-height:none; object-fit:cover; }
 .zoomtour:not(.sheet) .zt-cap { position:absolute; left:0; right:0; bottom:0; margin:0; max-width:none; padding:16vh 8vw 9vh; background:linear-gradient(0deg,rgba(15,20,26,.92),rgba(15,20,26,.55) 55%,transparent); font-size:clamp(24px,3.2vw,48px); z-index:2; }
-.zoomtour.radiology .zt-clip { width:min(100vw, 177.68vh); aspect-ratio:1672/941; height:auto; margin:auto; }
-@media (prefers-reduced-motion:reduce) { .radiology .zt-img { transition:none; } }
+.zoomtour.framed-tour .zt-clip { width:min(100vw, 177.68vh); aspect-ratio:1672/941; height:auto; margin:auto; }
+@media (prefers-reduced-motion:reduce) { .framed-tour .zt-img { transition:none; } }
 
 
 .foto .cap.big { left:0; right:0; bottom:auto; top:9vh; transform:none; max-width:none; text-align:center; font-size:clamp(44px,7.5vw,124px); letter-spacing:-.01em; text-shadow:0 4px 40px rgba(0,0,0,.9),0 0 8px rgba(0,0,0,.6); }
@@ -421,7 +421,7 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="sub step">Today a US radiologist earns <strong>$571,000</strong> a year.</div>
 </div></section>
 
-<section class="slide steps zoomtour radiology" data-title="The radiologist is a bundle">
+<section class="slide steps zoomtour framed-tour" data-title="The radiologist is a bundle">
   <div class="zt-clip"><img class="zt-img" src="img/radiology-room.jpg" alt="A radiologist takes a call beside an X-ray and a worklist. A resident watches. A report and pen lie on the desk."></div>
   <div class="zt-cap"><small>Why he got it wrong</small>A job is not a task. It is a <b>bundle</b> of tasks.</div>
   <div class="step zt" data-zoom="22 46 2.3" data-cap="&lt;small&gt;Read the image&lt;/small&gt;Look for the finding on the chest X-ray."></div>
@@ -592,15 +592,14 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="gigante">People<br><strong><span class="crt-accent" data-text="don't change.">don't change.</span></strong></div>
 </div></section>
 
-<section class="slide steps" data-title="Semmelweis"><div class="split" style="grid-template-columns:30% 1fr"><div class="ph"><img src="img/semmelweis.jpg" alt="Ignaz Semmelweis, 1860"></div><div>
-  <div class="kicker">Vienna, 1847</div>
-  <div class="statement">A young doctor asks colleagues to <strong>wash their hands</strong> before delivering babies.</div>
-  <div class="dos">
-    <div class="step"><div class="big-n rust">18%</div><div class="big-l">mothers dying in his ward</div></div>
-    <div class="step"><div class="big-n">2%</div><div class="big-l">after hand-washing began</div></div>
-  </div>
-  <div class="sub step">The evidence was clear. His colleagues rejected it for decades. <strong>Why?</strong></div>
-</div></div><div class="credit">Ignaz Semmelweis, 1860 · public domain</div></section>
+<section class="slide steps zoomtour framed-tour" data-title="Semmelweis">
+  <div class="zt-clip"><img class="zt-img" src="img/vienna-ward.jpg" alt="Illustrated reconstruction of a Viennese maternity ward. A doctor washes his hands at a basin near a mother and newborn."></div>
+  <div class="zt-cap"><small>Vienna · First Maternity Clinic · 1847</small>Medical students came straight from the autopsy room <b>to examine mothers.</b></div>
+  <div class="step zt" data-zoom="54 63 2.0" data-cap="&lt;small&gt;May 1847 · The washbasin&lt;/small&gt;Semmelweis requires &lt;b&gt;chlorine handwashing&lt;/b&gt; before examining patients."></div>
+  <div class="step zt" data-zoom="77 39 2.2" data-cap="&lt;small&gt;Maternal deaths · First Maternity Clinic&lt;/small&gt;&lt;b&gt;11.4%&lt;/b&gt; in 1846. &lt;b&gt;1.3%&lt;/b&gt; in 1848."></div>
+  <div class="step zt" data-zoom="50 50 1" data-cap="&lt;small&gt;Imagine you were one of the doctors&lt;/small&gt;What would accepting those figures mean about &lt;b&gt;your own work?&lt;/b&gt;"></div>
+  <div class="credit">Semmelweis, 1861 · AI-generated illustration</div>
+</section>
 
 <section class="slide negro steps" data-title="Resistance is identity"><div class="inner">
   <div class="statement">Accepting it meant accepting that<br><strong>their own hands had <span class="crt-accent" data-text="killed patients.">killed patients.</span></strong></div>

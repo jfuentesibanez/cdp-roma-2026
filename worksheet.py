@@ -68,7 +68,7 @@ def header(page):
     c.setFont("Helvetica-Bold", 14)
     c.drawString(M, H - 24, "AI changes the work. Who changes the people?")
     c.setFont("Helvetica", 8.5)
-    c.drawString(M, H - 39, "Team worksheet · type directly in the boxes and save · one page per act")
+    c.drawString(M, H - 39, "Team worksheet · type directly in the boxes and save · one page per activity")
     c.drawRightString(W - M, H - 39, f"{page} / 3")
     gap = 8
     cw = (W - 2 * M - 2 * gap) / 3
@@ -80,23 +80,18 @@ def header(page):
         c.setFillColor(GREEN if on else white)
         c.roundRect(x, y, cw, 24, 4, fill=1, stroke=1)
         c.setFillColor(white if on else GREY)
-        c.setFont("Helvetica-Bold", 8)
-        c.drawString(x + 9, y + 9, act)
         c.setFont("Helvetica-Bold" if on else "Helvetica", 8.5)
-        c.drawString(x + 44, y + 9, name)
+        c.drawString(x + 10, y + 9, name)
     return y - 22
 
 
 def step(y, num, title, sub):
     c.setFillColor(GREEN)
-    c.circle(M + 9, y - 5, 9, fill=1, stroke=0)
-    c.setFillColor(white)
-    c.setFont("Helvetica-Bold", 10)
-    c.drawCentredString(M + 9, y - 8.5, str(num))
+    c.rect(M, y - 26, 3, 28, fill=1, stroke=0)
     c.setFillColor(INK)
     c.setFont("Helvetica-Bold", 12)
-    c.drawString(M + 26, y - 9, title)
-    return para(M + 26, y - 24, sub, size=8.5, width=W - 2 * M - 26) - 6
+    c.drawString(M + 12, y - 9, title)
+    return para(M + 12, y - 24, sub, size=8.5, width=W - 2 * M - 12) - 6
 
 
 def label(x, y, text, w=None):
@@ -158,7 +153,7 @@ for r in range(3):
 y -= 14
 
 y = step(y, 4, "ADKAR check",
-         "For the person from step 1: score each sentence. 1 = not true today, 5 = fully true. "
+         "For the person you chose in Activity 1: score each sentence. 1 = not true today, 5 = fully true. "
          "Then write what you will do about the lowest scores.")
 c.setFillColor(INK); c.setFont("Helvetica-Bold", 8.5)
 c.drawCentredString(M + 205, y, "Score 1-5"); c.drawString(M + 240, y, "What we will do about it")
@@ -213,9 +208,9 @@ y -= 62
 
 y = step(y, 6, "Four lines you can use tomorrow",
          "Plain words. Use them in your presentation if they help. If you cannot fill one, that is your next step.")
-lines = [("Who uses it, and what changes for them", "from steps 1-2"),
-         ("The resistance we expect, and our answer", "from step 3"),
-         ("The first 90 days", "from step 5"),
+lines = [("Who uses it, and what changes for them", "from Activity 1"),
+         ("The resistance we expect, and our answer", "from Activity 2"),
+         ("The first 90 days", "from the plan above"),
          ("How we will know it is being used", "metric, target, owner")]
 lh = (y - 60 - 4 * 24) / 4
 for i, (t, s) in enumerate(lines):

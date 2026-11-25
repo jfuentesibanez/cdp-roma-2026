@@ -352,6 +352,22 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 .press-stack:has(.step.on) .press-cut:first-child { transform:translate(-5%,-8%) rotate(-4deg) scale(.96); filter:brightness(.83); }
 @media (max-width:760px) { .press-cut { width:83vw; } }
 @media (prefers-reduced-motion:reduce) { .press-cut,.press-cut.step { transition:none; } }
+/* Archive portrait, Act III */
+.slide.foto.olivetti-portrait { overflow:hidden; background:#17191b; }
+.slide.olivetti-portrait > img { width:68%; object-position:50% 21%; transform-origin:45% 27%; }
+.slide.olivetti-portrait::after { inset:0; height:100%; background:linear-gradient(90deg,transparent 36%,rgba(23,25,27,.32) 48%,#17191b 68%); }
+.olivetti-words { position:absolute; z-index:2; left:54%; right:5%; top:50%; transform:translateY(-50%); color:#fff; }
+.olivetti-words blockquote { font-size:clamp(24px,min(3.45vw,6.2vh),64px); line-height:1.15; font-style:italic; text-wrap:pretty; }
+.olivetti-words p { margin-top:2.8vh; font-size:clamp(15px,min(1.55vw,3.5vh),29px); line-height:1.4; color:#d4d6d5; }
+.olivetti-words figcaption { margin-top:3.2vh; font-size:clamp(12px,1.05vw,20px); font-weight:700; letter-spacing:.15em; text-transform:uppercase; }
+@media (max-aspect-ratio:1/1) {
+  .slide.olivetti-portrait > img { width:100%; object-position:50% 12%; }
+  .slide.olivetti-portrait::after { background:linear-gradient(0deg,#17191b 2%,rgba(23,25,27,.94) 28%,rgba(23,25,27,.72) 47%,transparent 67%); }
+  .olivetti-words { left:7%; right:7%; top:auto; bottom:11%; transform:none; }
+  .olivetti-words blockquote { font-size:clamp(20px,min(6.4vw,4vh),44px); }
+  .olivetti-words p, .olivetti-words figcaption { margin-top:1.6vh; }
+}
+@media (prefers-reduced-motion:reduce) { .slide.olivetti-portrait.on > img { animation:none; } }
 </style>
 </head>
 <body>
@@ -760,11 +776,15 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="credit">Photo: Davide Mauro, CC BY-SA 4.0, Wikimedia Commons</div>
 </section>
 
-<section class="slide negro" data-title="Olivetti quote"><div class="split"><div class="ph"><img src="img/adriano.jpg" alt="Adriano Olivetti, 1957"></div><div style="text-align:left">
-  <div class="quote" style="font-size:clamp(22px,2.6vw,36px)">“The factory cannot look only at the profit index. It must distribute wealth, culture, services, democracy.”
-    <span class="it-orig">«La fabbrica non può guardare solo all'indice dei profitti. Deve distribuire ricchezza, cultura, servizi, democrazia.»</span>
-    <span class="who">ADRIANO OLIVETTI</span></div>
-</div></div><div class="credit">Photo: Mondadori, 1957, public domain</div></section>
+<section class="slide foto olivetti-portrait" data-title="Olivetti quote">
+  <img src="img/adriano.jpg" alt="Adriano Olivetti, 1957">
+  <figure class="olivetti-words">
+    <blockquote>“The factory cannot look only at the profit index. It must distribute wealth, culture, services, democracy.”</blockquote>
+    <p lang="it">«La fabbrica non può guardare solo all'indice dei profitti. Deve distribuire ricchezza, cultura, servizi, democrazia.»</p>
+    <figcaption>Adriano Olivetti</figcaption>
+  </figure>
+  <div class="credit">Photo: Mondadori, 1957, public domain</div>
+</section>
 
 <section class="slide foto" data-title="Ivrea assembly line, 1970"><img src="img/ivrea-line.jpg" alt="Olivetti Nuova ICO assembly line, Ivrea, 1970">
   <div class="cap"><small>Ivrea · Nuova ICO · 1970</small>The people around the machine.</div>

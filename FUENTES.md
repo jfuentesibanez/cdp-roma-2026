@@ -91,7 +91,7 @@ Verificado el 24/11/2026. ✅ confirmado · ⚠️ confirmado con matiz (ya refl
 - `video/hinton-radiology.mp4`: "Geoff Hinton: On Radiology", canal oficial de Creative Destruction Lab (YouTube 2HMPRXstSvQ). Dura 1:24, en 720p H.264 (11 MB). Se reproduce dentro del deck sin conexión; si falta el archivo, el deck tira de YouTube.
 
 ## Viaje en el tiempo (apertura)
-Motor 3D (`viaje.js`, `three.min.js`) e imágenes de las eras traídos del deck de Ferrovial. La imagen de 2026 es Roma: `img/viaje-rome.jpg`, foto de benoitnewton, CC BY 2.0, Wikimedia Commons (Roma-vista.jpg). Sin WebGL, la slide muestra la foto fija.
+Motor 3D (`viaje.js`, `three.min.js`) e imágenes de las eras traídos del deck de Ferrovial. La imagen de 2026 es el atrio de la estación Colosseo de la línea C de Roma, fotografiado el 1 de julio de 2026 por Emmeca. [Fotografía original](https://commons.wikimedia.org/wiki/File:20260701_Stazione_Metro_C_Colosseo-2.jpg) y recorte panorámico bajo [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Sin WebGL, la slide muestra la foto fija.
 
 ## El fin del trabajo de escritorio (acto 1)
 - ⚠️ **Tuit de Sam Altman** (@sama, 13 de junio de 2021): "Prediction: AI will cause the price of work that can happen in front of a computer to decrease much faster than the price of work that happens in the physical world…". Texto y fecha tomados de la captura que aportó Javier; no se ha comprobado contra el tuit original. La slide muestra esa captura tal cual (img/altman-tweet.png, 750 px de ancho).

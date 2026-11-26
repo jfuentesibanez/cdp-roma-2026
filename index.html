@@ -281,7 +281,7 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 .vj-flash { position:absolute; inset:0; z-index:4; pointer-events:none; background:#fff; opacity:0; }
 .vj-flash.active { animation:vjFlash .35s ease-out; }
 @keyframes vjFlash { 0% { opacity:.45; } 100% { opacity:0; } }
-.travel-fallback { display:none; position:absolute; inset:0; background:linear-gradient(0deg,#000b,#0005),url('img/viaje-rome.jpg') center/cover; align-items:center; justify-content:center; font-size:clamp(60px,14vw,180px); color:#fff; font-weight:600; }
+.travel-fallback { display:none; position:absolute; inset:0; background:linear-gradient(0deg,#000b,#0005),url('img/viaje-rome.jpg?v=colosseo') center/cover; align-items:center; justify-content:center; font-size:clamp(60px,14vw,180px); color:#fff; font-weight:600; }
 .viaje.fallback .travel-fallback { display:flex; }
 .viaje.fallback .vj-canvas,.viaje.fallback .vj-hud,.viaje.fallback .vj-minimap { display:none; }
 
@@ -426,7 +426,7 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="vj-minimap"><div class="vj-track"></div><div class="vj-cursor"></div></div>
   <div class="vj-flash"></div>
   <div class="travel-fallback">2026</div>
-  <div class="credit">2026 image: Rome · benoitnewton, CC BY 2.0</div>
+  <div class="credit">Rome · Colosseo metro station, July 2026 · Emmeca, CC BY-SA 4.0</div>
 </section>
 
 <section class="slide negro" data-title="The next jump"><div class="inner">
@@ -984,7 +984,7 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 </section>
 
 <script src="three.min.js"></script>
-<script src="viaje.js"></script>
+<script src="viaje.js?v=colosseo"></script>
 <script src="stage.js"></script>
 <script src="tower.js"></script>
 </body>

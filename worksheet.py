@@ -218,7 +218,9 @@ for i, (t, n) in enumerate([("How we will know it is being used", "metric"), ("T
                             ("Owner (a name)", "owner")]):
     c.setFillColor(INK); c.setFont("Helvetica-Bold", 9); c.drawString(M + i * (pw + 8), y, t)
     field(M + i * (pw + 8), y - 5, pw, 26, f"kpi_{n}", t, False)
-y -= 62
+para(M, y - 42, "Ideas: people who use it every week, out of those who could · outputs used without being redone · "
+     "hours saved per person · people still using it after 90 days", size=7.5, color=GREY)
+y -= 70
 
 y = step(y, 6, "Four lines you can use tomorrow",
          "Plain words. Use them in your presentation if they help. If you cannot fill one, that is your next step.")

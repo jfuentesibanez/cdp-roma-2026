@@ -222,6 +222,13 @@ body.is-blackout .blackout { display:block; }
 .tw-cap small { display:block; font-size:.42em; letter-spacing:.16em; text-transform:uppercase; color:#AEB8C2; margin-bottom:1vh; }
 .tw-cap b { color:#3CC07E; font-weight:600; } .tw-cap b.r { color:#E5484D; }
 .tower .step.tw { display:none; }
+.trio { display:grid; grid-template-columns:repeat(3,1fr); gap:2.6vw; margin-top:4.5vh; }
+.trio div { border-top:3px solid var(--grey); padding-top:1.6vh; }
+.trio small { display:block; font-size:clamp(11px,1vw,14px); letter-spacing:.16em; text-transform:uppercase; color:var(--grey); margin-bottom:.8vh; }
+.trio b { display:block; font-size:clamp(28px,3.4vw,50px); font-weight:600; line-height:1.1; color:var(--ink); }
+.trio span { display:block; margin-top:1.2vh; font-size:clamp(16px,1.7vw,24px); line-height:1.35; color:var(--ink); }
+.trio .bad { border-color:var(--rust); } .trio .bad b { color:var(--rust); }
+.trio .good { border-color:var(--brass); } .trio .good b { color:var(--brass); }
 .mult { display:grid; grid-template-columns:1fr auto 1fr auto 1fr auto 1fr; gap:1.4vw; align-items:start; margin-top:4.5vh; }
 .mult div { border-top:3px solid var(--brass); padding-top:1.4vh; }
 .mult b { display:block; font-size:clamp(19px,2.1vw,30px); letter-spacing:.08em; text-transform:uppercase; color:var(--brass); font-weight:700; }
@@ -584,6 +591,18 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   <div class="statement">The agent is right <strong>95% of the time.</strong><br>What do the lawyers do now?</div>
   <div class="practice-flow"><span>Trust it and sign faster</span><span>Keep reviewing every word</span><span data-answer>Sample, and plant known errors</span></div>
   <div class="practice-reveal step"><b>Keep the reviewer awake</b><p>Airport scanners show fake threats in a few bags to keep staff alert. Do the same: hide a few known errors, and count how many are caught.</p><p class="practice-debate">How would you know your reviewers have stopped reviewing?</p></div>
+</div></section>
+
+<section class="slide steps" data-title="Three law firms"><div class="inner">
+  <div class="kicker" style="display:flex;align-items:center;flex-wrap:wrap;gap:1.2em"><img src="img/anthropic-wordmark.svg" alt="Anthropic" width="570" height="64" style="width:clamp(120px,12vw,180px);height:auto"><span>Published three days ago</span></div>
+  <div class="statement">Three law firms. <strong>The same AI.</strong></div>
+  <div class="trio">
+    <div class="step bad"><small>Firm one</small><b>Automated</b><span>The machine took over one workflow. Faster. The clerks' jobs are at risk.</span></div>
+    <div class="step"><small>Firm two</small><b>Stalled</b><span>People did not adopt it. Nothing changed.</span></div>
+    <div class="step good"><small>Firm three</small><b>Reorganised</b><span>People moved to new tasks. Nobody lost a job.</span></div>
+  </div>
+  <div class="sub step">Same technology. Same industry. <strong>Three different <span class="crt-accent" data-text="decisions.">decisions.</span></strong></div>
+  <div class="src">Source: Anthropic, “Working with AI”, 23 November 2026</div>
 </div></section>
 
 <section class="slide steps" data-title="New roles"><div class="inner">

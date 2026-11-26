@@ -92,6 +92,7 @@ body.dark-slide { background:var(--ink); }
 .practice-flow span::before { content:counter(opt, upper-alpha); display:block; color:var(--brass); font-weight:700; font-size:.75em; letter-spacing:.14em; margin-bottom:.8vh; }
 .shift-practice:has(.practice-reveal.on) .practice-flow span[data-answer] { border-color:var(--brass); background:#E5F4EC; }
 .shift-practice:has(.practice-reveal.on) .practice-flow span:not([data-answer]) { opacity:.4; }
+.shift-practice.no-answer:has(.practice-reveal.on) .practice-flow span { opacity:1; }
 .practice-reveal { margin-top:3vh; border-left:3px solid var(--brass); padding-left:1.4vw; }
 .practice-reveal b { font-size:clamp(12px,1vw,14px); letter-spacing:.14em; text-transform:uppercase; color:var(--brass); }
 .practice-reveal p { font-size:clamp(18px,2.1vw,28px); line-height:1.45; margin-top:.6vh; }
@@ -604,11 +605,11 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
   </div>
 </div></section>
 
-<section class="slide steps shift-practice" data-title="Hands up · DOC-AI"><div class="inner">
+<section class="slide steps shift-practice no-answer" data-title="Hands up · DOC-AI"><div class="inner">
   <div class="practice-top"><div class="kicker">Hands up · DOC-AI</div></div>
   <div class="statement">Your colleague's document is due today. <span style="white-space:nowrap">DOC-AI</span> flags <strong>four missing sections.</strong><br>What does your colleague do?</div>
-  <div class="practice-flow"><span>Fixes all four and delivers late</span><span data-answer>Sends it as it is, and stops using DOC-AI</span><span>Asks for one more day</span></div>
-  <div class="practice-reveal step"><b>Design for people in a hurry</b><p>Show the one gap that really matters, not all four.</p><p class="practice-debate">In your MVP, who saves time: the writer or the reviewer?</p></div>
+  <div class="practice-flow"><span>Fixes all four and delivers late</span><span>Sends it as it is</span><span>Asks for one more day</span></div>
+  <div class="practice-reveal step"><b>Design for people in a hurry</b><p>If all four look equally urgent, people under pressure stop reading the flags. Show which one really matters.</p><p class="practice-debate">In your MVP, who saves time: the writer or the reviewer?</p></div>
 </div></section>
 
 <section class="slide steps shift-practice" data-title="Hands up · Investment Copilot"><div class="inner">

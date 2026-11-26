@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Come è stata fatta questa presentazione</title>
+<style>
+:root { --slate:#2E3B48; --green:#00924A; --green-l:#3CC07E; --red:#D0202E; --paper:#F6F7F8; --grey:#6E7B87; --line:#D9DEE3;
+  --sans:Optima,"Optima Nova","Segoe UI",Candara,"Gill Sans","Helvetica Neue",Arial,sans-serif; }
+* { box-sizing:border-box; }
+body { margin:0; font-family:var(--sans); background:var(--paper); color:var(--slate); line-height:1.55; font-size:18px; }
+a { color:var(--green); }
+.wrap { max-width:820px; margin:0 auto; padding:0 20px; }
+header { background:var(--slate); color:var(--paper); padding:72px 0 56px; }
+header .k { color:var(--green-l); letter-spacing:.14em; text-transform:uppercase; font-size:13px; }
+header h1 { font-size:clamp(32px,6vw,54px); line-height:1.1; margin:14px 0 18px; font-weight:700; text-wrap:balance; }
+header p { font-size:clamp(18px,2.6vw,22px); margin:0; max-width:34em; color:#D5DBE0; }
+header b { color:var(--green-l); }
+.links { display:flex; flex-wrap:wrap; gap:10px; margin-top:30px; }
+.links a { color:var(--paper); border:1px solid #5B6A78; padding:9px 16px; text-decoration:none; font-size:16px; }
+.links a:first-child { background:var(--green); border-color:var(--green); }
+section { padding:48px 0 8px; }
+h2 { font-size:clamp(24px,4vw,32px); margin:0 0 18px; line-height:1.2; }
+h2 span { color:var(--green); }
+ol.steps { list-style:none; margin:0; padding:0; counter-reset:s; }
+ol.steps li { counter-increment:s; position:relative; padding:16px 0 16px 58px; border-top:1px solid var(--line); }
+ol.steps li::before { content:counter(s,decimal-leading-zero); position:absolute; left:0; top:16px; color:var(--green); font-weight:700; font-size:22px; }
+ol.steps b { display:block; font-size:20px; }
+.q { color:var(--grey); font-style:italic; }
+.two { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.two > div { background:#fff; border:1px solid var(--line); border-top:4px solid var(--green); padding:20px 22px; }
+.two > div.me { border-top-color:var(--red); }
+.two h3 { margin:0 0 8px; font-size:20px; }
+ul { padding-left:20px; margin:0; }
+li { margin:5px 0; }
+pre { background:var(--slate); color:var(--paper); padding:20px 22px; white-space:pre-wrap; font:15px/1.55 ui-monospace,Menlo,Consolas,monospace; margin:14px 0; }
+.note { border-left:4px solid var(--red); background:#fff; padding:14px 18px; margin:20px 0 0; }
+table { border-collapse:collapse; width:100%; }
+td { padding:9px 0; border-top:1px solid var(--line); vertical-align:top; }
+td:first-child { width:9.5em; font-weight:700; white-space:nowrap; }
+kbd { font:15px ui-monospace,Menlo,monospace; border:1px solid #B9C2CA; border-bottom-width:2px; padding:1px 7px; background:#fff; }
+footer { padding:44px 0 64px; color:var(--grey); font-size:15px; }
+@media (max-width:620px) { .two { grid-template-columns:1fr; } body { font-size:17px; } header { padding:48px 0 40px; } }
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <div class="k">CDP · Roma · 26 novembre 2026</div>
+  <h1>Come è stata fatta questa presentazione</h1>
+  <p>Senza PowerPoint. Una conversazione con un'IA, una pagina web e <b>molte correzioni.</b></p>
+  <div class="links">
+    <a href="../">Apri la presentazione</a>
+    <a href="../worksheet.pdf">Scheda PDF</a>
+    <a href="https://github.com/jfuentesibanez/cdp-roma-2026">Codice su GitHub</a>
+  </div>
+</div></header>
+
+<div class="wrap">
+
+<section>
+  <h2>In <span>breve</span></h2>
+  <ul>
+    <li>La presentazione è una <b>pagina web</b>: 71 slide in un file HTML. Si apre in qualsiasi browser.</li>
+    <li>È stata costruita con <b>Claude Code</b>, l'assistente di programmazione di Anthropic.</li>
+    <li>Io descrivo quello che voglio. L'IA scrive il codice. Io guardo il risultato e correggo.</li>
+    <li>È pubblicata gratis con <b>GitHub Pages</b>. Per questo basta un link o un QR.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Il processo, <span>passo per passo</span></h2>
+  <ol class="steps">
+    <li><b>Il contesto</b>Ho dato all'IA il programma del corso, i vostri cinque progetti e il feedback dell'edizione precedente.</li>
+    <li><b>La tesi</b>Prima delle slide, una frase: «L'IA cambia il lavoro. Chi cambia le persone?». Poi tre atti.</li>
+    <li><b>Le slide, una alla volta</b>Chiedo, guardo, correggo. I miei messaggi erano di questo tipo:
+      <div class="q">«Questa non la capisco, quindi non posso spiegarla.»<br>«Chi sono "they"? Riscrivi la domanda.»<br>«Ha senso un esempio con un modello di tre anni fa? Togliamolo.»</div></li>
+    <li><b>Le fonti</b>L'IA ha cercato ogni dato nel documento originale. I dati non confermati sono usciti. L'elenco completo è nel file <a href="https://github.com/jfuentesibanez/cdp-roma-2026/blob/main/FUENTES.md">FUENTES.md</a>.</li>
+    <li><b>Le immagini</b>Le foto storiche vengono da Wikimedia Commons. Per le illustrazioni, l'IA ha scritto i prompt e io ho generato le immagini.</li>
+    <li><b>Il grafico 3D e la scheda PDF</b>Anche questi sono codice scritto dall'IA: JavaScript per il grafico, Python per il PDF compilabile.</li>
+    <li><b>La pubblicazione</b>Ogni modifica va online in un minuto. Ho corretto la scheda PDF durante la sessione, e il QR è rimasto lo stesso.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Chi ha fatto <span>cosa</span></h2>
+  <div class="two">
+    <div><h3>L'IA</h3><ul>
+      <li>Tutto il codice</li>
+      <li>La ricerca e la verifica delle fonti</li>
+      <li>Le prime versioni dei testi</li>
+      <li>Le animazioni, il grafico, il PDF</li>
+    </ul></div>
+    <div class="me"><h3>Io</h3><ul>
+      <li>La tesi e la storia</li>
+      <li>Cosa resta e cosa esce</li>
+      <li>Il tono e le parole finali</li>
+      <li>La responsabilità di ogni slide</li>
+    </ul></div>
+  </div>
+  <p>La mia regola: <b>se non so spiegare una slide, la slide esce.</b></p>
+</section>
+
+<section>
+  <h2>Per <span>provarci voi</span></h2>
+  <p>Serve Claude Code (app desktop o terminale) e un browser. Saper programmare aiuta, ma non è indispensabile. Un primo messaggio può essere questo:</p>
+<pre>Crea una presentazione in un solo file HTML.
+Pubblico: [chi ascolta e cosa sa già].
+Tesi: [una frase].
+Durata: [minuti].
+Regole: un'idea per slide, frasi corte, testo grande.
+Ogni dato con la sua fonte. Se non trovi la fonte, dimmelo.
+Prima proponi la struttura. Non scrivere le slide finché non la approvo.</pre>
+  <p><b>Cinque regole che mi hanno aiutato</b></p>
+  <ul>
+    <li>Prima la struttura, poi le slide.</li>
+    <li>Un'idea per slide. Ogni riga parla al pubblico.</li>
+    <li>Guardate ogni slide. Correggete con parole semplici.</li>
+    <li>Chiedete la fonte di ogni numero. Poi apritela.</li>
+    <li>Dite all'IA quando esagera. Lo fa spesso.</li>
+  </ul>
+  <p class="note"><b>Attenzione ai dati.</b> Prima di caricare documenti interni in uno strumento di IA, verificate le regole della vostra organizzazione.</p>
+</section>
+
+<section>
+  <h2>Come <span>navigare</span></h2>
+  <table>
+    <tr><td><kbd>→</kbd> <kbd>←</kbd></td><td>Avanti e indietro. Funziona anche il clic.</td></tr>
+    <tr><td><kbd>F</kbd></td><td>Schermo intero</td></tr>
+    <tr><td><kbd>G</kbd></td><td>Indice dei capitoli</td></tr>
+    <tr><td><kbd>B</kbd></td><td>Schermo nero</td></tr>
+    <tr><td><kbd>?</kbd></td><td>Tutti i comandi</td></tr>
+  </table>
+</section>
+
+<footer>Javier Fuentes Ibáñez · Human-AI Collaboration &amp; Change Management · Headspring per CDP</footer>
+
+</div>
+</body>
+</html>

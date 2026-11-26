@@ -120,3 +120,5 @@ Horizonte de tarea de METR (duración de la tarea que una IA completa sola el 50
 - ⚠️ **GPT-4, unos 5 minutos** y **Claude Opus 4.5, 4 h 49 min**: cifras de METR citadas de memoria; no las he vuelto a encontrar en una fuente primaria en esta revisión.
 - ⚠️ Las cifras de 2026 usan el conjunto de pruebas combinado (TH1.1 + TH2), más difícil que el de las anteriores: la serie no es homogénea. METR avisa de que por encima de 16 h las medidas son poco fiables. Las fechas de cada punto son las de lanzamiento aproximadas.
 - "Five working weeks" = 200 h a 40 h por semana.
+
+- `img/stanford-wordmark.svg`: logotipo de Stanford, de Wikimedia Commons ("Stanford wordmark (2012).svg"). Marca registrada de la universidad; se usa solo para identificar la fuente de los dos estudios del Stanford Digital Economy Lab (−19 % y +34 %).

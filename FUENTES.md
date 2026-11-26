@@ -52,6 +52,7 @@ Verificado el 24/11/2026. ✅ confirmado · ⚠️ confirmado con matiz (ya refl
 - ✅ **Work Trend Index 2024.** El 75 % usa IA en el trabajo y el 78 % de ellos lleva sus propias herramientas. Encuesta a 31.000 personas de 31 países, publicada el 8 de mayo de 2024. [Microsoft](https://news.microsoft.com/source/2024/05/08/microsoft-and-linkedin-release-the-2024-work-trend-index-on-the-state-of-ai-at-work/)
 
 ## Bloque 2
+- **Slides "Factories, 1900" y "Patch or rebuild" (acto 3):** usan esta fuente. "The gains took twenty years" resume que el salto de productividad llega en los años 20, cuando las fábricas se rediseñan alrededor del motor eléctrico individual en lugar de mantener el eje único de la máquina de vapor.
 - ⚠️ **Dinamo.** En 1899 los motores eléctricos eran menos del 5 % de la fuerza motriz de las fábricas. Hacia 1920 eran ~50 %, y el salto de productividad llega en los años 20. Lo del ~50 % hacia 1920 sale de un resumen secundario: si quieres blindarlo, mira la tabla del paper. [David 1990 (PDF)](https://www.gwern.net/doc/economics/automation/1990-david.pdf)
 - ✅ **Red Flag Act (1865).**
   - Límites de 4 mph en el campo y 2 mph en ciudad.

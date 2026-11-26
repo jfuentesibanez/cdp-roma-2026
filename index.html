@@ -53,6 +53,8 @@ body.dark-slide { background:var(--ink); }
 .lista.compact li { font-size:clamp(19px,2.35vw,32px); padding:1.1vh 0; }
 .lista li small { display:block; grid-column:2; font-size:.62em; color:var(--grey); margin-top:-.6em; }
 .negro .lista li { border-color:#4A5866; }
+.lista.answers li { grid-template-columns:3em 1.15fr 1fr; font-size:clamp(18px,2.1vw,29px); }
+.lista.answers .ans { grid-column:3; grid-row:1 / span 2; align-self:center; font-size:.82em; font-weight:600; color:var(--brass); line-height:1.25; padding-left:1.2em; border-left:3px solid var(--brass); }
 
 .step { opacity:0; transform:translateY(14px); transition:opacity .35s ease, transform .35s ease; }
 .step.on { opacity:1; transform:none; }
@@ -725,14 +727,14 @@ body.dark-slide .rail span.now { color:#3CC07E; border-color:#3CC07E; }
 </div></section>
 
 <section class="slide steps" data-title="Resistance map"><div class="inner">
-  <div class="kicker">Six reasons people resist AI</div>
-  <ul class="lista compact">
-    <li class="step"><span class="n">01</span>“It will replace me”<small>The loudest. Not always the strongest</small></li>
-    <li class="step"><span class="n">02</span>“My expertise is worth less now”<small>The quiet one. Often senior people</small></li>
-    <li class="step"><span class="n">03</span>“I will look incompetent”<small>Learning in public, in front of your team</small></li>
-    <li class="step"><span class="n">04</span>“It is my signature on the output”<small>Legal, finance, compliance</small></li>
-    <li class="step"><span class="n">05</span>“This is more work, not less”<small>Often true. Take it seriously</small></li>
-    <li class="step"><span class="n">06</span>“I don't trust it”<small>Sometimes the most rational person in the room</small></li>
+  <div class="kicker">Six reasons people resist AI · and one answer to each</div>
+  <ul class="lista compact answers">
+    <li><span class="n">01</span>“It will replace me”<small>The loudest. Not always the strongest</small><b class="ans step">Say what happens to their job. Before launch.</b></li>
+    <li><span class="n">02</span>“My expertise is worth less now”<small>The quiet one. Often senior people</small><b class="ans step">Make them the ones who teach and check the tool.</b></li>
+    <li><span class="n">03</span>“I will look incompetent”<small>Learning in public, in front of your team</small><b class="ans step">Let them practise in private first.</b></li>
+    <li><span class="n">04</span>“It is my signature on the output”<small>Legal, finance, compliance</small><b class="ans step">Agree who answers when the tool is wrong.</b></li>
+    <li><span class="n">05</span>“This is more work, not less”<small>Often true. Take it seriously</small><b class="ans step">Take one task away for each one you add.</b></li>
+    <li><span class="n">06</span>“I don't trust it”<small>Sometimes the most rational person in the room</small><b class="ans step">Show them where it fails. Let them test it.</b></li>
   </ul>
 </div></section>
 

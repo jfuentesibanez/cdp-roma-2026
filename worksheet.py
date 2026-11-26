@@ -56,7 +56,8 @@ def field(x, y_top, w, h, name, tip, multiline=True):
     form.textfield(name=f"{fid[0]:02d}_{name}", tooltip=tip, x=x, y=y_top - h, width=w, height=h,
                    borderColor=LINE, fillColor=FILL, textColor=INK, borderWidth=0.8,
                    fontName="Helvetica", fontSize=9 if multiline else 10,
-                   fieldFlags="multiline" if multiline else "", forceBorder=True)
+                   fieldFlags="multiline" if multiline else "", forceBorder=True,
+                   maxlen=None)
     return y_top - h
 
 

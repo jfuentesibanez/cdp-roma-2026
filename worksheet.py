@@ -195,7 +195,7 @@ c.showPage()
 # ---------------- PAGE 3 · ACT 3 · Exercise 3 ----------------
 y = header(3)
 y = step(y, 0, "Score your MVP",
-         "Score each from 0 to 5 and multiply. A zero anywhere makes the total zero. Your lowest score is where the plan starts.")
+         "Score each from 0 to 5 and multiply. A zero anywhere makes the total zero. Start your plan with the weakest of the four.")
 dims = [("Accuracy", "Is it right?"), ("Use", "Will people open it every week?"),
         ("Trust", "Will they act on what it says?"), ("Value", "Does it save time or money?"), ("Score", "out of 625")]
 gap = 22

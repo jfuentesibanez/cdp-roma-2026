@@ -30,7 +30,7 @@ Verificado el 24/11/2026. ✅ confirmado · ⚠️ confirmado con matiz (ya refl
 
   [NPR, Steve Henn, 2015](https://www.npr.org/transcripts/427990392) · [TPR](https://www.tpr.org/2015-07-31/remembering-when-driverless-elevators-drew-skepticism)
 - ✅ **Klarna.** En 2024 anunció que su asistente hacía "el trabajo de 700 agentes". El 8 de mayo de 2025, en Bloomberg, el CEO dijo que la calidad había bajado y que volvían a contratar personas. [CBS](https://www.cbsnews.com/news/klarna-ceo-ai-chatbot-replacing-workers-sebastian-siemiatkowski/) · [Finextra](https://www.finextra.com/newsarticle/45956/klarna-takes-foot-off-ai-gas-as-ceo-acknowledges-importance-of-human-customer-service)
-- ✅ **Estudio BCG/HBS.**
+- ✅ **Estudio BCG/HBS.** (Slide retirada el 26 de noviembre de 2026: el experimento usa GPT-4, de 2023, y el resultado de la tarea difícil ya no es representativo de los modelos actuales. Se conserva la ficha por si se cita de viva voz.)
   - 758 consultores.
   - +12,2 % de tareas, +25,1 % de velocidad y +40 % de calidad dentro de la frontera.
   - Fuera de la frontera, 19 puntos menos de acierto.
